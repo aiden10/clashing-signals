@@ -1,9 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://s7jtb02p6dox"]
+[gd_scene load_steps=7 format=3 uid="uid://s7jtb02p6dox"]
 
 [ext_resource type="Script" uid="uid://bs0mtn4rwfhtr" path="res://ui/player_display.gd" id="1_nwvgy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwvgy"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24840814, 0.09376725, 0.29405573, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70w2u"]
+bg_color = Color(1, 1, 1, 0.2)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hma7l"]
 bg_color = Color(0.4392157, 0.16470589, 0.6117647, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprck"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njvc7"]
 
 [node name="PlayerDisplay" type="Control"]
 layout_mode = 3
@@ -23,21 +50,37 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="Hand" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(150, 900)
+custom_minimum_size = Vector2(150, 950)
 layout_mode = 2
-
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/Hand"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_nwvgy")
 
-[node name="ElixirBar" type="ProgressBar" parent="PanelContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ElixirBar" type="ProgressBar" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_70w2u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hma7l")
 max_value = 10.0
-value = 5.0
+value = 10.0
 show_percentage = false
+
+[node name="ElixirLabel" type="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_qprck")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_njvc7")
+text = "0"
+horizontal_alignment = 1

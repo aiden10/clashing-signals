@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bxsppk6pjiurl"]
+
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_fj6jr"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_u6on0"]
+[ext_resource type="PackedScene" uid="uid://bvku3cy31qigl" path="res://units/Archer.tscn" id="3_psn8p"]
+
+[resource]
+script = ExtResource("1_u6on0")
+name = "Archer"
+cost = 5
+count = 3
+image = ExtResource("1_fj6jr")
+unit_scene = ExtResource("3_psn8p")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

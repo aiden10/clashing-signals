@@ -1,7 +1,5 @@
 extends CharacterBody2D
-
 class_name Unit
-
 var player: Constants.PLAYERS
 var damage: float
 var health: int
@@ -10,6 +8,7 @@ var target: Node2D
 var is_melee: bool
 var cooldown: float
 var attack_timer: Timer
+var projectile_scene: PackedScene
 
 func _ready() -> void:
 	attack_timer = Timer.new()
@@ -17,15 +16,41 @@ func _ready() -> void:
 	attack_timer.autostart = true
 	attack_timer.timeout.connect(attack)
 	add_child(attack_timer)
-
+	if self.player == Constants.PLAYERS.P1:
+		self.modulate = Color(255, 0, 0)
+	else:
+		self.modulate = Color(0, 0, 255)
+	
+	## Prevents collision between friendly units but keeps collision with enemies
+	var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
+	var col_layer = 4 if self.player == Constants.PLAYERS.P1 else 3
+	self.collision_layer = col_layer
+	self.collision_mask = mask
+	
+	## Putting this hardcoded node name in here reduces redundancy in child unit classes, but means that 
+	## the detection Area2D must be named "DetectionRange"
+	$DetectionRange.area_entered.connect(self.detection_range_entered)
+	
 func detection_range_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if is_melee and parent is Unit:
 		if parent.player != self.player:
 			target = parent
 
+## Basically just an abstract function
 func attack() -> void:
 	pass
+
+func shoot() -> void:
+	if not is_instance_valid(self.target) or not is_target_in_attack_range():
+		return
+	var projectile: Projectile = self.projectile_scene.instantiate()
+	projectile.player = self.player
+	projectile.target_position = self.target.global_position
+	projectile.global_position = self.global_position
+	 ## I'm not sure if projectiles should keep their own damage, or get it from the shooter
+	projectile.damage = self.damage
+	get_tree().current_scene.add_child(projectile)
 
 func take_damage(damage_taken: int) -> void:
 	health -= damage_taken
@@ -38,17 +63,43 @@ func die() -> void:
 	queue_free()
 
 func _physics_process(_delta: float) -> void:
-	# If there are no enemy units in detection range, towers will be prioritized
-	if not self.target:
+	## Tries to find nearest enemy, and if there are none, then target becomes the enemy nearest tower 
+	var nearest_enemy = get_nearest_enemy()
+	
+	if nearest_enemy:
+		self.target = nearest_enemy
+	elif not self.target or not is_instance_valid(self.target):
 		var nearest_tower = get_nearest_tower()
 		if nearest_tower:
 			self.target = nearest_tower
+	
 	if is_instance_valid(self.target):
-		var direction = (self.target.global_position - global_position).normalized()
-		self.velocity = self.speed * direction
+		var target_in_range = is_target_in_attack_range()
 		
-		move_and_slide()
+		# Only move if target is not in attack range
+		if not target_in_range:
+			var direction = (self.target.global_position - global_position).normalized()
+			self.velocity = self.speed * direction
+			move_and_slide()
+		else:
+			self.velocity = Vector2.ZERO
+		
 		look_at(self.target.global_position)
+
+func get_nearest_enemy() -> Node2D:
+	var nearest_enemy = null
+	var min_dist_sq = INF
+	
+	for area in $DetectionRange.get_overlapping_areas():
+		var parent = area.get_parent()
+		if parent is Unit:
+			if parent.player != self.player:
+				var dist_sq = global_position.distance_squared_to(parent.global_position)
+				if dist_sq < min_dist_sq:
+					min_dist_sq = dist_sq
+					nearest_enemy = parent
+					
+	return nearest_enemy
 
 func get_nearest_tower() -> Node2D:
 	var min_dist_sq: float = INF
@@ -72,3 +123,14 @@ func get_nearest_tower() -> Node2D:
 				nearest = tower
 	
 	return nearest
+
+func is_target_in_attack_range() -> bool:
+	if not is_instance_valid(self.target):
+		return false
+	
+	for area in $AttackRange.get_overlapping_areas():
+		var parent = area.get_parent()
+		if parent == self.target:
+			return true
+	
+	return false

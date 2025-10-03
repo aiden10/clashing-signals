@@ -6,11 +6,13 @@ var player: Constants.PLAYERS
 var hand: Hand
 var deck: Deck
 var cursor: Node2D
-var elixir: int = 10
+var elixir: int = 0
 var can_place: bool = true
 var action_timer: Timer
 
 func _ready() -> void:
+	EventBus.elixir_updated.emit()
+	
 	if self.player == Constants.PLAYERS.P1:
 		GameState.p1 = self
 	if self.player == Constants.PLAYERS.P2:
@@ -71,3 +73,4 @@ func use_selected_card():
 	var new_card = self.deck.draw_card()
 	if new_card:
 		self.hand.cards[self.hand.selected_index] = new_card
+		EventBus.hand_updated.emit(self.player)

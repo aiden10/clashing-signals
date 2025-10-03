@@ -4,16 +4,19 @@ var p1: Player
 var p2: Player
 
 func _init() -> void:
+	## For the time being, we can just give both players all cards as their decks
+	## But later we might want to store separate lists of cards in GameState
+	## And then add to that from the deckbuilding menu
 	p1 = Player.new()
 	p1.player = Constants.PLAYERS.P1
 	var p1_deck: Deck = Deck.new()
-	p1_deck.cards = [Constants.KNIGHT_CARD]
+	p1_deck.cards = Constants.CARDS
 	p1.deck = p1_deck
 	
 	p2 = Player.new()
 	p2.player = Constants.PLAYERS.P2
 	var p2_deck: Deck = Deck.new()
-	p2_deck.cards = [Constants.KNIGHT_CARD]
+	p2_deck.cards = Constants.CARDS
 	p2.deck = p2_deck
 
 func _ready() -> void:
@@ -26,8 +29,10 @@ func _ready() -> void:
 	add_child(p2)
 
 func add_elixir() -> void:
-	p1.elixir += 1
-	p2.elixir += 1
+	if p1.elixir < Constants.MAX_ELIXIR:
+		p1.elixir += 1
+	if p2.elixir < Constants.MAX_ELIXIR:
+		p2.elixir += 1
 	EventBus.elixir_updated.emit()
 
 func check_game_over() -> void:

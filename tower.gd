@@ -44,8 +44,6 @@ func get_nearest_target() -> Unit:
 	return nearest_target
 
 func shoot() -> void:
-	self.target = get_nearest_target()
-	
 	if self.target and is_instance_valid(self.target):
 		var projectile: Projectile = self.projectile_scene.instantiate()
 		projectile.player = self.player
