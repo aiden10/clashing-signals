@@ -5,7 +5,7 @@
 - Improved visuals
 
 - Game over screen
-    - I'm already checking for game overs in game.gd
+	- I'm already checking for game overs in game.gd
 
 - Deckbuilding screen before the actual game
 

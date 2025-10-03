@@ -35,9 +35,9 @@ texture = ExtResource("3_0chp0")
 
 [node name="ElixirCost" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-text = "3"
+text = "-1"
 
 [node name="CardName" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Knight"
+text = "MISSING"
 horizontal_alignment = 1
