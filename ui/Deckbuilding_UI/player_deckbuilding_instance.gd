@@ -3,12 +3,13 @@ extends Panel
 var deck: Array[Card]
 @export var player_ID: Constants.PLAYERS
 
-@export var card_selection_element: PackedScene
-@export var deck_element: PackedScene
-@export var ready_element: PackedScene
+@export var card_selection_element: Node
+@export var deck_element: Node
+@export var ready_element: Node
+
 
 var current_area: Constants.SelectionArea = Constants.SelectionArea.SELECTION
-
+var is_ready:bool = false
 
 
 func _ready() -> void:
@@ -17,6 +18,11 @@ func _ready() -> void:
 	$CardSelectionBox.player_ID = player_ID
 	
 	$Deck.switched_element.connect(switch_element)
+	
+	$ReadyButton.switched_element.connect(switch_element)
+	$ReadyButton.ready_pressed.connect(on_ready_pressed)
+
+	
 	$"Panel/Label".text = str(Constants.PLAYERS.keys()[player_ID])
 
 func _process(delta: float) -> void:
@@ -72,3 +78,6 @@ func add_card(card: Card):
 		deck.append(card)
 		$Deck.add_card(card)
 	return
+
+func on_ready_pressed():
+	is_ready = !is_ready

@@ -1,4 +1,15 @@
 extends Node
 
 
-#func _init() -> void:
+var players: Array[Node]
+
+func _ready() -> void:
+	var players = get_children()
+	print("[scene]", players)
+	players[0].ready_element.ready_pressed.connect(ready_pressed)
+	players[1].ready_element.ready_pressed.connect(ready_pressed)
+
+func ready_pressed():
+	print(self)
+	if players[0].is_ready and players[1].is_ready:
+		print("switch scenes")
