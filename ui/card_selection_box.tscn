@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdujerdcb4ln7"]
+
+[ext_resource type="Script" uid="uid://dxejfbra1bxqu" path="res://ui/Deckbuilding_UI/card_selection_box.gd" id="1_5h8ls"]
+[ext_resource type="PackedScene" uid="uid://c5fujy4x4m2qk" path="res://ui/CardDisplay.tscn" id="1_j4wle"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="2_e034c"]
+[ext_resource type="Resource" uid="uid://qpcipa258nkw" path="res://cards/knight_card.tres" id="3_orggb"]
+
+[node name="CardSelectionBox" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+columns = 6
+script = ExtResource("1_5h8ls")
+available_cards = Array[ExtResource("2_e034c")]([ExtResource("3_orggb")])
+
+[node name="Card" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card2" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card3" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card4" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card5" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card6" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card7" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card8" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card9" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card10" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card11" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card12" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card13" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card14" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card15" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card16" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card17" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card18" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card19" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2
+
+[node name="Card20" parent="." instance=ExtResource("1_j4wle")]
+layout_mode = 2

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://qllb0e2uofq8"]
+
+[ext_resource type="Script" uid="uid://b5ra6a5vucjxi" path="res://deck_building.gd" id="1_qn21b"]
+[ext_resource type="PackedScene" uid="uid://bdujerdcb4ln7" path="res://ui/card_selection_box.tscn" id="2_qn21b"]
+
+[node name="DeckbuildingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qn21b")
+
+[node name="CardSelectionBox" parent="." instance=ExtResource("2_qn21b")]
+layout_mode = 1
+offset_right = -927.0
+
+[node name="CardSelectionBox2" parent="." instance=ExtResource("2_qn21b")]
+layout_mode = 1
+offset_left = 1071.0
+offset_top = -1.0
+offset_right = 144.0
+offset_bottom = -1.0
+player_ID = 1
