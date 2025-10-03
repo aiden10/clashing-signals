@@ -13,11 +13,14 @@ var is_ready:bool = false
 
 
 func _ready() -> void:
-	$CardSelectionBox.card_selected.connect(add_card)
+	deck.resize(8)
+	
+	$CardSelectionBox.card_added.connect(add_card)
 	$CardSelectionBox.switched_element.connect(switch_element)
 	$CardSelectionBox.player_ID = player_ID
 	
 	$Deck.switched_element.connect(switch_element)
+	$Deck.card_removed.connect(remove_card)
 	
 	$ReadyButton.switched_element.connect(switch_element)
 	$ReadyButton.ready_pressed.connect(on_ready_pressed)
@@ -50,17 +53,23 @@ func switch_element(direction: Vector2, from_pos: Vector2) -> void:
 	match direction:
 		Vector2.UP:
 			current_area = Constants.SelectionArea.DECK
-			var idx = find_nearest($Deck.displayed_cards, from_pos)
-			$Deck.focus(idx)
+			var index = find_nearest($Deck.displayed_cards, from_pos)
+			$Deck.focus(index)
 
 		Vector2.DOWN:
 			current_area = Constants.SelectionArea.SELECTION
-			var idx = find_nearest($CardSelectionBox.displayed_cards, from_pos)
-			$CardSelectionBox.focus(idx)
+			var index = find_nearest($CardSelectionBox.displayed_cards, from_pos)
+			$CardSelectionBox.focus(index)
 
 		Vector2.RIGHT:
 			current_area = Constants.SelectionArea.READY
 			$ReadyButton.highlight()
+		
+		Vector2.LEFT:
+			current_area = Constants.SelectionArea.DECK
+			var index = find_nearest($Deck.displayed_cards, from_pos)
+			$Deck.focus(index)
+			
 
 func find_nearest(elements: Array, from_pos: Vector2) -> int:
 	var closest = 0
@@ -74,10 +83,16 @@ func find_nearest(elements: Array, from_pos: Vector2) -> int:
 	return closest
 
 func add_card(card: Card):
-	if deck.size() < Constants.MAX_DECK_SIZE:
-		deck.append(card)
-		$Deck.add_card(card)
+	var slot = deck_element.find_available_slot()
+	if slot != -1:
+		deck[slot] = card
+		$Deck.add_card(card, slot)
 	return
+
+func remove_card(index: int):
+	deck[index] = null
+	$Deck.remove_card(index)
+
 
 func on_ready_pressed():
 	is_ready = !is_ready
