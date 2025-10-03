@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://n6jmxacj44r4"]
+
+[ext_resource type="Script" uid="uid://duou4l51y0qxo" path="res://cursor.gd" id="1_ux3mw"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_ux3mw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)

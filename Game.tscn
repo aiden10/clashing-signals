@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dapfbmxyjm806"]
+
+[ext_resource type="PackedScene" uid="uid://dvd0nxqa3vfew" path="res://Tower.tscn" id="1_wbfu4"]
+[ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
+[ext_resource type="PackedScene" uid="uid://n6jmxacj44r4" path="res://Cursor.tscn" id="3_u44n3"]
+[ext_resource type="PackedScene" uid="uid://s7jtb02p6dox" path="res://ui/PlayerDisplay.tscn" id="4_sb48q"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xkndl")
+
+[node name="ElixirTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="P1" type="Node" parent="."]
+
+[node name="Cursor" parent="P1" instance=ExtResource("3_u44n3")]
+
+[node name="PlayerDisplay" parent="P1" instance=ExtResource("4_sb48q")]
+anchors_preset = 0
+
+[node name="Tower" parent="P1" instance=ExtResource("1_wbfu4")]
+position = Vector2(960, 820)
+
+[node name="P2" type="Node" parent="."]
+
+[node name="Cursor" parent="P2" instance=ExtResource("3_u44n3")]
+player = 1
+
+[node name="PlayerDisplay" parent="P2" instance=ExtResource("4_sb48q")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -173.0
+offset_top = 2.0
+offset_right = 0.0
+offset_bottom = 33.0
+grow_horizontal = 0
+player = 1
+
+[node name="Tower" parent="P2" instance=ExtResource("1_wbfu4")]
+position = Vector2(960, 200)
+player = 1

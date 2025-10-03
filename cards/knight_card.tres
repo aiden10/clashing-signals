@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://qpcipa258nkw"]
+
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_hgn1d"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="2_3g2kf"]
+[ext_resource type="PackedScene" uid="uid://c3pq013gor3wo" path="res://units/Knight.tscn" id="2_qc4fs"]
+
+[resource]
+script = ExtResource("2_3g2kf")
+name = "Knight"
+cost = 3
+count = 5
+image = ExtResource("1_hgn1d")
+unit_scene = ExtResource("2_qc4fs")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

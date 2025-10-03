@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvd0nxqa3vfew"]
+
+[ext_resource type="Script" uid="uid://ksk854cn6f3" path="res://tower.gd" id="1_arn3v"]
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="2_bn6qc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlq62"]
+radius = 450.11108
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bn6qc"]
+radius = 47.010635
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn6qc"]
+bg_color = Color(0.77808774, 0.14076474, 0.07270632, 1)
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_arn3v")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_jlq62")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_bn6qc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_bn6qc")
+
+[node name="HPBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 25.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_bn6qc")
+show_percentage = false

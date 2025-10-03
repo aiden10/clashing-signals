@@ -1,0 +1,26 @@
+extends Node
+class_name Hand
+
+var max_size: int
+var player: Constants.PLAYERS
+var cards: Array[Card] = []
+var selected_index: int = 0
+
+func _init() -> void:
+	self.max_size = Constants.MAX_HAND_SIZE
+
+func add_card(card: Card) -> void:
+	if self.cards.size() < max_size:
+		self.cards.append(card)
+		EventBus.hand_updated.emit(self.player)
+
+func next_card():
+	self.selected_index = (self.selected_index + 1) % self.cards.size()
+	EventBus.selection_updated.emit(self.player, self.selected_index)
+
+func prev_card():
+	self.selected_index = (self.selected_index - 1 + self.cards.size()) % self.cards.size()
+	EventBus.selection_updated.emit(self.player, self.selected_index)
+
+func get_selected() -> Card:
+	return self.cards[self.selected_index]

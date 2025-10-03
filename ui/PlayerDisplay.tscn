@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://s7jtb02p6dox"]
+
+[ext_resource type="Script" uid="uid://bs0mtn4rwfhtr" path="res://ui/player_display.gd" id="1_nwvgy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hma7l"]
+bg_color = Color(0.4392157, 0.16470589, 0.6117647, 1)
+
+[node name="PlayerDisplay" type="Control"]
+layout_mode = 3
+offset_right = 100.0
+script = ExtResource("1_nwvgy")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Hand" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 900)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/Hand"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ElixirBar" type="ProgressBar" parent="PanelContainer/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hma7l")
+max_value = 10.0
+value = 5.0
+show_percentage = false
