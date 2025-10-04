@@ -145,14 +145,17 @@ func _physics_process(_delta: float) -> void:
 	look_at(target.global_position)
 
 func update_line() -> void:
+	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
+	
+	if not is_target_in_attack_range():
+		return
+
 	self.signal_line.clear_points()
 	self.signal_line.add_point(self.global_position)
 	
 	if is_instance_valid(self.target):
 		self.signal_line.add_point(self.target.global_position)
 		self.signal_line.add_point(self.global_position)
-
-	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
 
 func get_nearest_enemy() -> Node2D:
 	var nearest_enemy = null

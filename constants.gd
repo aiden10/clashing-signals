@@ -65,6 +65,7 @@ const JUGGERNAUT_COOLDOWN: float = 2.0
 const TOWER_COOLDOWN: float = 2.0
 const TOWER_HEALTH: int = 100
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
+const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
 
 # BUILDINGS
 const FACTORY_HEALTH: float = 20

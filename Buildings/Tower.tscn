@@ -1,19 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvd0nxqa3vfew"]
+[gd_scene load_steps=6 format=3 uid="uid://dvd0nxqa3vfew"]
 
 [ext_resource type="Script" uid="uid://ksk854cn6f3" path="res://Buildings/tower.gd" id="1_arn3v"]
 [ext_resource type="Texture2D" uid="uid://rnhc13003ee4" path="res://assets/sprites/radio_tower.png" id="2_hubco"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_usulm"]
-radius = 134.01492
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_htvg3"]
-radius = 254.0315
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_coqsy"]
-radius = 395.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlq62"]
-radius = 150.0
+radius = 476.43887
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hubco"]
 radius = 31.0
@@ -24,24 +15,6 @@ radius = 46.69047
 
 [node name="Tower" type="CharacterBody2D"]
 script = ExtResource("1_arn3v")
-
-[node name="SignalRange1" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SignalRange1"]
-shape = SubResource("CircleShape2D_usulm")
-
-[node name="SignalRange2" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SignalRange2"]
-shape = SubResource("CircleShape2D_htvg3")
-
-[node name="SignalRange3" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SignalRange3"]
-shape = SubResource("CircleShape2D_coqsy")
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 2
