@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://n6jmxacj44r4"]
+[gd_scene load_steps=3 format=3 uid="uid://n6jmxacj44r4"]
 
 [ext_resource type="Script" uid="uid://duou4l51y0qxo" path="res://cursor.gd" id="1_ux3mw"]
 
-[node name="Cursor" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux3mw"]
+size = Vector2(81, 81)
+
+[node name="Cursor" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 128
 script = ExtResource("1_ux3mw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ux3mw")

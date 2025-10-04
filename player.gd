@@ -5,7 +5,7 @@ class_name Player
 var player: Constants.PLAYERS
 var hand: Hand
 var deck: Deck
-var cursor: Node2D
+var cursor: CharacterBody2D
 var elixir: int = 10
 var can_place: bool = true
 var action_timer: Timer
@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		action_timer.start()
 
 	if direction != Vector2.ZERO:
-		self.cursor.position += direction.normalized() * self.cursor.speed * delta
+		self.cursor.move_and_collide(direction.normalized() * self.cursor.speed * delta)
 
 func use_selected_card():
 	var card = self.hand.get_selected()
