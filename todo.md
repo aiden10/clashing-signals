@@ -1,7 +1,4 @@
 
-
-- Prevent cursors from going off screen and from entering opponent's side
-
 - Improved visuals
 
 - Game over screen

@@ -17,7 +17,7 @@ autostart = true
 [node name="P1" type="Node" parent="."]
 
 [node name="Cursor" parent="P1" instance=ExtResource("3_u44n3")]
-position = Vector2(955, 350)
+position = Vector2(960, 400)
 
 [node name="PlayerDisplay" parent="P1" instance=ExtResource("4_sb48q")]
 metadata/_edit_use_anchors_ = true
@@ -28,7 +28,7 @@ position = Vector2(960, 820)
 [node name="P2" type="Node" parent="."]
 
 [node name="Cursor" parent="P2" instance=ExtResource("3_u44n3")]
-position = Vector2(958, 718)
+position = Vector2(960, 680)
 player = 1
 
 [node name="PlayerDisplay" parent="P2" instance=ExtResource("4_sb48q")]
