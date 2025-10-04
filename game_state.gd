@@ -9,4 +9,3 @@ var p2_deck: Array[Card]
 
 var p1_towers = []
 var p2_towers = []
-
