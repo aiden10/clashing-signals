@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdujerdcb4ln7"]
+[gd_scene load_steps=8 format=3 uid="uid://bdujerdcb4ln7"]
 
 [ext_resource type="Script" uid="uid://dxejfbra1bxqu" path="res://ui/Deckbuilding_UI/card_selection_box.gd" id="1_5h8ls"]
 [ext_resource type="PackedScene" uid="uid://c5fujy4x4m2qk" path="res://ui/CardDisplay.tscn" id="1_j4wle"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://qpcipa258nkw" path="res://cards/knight_card.tres" id="3_orggb"]
 [ext_resource type="Resource" uid="uid://bxsppk6pjiurl" path="res://cards/archer_card.tres" id="4_orggb"]
 [ext_resource type="Resource" uid="uid://cg7cdxa05p5lc" path="res://cards/giant_card.tres" id="5_at8e8"]
+[ext_resource type="Resource" uid="uid://biepd2xdl0sm6" path="res://cards/signal_boost_card.tres" id="6_qhdtx"]
 
 [node name="CardSelectionBox" type="GridContainer"]
 anchors_preset = 15
@@ -16,7 +17,7 @@ grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 columns = 6
 script = ExtResource("1_5h8ls")
-available_cards = Array[ExtResource("2_e034c")]([ExtResource("3_orggb"), ExtResource("4_orggb"), ExtResource("5_at8e8")])
+available_cards = Array[ExtResource("2_e034c")]([ExtResource("3_orggb"), ExtResource("4_orggb"), ExtResource("5_at8e8"), ExtResource("6_qhdtx")])
 
 [node name="Card" parent="." instance=ExtResource("1_j4wle")]
 layout_mode = 2

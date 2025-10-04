@@ -15,7 +15,7 @@
 
 # Spells
 - Area2D
-    - Timer
+	- Timer
 
 ## Functions
 - timeout: connected to timer and called when timer is up (visual or gameplay effects)

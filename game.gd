@@ -10,15 +10,21 @@ func _init() -> void:
 	p1 = Player.new()
 	p1.player = Constants.PLAYERS.P1
 	var p1_deck: Deck = Deck.new()
-	p1_deck.cards = Constants.CARDS
-	p1_deck.cards = GameState.p1_deck
+	
+	# this check is here in case the game starts on game scene, preferably deckbuilding scene will switch to game scene
+	if GameState.p1_deck.is_empty():
+		p1_deck.cards = Constants.CARDS.duplicate(true)
+	else:
+		p1_deck.cards = GameState.p1_deck.duplicate(true)
 	p1.deck = p1_deck
 	
 	p2 = Player.new()
 	p2.player = Constants.PLAYERS.P2
 	var p2_deck: Deck = Deck.new()
-	#p2_deck.cards = Constants.CARDS
-	p2_deck.cards = GameState.p2_deck
+	if GameState.p1_deck.is_empty():
+		p2_deck.cards = Constants.CARDS.duplicate(true)
+	else:
+		p2_deck.cards = GameState.p2_deck.duplicate(true)
 	p2.deck = p2_deck
 
 func _ready() -> void:
