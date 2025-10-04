@@ -7,7 +7,6 @@ enum ACTIONS { ATTACK, SPAWN, EFFECT_PERMANENT, EFFECT_AREA }
 var player: Constants.PLAYERS
 var health: float
 var damage: float = 0.0
-var action_range: float = 128.0
 var cooldown: float = 0
 var spawn_scene: PackedScene
 var spawn_count: int = 0
@@ -146,9 +145,13 @@ func _physics_process(_delta: float) -> void:
 		target = enemy
 
 func update_line() -> void:
+	signal_line.modulate.a = float(health) / float(initial_hp)
 	signal_line.clear_points()
 	signal_line.add_point(global_position)
-	
+
+	if not is_target_in_attack_range(target):
+		return
+
 	if is_instance_valid(target):
 		signal_line.add_point(target.global_position)
 		signal_line.add_point(global_position)
@@ -157,8 +160,6 @@ func update_line() -> void:
 		var nearest_tower = get_nearest_tower(true)
 		if nearest_tower:
 			signal_line.add_point(nearest_tower.global_position)
-		
-	signal_line.modulate.a = float(health) / float(initial_hp)
 
 func get_enemy_in_range() -> Node2D:
 	var nearest_enemy = null
@@ -190,7 +191,10 @@ func get_nearest_tower(get_friendly: bool = false) -> Node2D:
 			nearest = tower
 	return nearest
 
-
 func is_target_in_attack_range(atk_target: Node2D) -> bool:
-	return (is_instance_valid(atk_target) and 
-			global_position.distance_squared_to(atk_target.global_position) <= action_range * action_range)
+	for area in $DetectionRange.get_overlapping_areas():
+		if area.get_parent() == atk_target:
+			return true
+	
+	return false
+	

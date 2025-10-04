@@ -13,6 +13,9 @@
 
 - Sounds/Music
 
+- Signals only apply to units in detection range
+- All signals provide buffs
+
 - Sprites for each unit and towers. These can just be basic shapes
 
 - 	Signal servering effect. When a signal is severed, that unit loses half of its stats (damage, speed, cooldown)

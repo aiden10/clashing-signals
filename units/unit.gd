@@ -61,7 +61,7 @@ func detection_range_entered(area: Area2D) -> void:
 func attack() -> void:
 	pass
 
-func shoot(end_pos = Vector2.LEFT) -> void:
+func shoot() -> void:
 	if not is_instance_valid(self.target) or not is_target_in_attack_range():
 		return
 	var projectile: Projectile = self.projectile_scene.instantiate()
@@ -70,8 +70,6 @@ func shoot(end_pos = Vector2.LEFT) -> void:
 	projectile.global_position = self.global_position
 	 ## I'm not sure if projectiles should keep their own damage, or get it from the shooter
 	projectile.damage = self.damage
-	if end_pos != Vector2.LEFT:
-		projectile.end_pos = end_pos
 	get_tree().current_scene.add_child(projectile)
 
 func sever() -> void:
@@ -145,14 +143,17 @@ func _physics_process(_delta: float) -> void:
 	look_at(target.global_position)
 
 func update_line() -> void:
+	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
+	
+	if not is_target_in_attack_range():
+		return
+
 	self.signal_line.clear_points()
 	self.signal_line.add_point(self.global_position)
 	
 	if is_instance_valid(self.target):
 		self.signal_line.add_point(self.target.global_position)
 		self.signal_line.add_point(self.global_position)
-
-	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
 
 func get_nearest_enemy() -> Node2D:
 	var nearest_enemy = null

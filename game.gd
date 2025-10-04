@@ -4,9 +4,6 @@ var p1: Player
 var p2: Player
 
 func _init() -> void:
-	## For the time being, we can just give both players all cards as their decks
-	## But later we might want to store separate lists of cards in GameState
-	## And then add to that from the deckbuilding menu
 	p1 = Player.new()
 	p1.player = Constants.PLAYERS.P1
 	var p1_deck: Deck = Deck.new()
@@ -37,6 +34,16 @@ func _ready() -> void:
 	p2.cursor = $P2/Cursor
 	add_child(p1)
 	add_child(p2)
+	
+	for marker in $P1.get_children() + $P2.get_children():
+		if marker is Marker2D:
+			var tower: Building = Constants.TOWER_SCENE.instantiate()
+			if marker.get_parent().name == "P1":
+				tower.player = Constants.PLAYERS.P1
+			elif marker.get_parent().name == "P2":
+				tower.player = Constants.PLAYERS.P2
+			tower.global_position = marker.global_position
+			add_child(tower)
 
 func add_elixir() -> void:
 	if p1.elixir < Constants.MAX_ELIXIR:

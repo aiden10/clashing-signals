@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://dapfbmxyjm806"]
+[gd_scene load_steps=12 format=3 uid="uid://dapfbmxyjm806"]
 
-[ext_resource type="PackedScene" uid="uid://dvd0nxqa3vfew" path="res://Buildings/Tower.tscn" id="1_wbfu4"]
 [ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://n6jmxacj44r4" path="res://Cursor.tscn" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://s7jtb02p6dox" path="res://ui/PlayerDisplay.tscn" id="4_sb48q"]
@@ -63,8 +62,14 @@ autostart = true
 [node name="Cursor" parent="P1" instance=ExtResource("3_u44n3")]
 position = Vector2(720, 540)
 
-[node name="Tower" parent="P1" instance=ExtResource("1_wbfu4")]
-position = Vector2(500, 540)
+[node name="Tower1" type="Marker2D" parent="P1"]
+position = Vector2(475, 200)
+
+[node name="Tower2" type="Marker2D" parent="P1"]
+position = Vector2(300, 540)
+
+[node name="Tower3" type="Marker2D" parent="P1"]
+position = Vector2(475, 820)
 
 [node name="P2" type="Node" parent="."]
 
@@ -72,8 +77,14 @@ position = Vector2(500, 540)
 position = Vector2(1200, 540)
 player = 1
 
-[node name="Tower" parent="P2" instance=ExtResource("1_wbfu4")]
-position = Vector2(1420, 540)
+[node name="Tower1" type="Marker2D" parent="P2"]
+position = Vector2(1445, 200)
+
+[node name="Tower2" type="Marker2D" parent="P2"]
+position = Vector2(1620, 540)
+
+[node name="Tower3" type="Marker2D" parent="P2"]
+position = Vector2(1445, 820)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -151.0
