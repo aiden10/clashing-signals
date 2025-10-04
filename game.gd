@@ -11,14 +11,14 @@ func _init() -> void:
 	p1.player = Constants.PLAYERS.P1
 	var p1_deck: Deck = Deck.new()
 	p1_deck.cards = Constants.CARDS
-	p1_deck.cards = GameState.p1_deck
+	#p1_deck.cards = GameState.p1_deck
 	p1.deck = p1_deck
 	
 	p2 = Player.new()
 	p2.player = Constants.PLAYERS.P2
 	var p2_deck: Deck = Deck.new()
-	#p2_deck.cards = Constants.CARDS
-	p2_deck.cards = GameState.p2_deck
+	p2_deck.cards = Constants.CARDS
+	#p2_deck.cards = GameState.p2_deck
 	p2.deck = p2_deck
 
 func _ready() -> void:

@@ -6,9 +6,11 @@ var cooldown: float
 @export var player: Constants.PLAYERS
 var projectile_scene: PackedScene
 var target: Unit
-@onready var hp_bar: ProgressBar = $HPBar
+var initial_hp: float 
 
 func _ready() -> void:
+	self.initial_hp = self.health
+	
 	if player == Constants.PLAYERS.P1:
 		GameState.p1_towers.append(self)
 	else:
@@ -19,10 +21,7 @@ func _ready() -> void:
 	attack_timer.autostart = true
 	attack_timer.timeout.connect(shoot)
 	add_child(attack_timer)
-	
-	hp_bar.max_value = self.health
-	hp_bar.value = self.health
-	
+		
 	for child in get_children():
 		if "SignalRange" in child.name and child is Area2D:
 			child.area_entered.connect(signal_buff)
@@ -74,8 +73,11 @@ func shoot() -> void:
 
 func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
-	hp_bar.value = self.health
-	if health <= 0:
+	
+	Effects.spawn_hit_particle(self.global_position)
+	if self.health > 0:
+		self.modulate.a = float(self.health) / float(initial_hp)
+	else:
 		die()
 
 func die() -> void:

@@ -27,11 +27,11 @@ func _ready() -> void:
 	initial_hp = self.health
 	
 	if self.player == Constants.PLAYERS.P1:
-		self.modulate = Color8(255, 0, 0)
-		signal_line.default_color = Color8(255, 0, 0)
+		self.modulate = Color8(512, 0, 0)
+		signal_line.default_color = Color8(512, 0, 0)
 	else:
-		self.modulate = Color8(0, 0, 255)
-		signal_line.default_color = Color8(0, 0, 255)
+		self.modulate = Color8(0, 0, 512)
+		signal_line.default_color = Color8(0, 0, 512)
 	
 	## Prevents collision between friendly units but keeps collision with enemies
 	var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
@@ -66,6 +66,7 @@ func shoot() -> void:
 
 func take_damage(damage_taken: int) -> void:
 	self.health -= damage_taken
+	Effects.spawn_hit_particle(self.global_position)
 	if self.health > 0:
 		self.modulate.a = float(self.health) / float(initial_hp)
 	else:

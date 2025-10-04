@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cf816tpiiwnpr"]
+
+[node name="TrailEffect" type="CPUParticles2D"]
+top_level = true
+amount = 16
+lifetime = 2.0
+speed_scale = 0.2
+local_coords = true
+gravity = Vector2(0, 0)
+color = Color(0, 0.7763669, 0.8927001, 1)

@@ -21,6 +21,7 @@ Constants="*res://constants.gd"
 EventBus="*res://event_bus.gd"
 GameState="*res://game_state.gd"
 GameStateManager="*res://game_state_manager.tscn"
+Effects="*res://effects/effects.gd"
 
 [display]
 

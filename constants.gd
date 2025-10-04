@@ -11,7 +11,7 @@ const ELIXIR_COOLDOWN: float = 2.5
 const MAX_ELIXIR: int = 10
 const CURSOR_SPEED: float = 500
 const MAX_DECK_SIZE: int = 8
-const MAX_HAND_SIZE: int = 4
+const MAX_HAND_SIZE: int = 5
 const ACTION_COOLDOWN: float = 0.5
 
 ## Each signal range boosts stats by this percent

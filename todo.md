@@ -1,26 +1,14 @@
 
-
-- Prevent cursors from going off screen and from entering opponent's side
-
-- Improved visuals
+- Prevent cursors from going off screen and from placing units on enemy side
 
 - Game over screen
 	- I'm already checking for game overs in game.gd
 
-- Deckbuilding screen before the actual game
+- Update deckbuilding screen visuals
 
 - More cards (minions and spells)
 
 - Sounds/Music
-
-# Spells
-- Area2D
-    - Timer
-
-## Functions
-- timeout: connected to timer and called when timer is up (visual or gameplay effects)
-- area_entered: connected to Area2D. Spell effect logic goes in here  
-- area_exited: connected to Area2D 
 
 - Figure out a way to better incorporate the theme
 	Units have a line drawn from them to their target, and a line drawn to their nearest friendly tower

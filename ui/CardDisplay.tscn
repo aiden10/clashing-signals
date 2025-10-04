@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5fujy4x4m2qk"]
+[gd_scene load_steps=6 format=3 uid="uid://c5fujy4x4m2qk"]
 
 [ext_resource type="StyleBox" uid="uid://wwssobw1iu4n" path="res://ui/Unhighlight.tres" id="1_g5nj3"]
 [ext_resource type="Script" uid="uid://clofnf5pdcsby" path="res://ui/card_display.gd" id="1_n0i8i"]
 [ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="2_g5nj3"]
 [ext_resource type="Texture2D" uid="uid://bl1pytn75gx3u" path="res://assets/elixir-card-ui.png" id="3_0chp0"]
+[ext_resource type="FontFile" uid="uid://dd812osq6pvgl" path="res://assets/CourierPrime-Regular.ttf" id="5_0chp0"]
 
 [node name="Card" type="PanelContainer"]
 offset_right = 40.0
@@ -23,8 +24,11 @@ layout_mode = 2
 theme_override_constants/separation = 5
 
 [node name="Image" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("2_g5nj3")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -35,9 +39,16 @@ texture = ExtResource("3_0chp0")
 
 [node name="ElixirCost" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "-1"
 
 [node name="CardName" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.2901961, 0.9490196, 0.38431373, 1)
+theme_override_fonts/font = ExtResource("5_0chp0")
+theme_override_font_sizes/font_size = 36
 text = "MISSING"
 horizontal_alignment = 1
+autowrap_mode = 2

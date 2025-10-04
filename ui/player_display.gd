@@ -1,8 +1,8 @@
 extends Control
 
 @onready var hand: VBoxContainer = $PanelContainer/MarginContainer/Hand
-@onready var elixir_bar: ProgressBar = $PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ElixirBar
-@onready var elixir_label: Label = $PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ElixirLabel
+@onready var elixir_bar: ProgressBar = $PanelContainer/MarginContainer/Hand/PanelContainer/MarginContainer/VBoxContainer/ElixirBar
+@onready var elixir_label: Label = $PanelContainer/MarginContainer/Hand/PanelContainer/MarginContainer/VBoxContainer/ElixirLabel
 @export var player: Constants.PLAYERS
 
 var card_displays: Array = []
