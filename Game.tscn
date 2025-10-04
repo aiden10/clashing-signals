@@ -50,9 +50,6 @@ autostart = true
 [node name="Cursor" parent="P1" instance=ExtResource("3_u44n3")]
 position = Vector2(960, 400)
 
-[node name="PlayerDisplay" parent="P1" instance=ExtResource("4_sb48q")]
-metadata/_edit_use_anchors_ = true
-
 [node name="Tower" parent="P1" instance=ExtResource("1_wbfu4")]
 position = Vector2(960, 820)
 
@@ -60,15 +57,6 @@ position = Vector2(960, 820)
 
 [node name="Cursor" parent="P2" instance=ExtResource("3_u44n3")]
 position = Vector2(960, 680)
-player = 1
-
-[node name="PlayerDisplay" parent="P2" instance=ExtResource("4_sb48q")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -170.0
-offset_right = -170.0
-grow_horizontal = 0
 player = 1
 
 [node name="Tower" parent="P2" instance=ExtResource("1_wbfu4")]
