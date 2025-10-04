@@ -6,6 +6,8 @@ enum CARD_TYPES {UNIT, SPELL, BUILDING}
 # used for deckbuilding ui
 enum SelectionArea { SELECTION, DECK, READY }
 
+enum GAME_SCENES {TITLE, DECK, GAME}
+
 ## Cursor
 const COLOR_P1 = Color("TOMATO")
 const COLOR_P2 = Color("DEEP_SKY_BLUE")

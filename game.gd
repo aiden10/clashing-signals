@@ -63,7 +63,8 @@ func add_elixir_specific(player: Constants.PLAYERS) -> void:
 
 func check_game_over() -> void:
 	if GameState.p1_towers.size() == 0:
-		print("P1 Loses")
+		EventBus.game_over.emit(Constants.PLAYERS.P2)
+		
 	if GameState.p2_towers.size() == 0:
-		print("P2 Loses")
+		EventBus.game_over.emit(Constants.PLAYERS.P1)
 		

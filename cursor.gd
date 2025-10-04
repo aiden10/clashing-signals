@@ -6,8 +6,6 @@ var crosshair: CenterContainer
 
 func _init() -> void:
 	self.speed = Constants.CURSOR_SPEED
-	
-	crosshair = get_child(1)
 
 func _ready() -> void:
 	crosshair = $Crosshair

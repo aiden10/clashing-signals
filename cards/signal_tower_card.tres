@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_k10qh")
-name = "Signal Tower"
+name = "Antena"
 cost = 5
 image = ExtResource("1_0os4g")
 type = 2

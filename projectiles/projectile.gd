@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
 	if end_pos != Vector2.LEFT and position.distance_squared_to(end_pos) > 100:
 		on_destroy()
 		
-
 func on_destroy():
 	pass
 

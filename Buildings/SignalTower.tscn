@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bdl4wch4183si"]
 
 [ext_resource type="Script" uid="uid://bex1cotsso7if" path="res://Buildings/signal_tower.gd" id="1_52rxj"]
+[ext_resource type="Texture2D" uid="uid://rwws1ug2mg7j" path="res://assets/sprites/antena.png" id="2_lf20g"]
 [ext_resource type="Texture2D" uid="uid://de7cidaisy81d" path="res://assets/circle.png" id="2_trg3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hccj2"]
@@ -8,9 +9,6 @@ radius = 250.008
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52rxj"]
 radius = 16.124516
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_trg3o"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lf20g"]
 radius = 20.024984
@@ -29,7 +27,7 @@ shape = SubResource("CircleShape2D_52rxj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_trg3o")
+texture = ExtResource("2_lf20g")
 
 [node name="Hitbox" type="Area2D" parent="."]
 

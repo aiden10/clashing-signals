@@ -4,18 +4,18 @@ extends Node
 @export var deck_scene: PackedScene
 @export var game_scene: PackedScene
 
-@export var scenes: Dictionary[String, PackedScene]
+@export var scenes: Dictionary[Constants.GAME_SCENES, PackedScene]
 var current_scene: Node
 
 func _ready() -> void:
-	scenes["title scene"] = title_scene
-	scenes["deck scene"] = deck_scene
-	scenes["game scene"] = game_scene
+	scenes[Constants.GAME_SCENES.TITLE] = title_scene
+	scenes[Constants.GAME_SCENES.DECK] = deck_scene
+	scenes[Constants.GAME_SCENES.GAME] = game_scene
 	current_scene = get_tree().current_scene
 
-func goto_scene(scene_name: String) -> void:
-	var scene = scenes[scene_name]
-	print(scenes,scene_name, scenes[scene_name])
+func goto_scene(scene_type: Constants.GAME_SCENES) -> void:
+	var scene = scenes[scene_type]
+	print(scenes,scene_type, scenes[scene_type])
 	if current_scene:
 		current_scene.queue_free()
 

@@ -1,6 +1,5 @@
 extends Node
 
-
 var players: Array[Node]
 
 func _ready() -> void:
@@ -13,4 +12,4 @@ func ready_pressed():
 	if players[0].is_ready and players[1].is_ready:
 		GameState.p1_deck = players[0].deck
 		GameState.p2_deck = players[1].deck
-		GameStateManager.goto_scene("game scene")
+		GameStateManager.goto_scene(Constants.GAME_SCENES.GAME)
