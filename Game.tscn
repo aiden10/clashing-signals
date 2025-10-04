@@ -41,10 +41,10 @@ normal = Vector2(0, 1)
 size = Vector2(966, 1080)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r0x5m"]
-vertices = PackedVector2Array(1892.9688, 30, 1892.0234, 1047.0391, 1069.5, 780.5, 1069, 728, 1069, 379, 1075.5, 316.5, 850.5, 780.5, 850.5, 1048.6563, 27, 1049.9531, 27, 30, 850, 728, 1069.5, 1048.3281, 850, 379, 856.5, 30, 856.5, 316.5, 1075.5, 30)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(1, 11, 2), PackedInt32Array(3, 2, 6, 10), PackedInt32Array(12, 10, 9), PackedInt32Array(12, 9, 13, 14), PackedInt32Array(4, 12, 14, 5), PackedInt32Array(0, 5, 15)])
+vertices = PackedVector2Array(1867.9531, 55, 1867.0469, 1022.0781, 1094.5, 755.5, 1094, 753, 1094, 354, 1100.5, 341.5, 1094.5, 1023.28906, 825.5, 755.5, 825, 753, 825.5, 1023.7031, 52, 1024.9063, 52, 55, 825, 354, 831.5, 55, 831.5, 341.5, 1100.5, 55)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(1, 6, 2), PackedInt32Array(3, 2, 7, 8), PackedInt32Array(7, 9, 10, 11, 8), PackedInt32Array(12, 8, 11), PackedInt32Array(12, 11, 13, 14), PackedInt32Array(4, 12, 14, 5), PackedInt32Array(0, 5, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-3, 0, 1923, 0, 1922, 1077, -3, 1080)])
-agent_radius = 40.0
+agent_radius = 55.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mrqo"]
 size = Vector2(159, 289)

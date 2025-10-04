@@ -1,6 +1,6 @@
 extends GridContainer
 
-@export var available_cards: Array[Card] # for debugging, add cards here to make them appear in deckbuilding
+var available_cards: Array[Card] # for debugging, add cards here to make them appear in deckbuilding
 @export var player_ID: Constants.PLAYERS
 var displayed_cards: Array[CardDisplay]
 var num_displayed: int
@@ -9,7 +9,10 @@ var selected_index: int = 3
 signal switched_element
 signal card_added
 
+
 func _ready() -> void:
+	available_cards = Constants.CARDS
+	
 	for node in get_children():
 		if node is CardDisplay:
 			displayed_cards.append(node)

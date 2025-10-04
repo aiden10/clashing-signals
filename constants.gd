@@ -49,6 +49,18 @@ const DRONE_SPEED: float = 75
 const DRONE_MELEE: bool = true
 const DRONE_COOLDOWN: float = 1.3
 
+const CANNON_HEALTH: int = 10
+const CANNON_DAMAGE: float = 5
+const CANNON_SPEED: float = 10
+const CANNON_MELEE: bool = false
+const CANNON_COOLDOWN: float = 10
+const CANNON_PROJECTILE: PackedScene = preload("res://projectiles/Boulder.tscn")
+
+const JUGGERNAUT_HEALTH: int = 60
+const JUGGERNAUT_DAMAGE: float = 8
+const JUGGERNAUT_SPEED: float = 15
+const JUGGERNAUT_MELEE: bool = true
+const JUGGERNAUT_COOLDOWN: float = 2.0
 
 const TOWER_COOLDOWN: float = 2.0
 const TOWER_HEALTH: int = 100
@@ -69,6 +81,10 @@ const ARROW_SPEED: float = 500
 const ARROW_DAMAGE: float = 3
 const ARROW_PIERCE_LIMIT: int = 1
 
+const CANNONBALL_SPEED: float = 400
+const CANNONBALL_DAMAGE: float = 5
+const CANNONBALL_PIERCE_LIMIT: float = 3
+
 ## CARDS
 const CARD_DISPLAY: PackedScene = preload("res://ui/CardDisplay.tscn")
 const KNIGHT_CARD: Card = preload("res://cards/knight_card.tres")
@@ -76,9 +92,11 @@ const ARCHER_CARD: Card = preload("res://cards/archer_card.tres")
 const GIANT_CARD: Card = preload("res://cards/giant_card.tres")
 const SIGNAL_BOOST_CARD: Card = preload("res://cards/signal_boost_card.tres")
 const FACTORY_CARD: Card = preload("res://cards/factory_card.tres")
-const EMP_CARD: Card = preload("res://cards/emp_card.tres")
 const SIGNAL_TOWER_CARD: Card = preload("res://cards/signal_tower_card.tres")
+const EMP_CARD:Card = preload("res://cards/emp_card.tres")
+const CANNON_CARD: Card = preload("res://cards/cannon_card.tres")
+const JUGGERNAUT_CARD: Card = preload("res://cards/juggernaut_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD,
-							SIGNAL_TOWER_CARD]
+							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD]
