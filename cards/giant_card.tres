@@ -9,5 +9,5 @@ script = ExtResource("1_h4c7m")
 name = "Giant"
 cost = 5
 image = ExtResource("1_pegg2")
-unit_scene = ExtResource("3_72pqq")
+scene = ExtResource("3_72pqq")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

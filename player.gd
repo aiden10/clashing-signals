@@ -63,12 +63,19 @@ func use_selected_card():
 
 	self.elixir -= card.cost
 	EventBus.elixir_updated.emit()
-
-	for i in range(card.count):
-		var unit = card.unit_scene.instantiate()
-		unit.global_position = cursor.global_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
-		unit.player = player
-		get_tree().current_scene.add_child(unit)
+	
+	if card.type == Constants.CARD_TYPES.UNIT:
+		for i in range(card.count):
+			var unit = card.scene.instantiate()
+			unit.global_position = cursor.global_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
+			unit.player = self.player
+			get_tree().current_scene.add_child(unit)
+	
+	elif card.type == Constants.CARD_TYPES.SPELL:
+		var spell = card.scene.instantiate()
+		spell.global_position = cursor.global_position
+		spell.player = self.player
+		get_tree().current_scene.add_child(spell)
 
 	var new_card = self.deck.draw_card()
 	if new_card:

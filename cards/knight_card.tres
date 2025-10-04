@@ -9,5 +9,5 @@ script = ExtResource("2_3g2kf")
 name = "Knight"
 cost = 3
 image = ExtResource("1_hgn1d")
-unit_scene = ExtResource("2_qc4fs")
+scene = ExtResource("2_qc4fs")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

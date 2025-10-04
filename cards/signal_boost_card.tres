@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://biepd2xdl0sm6"]
+
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_8n5q5"]
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_jw8ho"]
+[ext_resource type="PackedScene" uid="uid://cou7meqgc1b25" path="res://spells/SignalBoost.tscn" id="1_td0ck"]
+
+[resource]
+script = ExtResource("1_8n5q5")
+name = "Signal Boost"
+cost = 3
+image = ExtResource("1_jw8ho")
+type = 1
+scene = ExtResource("1_td0ck")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

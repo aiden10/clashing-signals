@@ -13,6 +13,15 @@
 
 - Sounds/Music
 
+# Spells
+- Area2D
+    - Timer
+
+## Functions
+- timeout: connected to timer and called when timer is up (visual or gameplay effects)
+- area_entered: connected to Area2D. Spell effect logic goes in here  
+- area_exited: connected to Area2D 
+
 - Figure out a way to better incorporate the theme
     Units have a line drawn from them to their target, and a line drawn to their nearest friendly tower
     The lines represent their "signals" 

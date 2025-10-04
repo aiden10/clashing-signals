@@ -10,6 +10,7 @@ var cooldown: float
 var attack_timer: Timer
 var projectile_scene: PackedScene
 var signal_line: Line2D
+var initial_hp: int 
 
 func _ready() -> void:
 	attack_timer = Timer.new()
@@ -23,12 +24,14 @@ func _ready() -> void:
 	signal_line.top_level = true
 	signal_line.width = 1.5
 	
+	initial_hp = self.health
+	
 	if self.player == Constants.PLAYERS.P1:
-		self.modulate = Color(255, 0, 0)
-		signal_line.default_color = Color(255, 0, 0)
+		self.modulate = Color8(255, 0, 0)
+		signal_line.default_color = Color8(255, 0, 0)
 	else:
-		self.modulate = Color(0, 0, 255)
-		signal_line.default_color = Color(0, 0, 255)
+		self.modulate = Color8(0, 0, 255)
+		signal_line.default_color = Color8(0, 0, 255)
 	
 	## Prevents collision between friendly units but keeps collision with enemies
 	var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
@@ -62,8 +65,10 @@ func shoot() -> void:
 	get_tree().current_scene.add_child(projectile)
 
 func take_damage(damage_taken: int) -> void:
-	health -= damage_taken
-	if health <= 0:
+	self.health -= damage_taken
+	if self.health > 0:
+		self.modulate.a = float(self.health) / float(initial_hp)
+	else:
 		die()
 
 func die() -> void:
@@ -107,7 +112,9 @@ func update_line() -> void:
 	var nearest_friendly_tower = get_nearest_tower(true)
 	if nearest_friendly_tower:
 		self.signal_line.add_point(nearest_friendly_tower.global_position)
-		
+
+	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
+
 func get_nearest_enemy() -> Node2D:
 	var nearest_enemy = null
 	var min_dist_sq = INF
