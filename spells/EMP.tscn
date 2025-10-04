@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwdpltg1irc5o"]
+
+[ext_resource type="Script" uid="uid://bmy5ljxvbdowv" path="res://spells/emp.gd" id="1_v6u6k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfubk"]
+radius = 155.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gfubk"]
+load_path = "res://.godot/imported/circle.png-6efbe600b7e2418cd5091089237d13c1.ctex"
+
+[node name="Emp" type="Area2D"]
+script = ExtResource("1_v6u6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_gfubk")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.8247963, 1.8247963, 0, 0.19607843)
+texture = SubResource("CompressedTexture2D_gfubk")

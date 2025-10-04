@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://bhhpe7mex45vn"]
+
+[ext_resource type="PackedScene" uid="uid://bwdpltg1irc5o" path="res://spells/EMP.tscn" id="1_blgh5"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_myrhm"]
+
+[resource]
+script = ExtResource("1_myrhm")
+name = "EMP"
+cost = 2
+type = 1
+scene = ExtResource("1_blgh5")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

@@ -11,6 +11,7 @@ var attack_timer: Timer
 var projectile_scene: PackedScene
 var signal_line: Line2D
 var initial_hp: int 
+var severed: bool = false
 
 func _ready() -> void:
 	attack_timer = Timer.new()
@@ -27,10 +28,10 @@ func _ready() -> void:
 	initial_hp = self.health
 	
 	if self.player == Constants.PLAYERS.P1:
-		self.modulate = Color8(512, 0, 0)
+		$Sprite2D.self_modulate = Color8(512, 0, 0)
 		signal_line.default_color = Color8(512, 0, 0)
 	else:
-		self.modulate = Color8(0, 0, 512)
+		$Sprite2D.self_modulate = Color8(0, 0, 512)
 		signal_line.default_color = Color8(0, 0, 512)
 	
 	## Prevents collision between friendly units but keeps collision with enemies
@@ -63,6 +64,20 @@ func shoot() -> void:
 	 ## I'm not sure if projectiles should keep their own damage, or get it from the shooter
 	projectile.damage = self.damage
 	get_tree().current_scene.add_child(projectile)
+
+func sever() -> void:
+	self.damage /= Constants.SEVER_DEBUFF
+	self.speed /= Constants.SEVER_DEBUFF
+	self.cooldown *= Constants.SEVER_DEBUFF
+	attack_timer.wait_time = self.cooldown
+	self.severed = true
+
+func unsever() -> void:
+	self.damage *= Constants.SEVER_DEBUFF
+	self.speed *= Constants.SEVER_DEBUFF
+	self.cooldown /= Constants.SEVER_DEBUFF
+	attack_timer.wait_time = self.cooldown
+	self.severed = false
 
 func take_damage(damage_taken: int) -> void:
 	self.health -= damage_taken
@@ -110,9 +125,10 @@ func update_line() -> void:
 		self.signal_line.add_point(self.target.global_position)
 		self.signal_line.add_point(self.global_position)
 	
-	var nearest_friendly_tower = get_nearest_tower(true)
-	if nearest_friendly_tower:
-		self.signal_line.add_point(nearest_friendly_tower.global_position)
+	if not self.severed:
+		var nearest_friendly_tower = get_nearest_tower(true)
+		if nearest_friendly_tower:
+			self.signal_line.add_point(nearest_friendly_tower.global_position)
 
 	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
 

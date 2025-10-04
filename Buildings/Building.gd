@@ -4,9 +4,9 @@ class_name Building
 enum ACTIONS { ATTACK, SPAWN, EFFECT }
 
 var player: Constants.PLAYERS
-var health: int
+var health: float
 var damage: float = 0.0
-var range: float = 128.0
+var action_range: float = 128.0
 var cooldown: float = 1.0
 var spawn_scene: PackedScene
 var spawn_count: int = 0
@@ -19,7 +19,7 @@ var decay: float = 0.0
 
 var cooldown_timer: Timer
 var signal_line: Line2D
-var initial_hp: int
+var initial_hp: float
 
 
 func _ready() -> void:
@@ -98,18 +98,16 @@ func spawn_unit():
 		get_tree().current_scene.add_child(unit)
 	update_line()
 
-
 func give_effect():
 	for area in $DetectionRange.get_overlapping_areas():
-		var target = area.get_parent()
-		if target is Unit:
-			if (target_enemy and target.player != player) or (not target_enemy and target.player == player):
-				apply_effect(target)
+		var parent = area.get_parent()
+		if parent is Unit:
+			if (target_enemy and parent.player != player) or (not target_enemy and parent.player == player):
+				apply_effect(parent)
 	update_line()
 
-func apply_effect(target: Unit):
+func apply_effect(_effect_target: Unit):
 	pass
-
 
 func shoot() -> void:
 	if not is_instance_valid(target) or not is_target_in_attack_range(target):
@@ -130,7 +128,7 @@ func take_damage(damage_taken: int) -> void:
 	else:
 		die()
 
-func take_decay_damage(damage_taken: int) -> void:
+func take_decay_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	if health > 0:
 		modulate.a = float(health) / float(initial_hp)
@@ -197,5 +195,6 @@ func get_nearest_tower(get_friendly: bool = false) -> Node2D:
 	return nearest
 
 
-func is_target_in_attack_range(target: Node2D) -> bool:
-	return is_instance_valid(target) and global_position.distance_squared_to(target.global_position) <= range * range
+func is_target_in_attack_range(atk_target: Node2D) -> bool:
+	return (is_instance_valid(atk_target) and 
+			global_position.distance_squared_to(atk_target.global_position) <= action_range * action_range)

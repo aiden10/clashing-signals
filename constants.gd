@@ -16,9 +16,11 @@ const ACTION_COOLDOWN: float = 0.5
 
 ## Each signal range boosts stats by this percent
 const SIGNAL_BUFF: float = 1.15
+const SEVER_DEBUFF: float = 2.0
 
 ## SPELLS
 const SIGNAL_BOOST_DURATION: float = 5
+const EMP_DURATION: float = 5
 
 ## UNITS
 const KNIGHT_HEALTH: int = 10
@@ -58,7 +60,6 @@ const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
 const FACTORY_SPAWN_COUNT = 3
 const FACTORY_DECAY_DAMAGE = 4
 
-
 ## PROJECTILES
 const ARROW_SPEED: float = 500
 const ARROW_DAMAGE: float = 3
@@ -71,5 +72,6 @@ const ARCHER_CARD: Card = preload("res://cards/archer_card.tres")
 const GIANT_CARD: Card = preload("res://cards/giant_card.tres")
 const SIGNAL_BOOST_CARD: Card = preload("res://cards/signal_boost_card.tres")
 const FACTORY_CARD: Card = preload("res://cards/factory.tres")
+const EMP_CARD: Card = preload("res://cards/emp_card.tres")
 
-const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, SIGNAL_BOOST_CARD, FACTORY_CARD]
+const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD]
