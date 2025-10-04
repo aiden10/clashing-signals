@@ -26,7 +26,7 @@ func _ready() -> void:
 	action_timer = Timer.new()
 	action_timer.wait_time = Constants.ACTION_COOLDOWN
 	action_timer.timeout.connect(func(): can_place = true)
-	get_tree().current_scene.add_child(action_timer)
+	add_child(action_timer)
 
 func _physics_process(delta: float) -> void:
 	var prefix = "p1_" if (player == Constants.PLAYERS.P1) else "p2_"
@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed(prefix + "use") and can_place:
 		use_selected_card()
 		can_place = false
+		
 		action_timer.start()
 
 	if direction != Vector2.ZERO:
