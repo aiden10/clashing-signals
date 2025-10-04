@@ -8,8 +8,8 @@ enum SelectionArea { SELECTION, DECK, READY }
 
 enum GAME_SCENES {TITLE, DECK, GAME}
 
-## Cursor
-const COLOR_P1 = Color("TOMATO")
+## Cursors
+const COLOR_P1 = Color("ff4000ff")
 const COLOR_P2 = Color("DEEP_SKY_BLUE")
 const CURSOR_SPEED: float = 500
 
