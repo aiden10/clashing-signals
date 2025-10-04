@@ -15,7 +15,7 @@ const MAX_HAND_SIZE: int = 5
 const ACTION_COOLDOWN: float = 0.5
 
 ## Each signal range boosts stats by this percent
-const SIGNAL_BUFF: float = 1.15
+const SIGNAL_BUFF: float = 2
 
 ## SPELLS
 const SIGNAL_BOOST_DURATION: float = 5
@@ -27,7 +27,7 @@ const KNIGHT_SPEED: float = 25
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.5
 
-const GIANT_HEALTH: int = 25
+const GIANT_HEALTH: int = 35
 const GIANT_DAMAGE: float = 5
 const GIANT_SPEED: float = 15
 const GIANT_MELEE: bool = true
@@ -58,6 +58,8 @@ const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
 const FACTORY_SPAWN_COUNT = 3
 const FACTORY_DECAY_DAMAGE = 4
 
+const SIGNAL_TOWER_HEALTH = 20
+const SIGNAL_TOWER_DECAY_DAMAGE = 0.5
 
 ## PROJECTILES
 const ARROW_SPEED: float = 500

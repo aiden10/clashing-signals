@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdl4wch4183si"]
+
+[ext_resource type="Script" uid="uid://bex1cotsso7if" path="res://Buildings/signal_tower.gd" id="1_52rxj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hccj2"]
+radius = 250.008
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52rxj"]
+radius = 16.124516
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_trg3o"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lf20g"]
+radius = 20.024984
+
+[node name="SignalTower" type="CharacterBody2D"]
+script = ExtResource("1_52rxj")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_hccj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_52rxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CompressedTexture2D_trg3o")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_lf20g")
+
+[connection signal="area_entered" from="DetectionRange" to="." method="on_area_entered"]
+[connection signal="area_exited" from="DetectionRange" to="." method="on_area_exited"]

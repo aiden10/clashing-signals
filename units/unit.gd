@@ -12,6 +12,8 @@ var projectile_scene: PackedScene
 var signal_line: Line2D
 var initial_hp: int 
 
+var nav_agent: NavigationAgent2D
+
 func _ready() -> void:
 	attack_timer = Timer.new()
 	attack_timer.wait_time = cooldown
@@ -43,11 +45,16 @@ func _ready() -> void:
 	## the detection Area2D must be named "DetectionRange"
 	$DetectionRange.area_entered.connect(self.detection_range_entered)
 	
+	nav_agent = NavigationAgent2D.new()
+	nav_agent.radius = $CollisionShape2D.shape.radius * 2
+	add_child(nav_agent)
+
 func detection_range_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if is_melee and parent is Unit:
 		if parent.player != self.player:
 			target = parent
+			nav_agent.target_position = target.position
 
 ## Basically just an abstract function
 func attack() -> void:
@@ -78,29 +85,37 @@ func die() -> void:
 	queue_free()
 
 func _physics_process(_delta: float) -> void:
-	## Tries to find nearest enemy, and if there are none, then target becomes the enemy nearest tower 
-	var nearest_enemy = get_nearest_enemy()
 	update_line()
-	
+
+	var nearest_enemy = get_nearest_enemy()
 	if nearest_enemy:
-		self.target = nearest_enemy
-	elif not self.target or not is_instance_valid(self.target):
-		var nearest_tower = get_nearest_tower()
-		if nearest_tower:
-			self.target = nearest_tower
+		target = nearest_enemy
+	elif not is_instance_valid(target):
+		target = get_nearest_tower()
 	
-	if is_instance_valid(self.target):
-		var target_in_range = is_target_in_attack_range()
-		
-		# Only move if target is not in attack range
-		if not target_in_range:
-			var direction = (self.target.global_position - global_position).normalized()
-			self.velocity = self.speed * direction
-			move_and_slide()
-		else:
+	if not is_instance_valid(target):
+		self.velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
+	if target:
+		nav_agent.target_position = target.global_position
+	var target_in_range = is_target_in_attack_range()
+
+	if target_in_range:
+		self.velocity = Vector2.ZERO
+	else:
+		# NavigationAgent handles the path
+		if nav_agent.is_navigation_finished():
 			self.velocity = Vector2.ZERO
-		
-		look_at(self.target.global_position)
+		else:
+			var next_path_pos = nav_agent.get_next_path_position()
+			var direction = (next_path_pos - global_position).normalized()
+			self.velocity = direction * speed
+			move_and_slide()
+
+	look_at(target.global_position)
+
 
 func update_line() -> void:
 	self.signal_line.clear_points()
