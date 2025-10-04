@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://cg7cdxa05p5lc"]
+
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_h4c7m"]
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_pegg2"]
+[ext_resource type="PackedScene" uid="uid://cpum1hoegeu2f" path="res://units/Giant.tscn" id="3_72pqq"]
+
+[resource]
+script = ExtResource("1_h4c7m")
+name = "Giant"
+cost = 5
+image = ExtResource("1_pegg2")
+unit_scene = ExtResource("3_72pqq")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

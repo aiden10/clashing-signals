@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpum1hoegeu2f"]
+
+[ext_resource type="Script" uid="uid://cwq5qgqd41llq" path="res://units/giant.gd" id="1_sadxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p453y"]
+radius = 122.0041
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sadxn"]
+radius = 29.017237
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4px1"]
+radius = 16.124516
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m0fjy"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0fjy"]
+radius = 26.0
+
+[node name="Giant" type="CharacterBody2D"]
+script = ExtResource("1_sadxn")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_p453y")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_sadxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p4px1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CompressedTexture2D_m0fjy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_m0fjy")

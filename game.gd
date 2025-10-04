@@ -36,8 +36,8 @@ func add_elixir() -> void:
 	EventBus.elixir_updated.emit()
 
 func check_game_over() -> void:
-	if TowersState.p1_towers.size() == 0:
+	if GameState.p1_towers.size() == 0:
 		print("P1 Loses")
-	if TowersState.p2_towers.size() == 0:
+	if GameState.p2_towers.size() == 0:
 		print("P2 Loses")
 		

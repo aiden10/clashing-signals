@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Constants="*res://constants.gd"
-TowersState="*res://towers_state.gd"
 EventBus="*res://event_bus.gd"
 GameState="*res://game_state.gd"
 GameStateManager="*res://game_state_manager.tscn"
