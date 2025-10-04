@@ -11,7 +11,6 @@ var hit_count: int = 0
 var direction: Vector2 = Vector2.ZERO 
 
 var end_pos: Vector2 = Vector2.ZERO
-var destroyed: bool = false
 
 func _ready() -> void:
 	for child in self.get_children():
@@ -45,8 +44,9 @@ func on_area_entered(area: Area2D) -> void:
 	if parent is Building or parent is Unit:
 		if parent.player != self.player:
 			if hit_count >= pierce_limit:
-				destroyed = true
 				queue_free()
-			if !destroyed:
-				parent.take_damage(self.damage)
-				hit_count += 1
+			parent.take_damage(self.damage)
+			hit_count += 1
+			if hit_count >= pierce_limit:
+				queue_free()
+				

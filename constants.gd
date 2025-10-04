@@ -23,6 +23,10 @@ const SEVER_DEBUFF: float = 2.0
 const SIGNAL_BOOST_DURATION: float = 5
 const EMP_DURATION: float = 5
 
+const FIREBALL_DAMAGE = 10
+const FIREBALL_DURATION = 1
+const FIREBALL_SPEED = 800
+
 ## UNITS
 const KNIGHT_HEALTH: int = 10
 const KNIGHT_DAMAGE: float = 2
@@ -113,7 +117,8 @@ const JUGGERNAUT_CARD: Card = preload("res://cards/juggernaut_card.tres")
 const JAMMER_CARD: Card = preload("res://cards/jammer_card.tres")
 const EXTRACTOR_CARD: Card = preload("res://cards/extractor_card.tres")
 const BACKDOOR_CARD: Card = preload("res://cards/backdoor_card.tres")
+const FIREBALL_CARD: Card = preload("res://cards/fireball_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
-							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD]
+							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD, FIREBALL_CARD]

@@ -11,4 +11,4 @@ func _init() -> void:
 func attack() -> void:
 	if is_instance_valid(self.target):
 		if not self.target.is_in_group("backdoors"):
-			shoot(target.position)
+			shoot()
