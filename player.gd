@@ -9,6 +9,7 @@ var cursor: CharacterBody2D
 var elixir: int = 10
 var can_place: bool = true
 var action_timer: Timer
+var draw_timer: Timer 
 
 func _ready() -> void:
 	EventBus.elixir_updated.emit()
@@ -26,12 +27,18 @@ func _ready() -> void:
 	action_timer = Timer.new()
 	action_timer.wait_time = Constants.ACTION_COOLDOWN
 	action_timer.timeout.connect(func(): can_place = true)
+	action_timer.one_shot = true
 	add_child(action_timer)
+
+	draw_timer = Timer.new()
+	draw_timer.wait_time = Constants.DRAW_COOLDOWN
+	draw_timer.timeout.connect(draw_card)
+	draw_timer.one_shot = true
+	add_child(draw_timer)
 
 func _physics_process(delta: float) -> void:
 	var prefix = "p1_" if (player == Constants.PLAYERS.P1) else "p2_"
 	var direction := Vector2.ZERO
-
 	if Input.is_action_pressed(prefix + "up"):
 		direction.y -= 1
 	if Input.is_action_pressed(prefix + "down"):
@@ -47,11 +54,21 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed(prefix + "use") and can_place:
 		use_selected_card()
 		can_place = false
-		
 		action_timer.start()
 
 	if direction != Vector2.ZERO:
 		self.cursor.move_and_collide(direction.normalized() * self.cursor.speed * delta)
+
+func draw_card() -> void:
+	if self.hand.cards.size() >= Constants.MAX_HAND_SIZE:
+		return
+		
+	var new_card = self.deck.draw_card()
+	self.hand.cards.append(new_card)
+	EventBus.hand_updated.emit(self.player)
+	
+	if self.hand.cards.size() < Constants.MAX_HAND_SIZE:
+		draw_timer.start()
 
 func use_selected_card():
 	var card = self.hand.get_selected()
@@ -61,7 +78,6 @@ func use_selected_card():
 	if card.cost > self.elixir:
 		EventBus.invalid_action.emit()
 		return
-
 	self.elixir -= card.cost
 	EventBus.elixir_updated.emit()
 	
@@ -78,7 +94,10 @@ func use_selected_card():
 		spell.player = self.player
 		get_tree().current_scene.add_child(spell)
 
-	var new_card = self.deck.draw_card()
-	if new_card:
-		self.hand.cards[self.hand.selected_index] = new_card
-		EventBus.hand_updated.emit(self.player)
+	self.hand.cards.pop_at(self.hand.selected_index)
+	EventBus.hand_updated.emit(self.player)
+	
+	if self.hand.cards.size() < Constants.MAX_HAND_SIZE and draw_timer.is_stopped():
+		draw_timer.start()
+
+		
