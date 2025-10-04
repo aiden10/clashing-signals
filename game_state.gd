@@ -1,5 +1,7 @@
 extends Node
 
+var game_instance: Node
+
 var p1: Player
 var p2: Player
 

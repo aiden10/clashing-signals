@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct1t0gx5g3xj4"]
+
+[ext_resource type="Script" uid="uid://mkinvbywgfni" path="res://Buildings/jammer.gd" id="1_8uy58"]
+[ext_resource type="Texture2D" uid="uid://de7cidaisy81d" path="res://assets/circle.png" id="2_w0jci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c6fh"]
+radius = 250.008
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i62de"]
+radius = 16.124516
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ujegw"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tluwb"]
+radius = 20.024984
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_8uy58")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_7c6fh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i62de")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CompressedTexture2D_ujegw")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_tluwb")
+
+[node name="RangeSprite" type="Sprite2D" parent="."]
+modulate = Color(0.3030216, 0.99999934, 0.36015573, 0.19607843)
+position = Vector2(4, 6)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_w0jci")
+
+[connection signal="area_entered" from="DetectionRange" to="." method="on_area_entered"]
+[connection signal="area_exited" from="DetectionRange" to="." method="on_area_exited"]

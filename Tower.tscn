@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmhfswffpmnkr"]
+
+[ext_resource type="Script" uid="uid://ksk854cn6f3" path="res://Buildings/tower.gd" id="1_arn3v"]
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="2_bn6qc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_usulm"]
+radius = 134.01492
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htvg3"]
+radius = 254.0315
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coqsy"]
+radius = 395.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlq62"]
+radius = 133.03383
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bn6qc"]
+radius = 35.0
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_arn3v")
+
+[node name="SignalRange1" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SignalRange1"]
+shape = SubResource("CircleShape2D_usulm")
+
+[node name="SignalRange2" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SignalRange2"]
+shape = SubResource("CircleShape2D_htvg3")
+
+[node name="SignalRange3" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SignalRange3"]
+shape = SubResource("CircleShape2D_coqsy")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_jlq62")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_bn6qc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_bn6qc")

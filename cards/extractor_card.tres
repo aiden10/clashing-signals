@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://c74nckkiucn1f"]
+
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_mb8ug"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_qfqlt"]
+[ext_resource type="PackedScene" uid="uid://jke4yo3sjiqx" path="res://Buildings/Extractor.tscn" id="2_5w017"]
+
+[resource]
+script = ExtResource("1_qfqlt")
+name = "Extractor"
+cost = 6
+image = ExtResource("1_mb8ug")
+scene = ExtResource("2_5w017")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

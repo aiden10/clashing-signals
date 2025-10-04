@@ -11,6 +11,8 @@ func _init() -> void:
 	p1.player = Constants.PLAYERS.P1
 	var p1_deck: Deck = Deck.new()
 	
+	GameState.game_instance = self
+	
 	# this check is here in case the game starts on game scene, preferably deckbuilding scene will switch to game scene
 	if GameState.p1_deck.is_empty():
 		p1_deck.cards = Constants.CARDS.duplicate(true)
@@ -41,6 +43,15 @@ func add_elixir() -> void:
 		p1.elixir += 1
 	if p2.elixir < Constants.MAX_ELIXIR:
 		p2.elixir += 1
+	EventBus.elixir_updated.emit()
+
+func add_elixir_specific(player: Constants.PLAYERS) -> void:
+	if player == Constants.PLAYERS.P1:
+		if p1.elixir < Constants.MAX_ELIXIR:
+			p1.elixir += 1
+	if player == Constants.PLAYERS.P2:
+		if p2.elixir < Constants.MAX_ELIXIR:
+			p2.elixir += 1
 	EventBus.elixir_updated.emit()
 
 func check_game_over() -> void:

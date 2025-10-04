@@ -74,7 +74,14 @@ const FACTORY_SPAWN_COUNT = 3
 const FACTORY_DECAY_DAMAGE = 4
 
 const SIGNAL_TOWER_HEALTH = 20
-const SIGNAL_TOWER_DECAY_DAMAGE = 0.5
+const SIGNAL_TOWER_DECAY_DAMAGE = 2
+
+const JAMMER_TOWER_HEALTH = 20
+const JAMMER_TOWER_DECAY_DAMAGE = 2
+
+const EXTRACTOR_HEALTH = 20
+const EXTRACTOR_DECAY_DAMAGE = EXTRACTOR_HEALTH/12
+const EXTRACTOR_COOLDOWN = 3
 
 ## PROJECTILES
 const ARROW_SPEED: float = 500
@@ -96,7 +103,9 @@ const SIGNAL_TOWER_CARD: Card = preload("res://cards/signal_tower_card.tres")
 const EMP_CARD:Card = preload("res://cards/emp_card.tres")
 const CANNON_CARD: Card = preload("res://cards/cannon_card.tres")
 const JUGGERNAUT_CARD: Card = preload("res://cards/juggernaut_card.tres")
+const JAMMER_CARD: Card = preload("res://cards/jammer_card.tres")
+const EXTRACTOR_CARD: Card = preload("res://cards/extractor_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD,
-							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD]
+							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD]

@@ -8,7 +8,7 @@ var player: Constants.PLAYERS
 var health: float
 var damage: float = 0.0
 var action_range: float = 128.0
-var cooldown: float = 1.0
+var cooldown: float = 0
 var spawn_scene: PackedScene
 var spawn_count: int = 0
 var projectile_scene: PackedScene
@@ -25,12 +25,13 @@ var initial_hp: float
 
 func _ready() -> void:
 	initial_hp = health
-
-	cooldown_timer = Timer.new()
-	cooldown_timer.wait_time = cooldown
-	cooldown_timer.autostart = true
-	cooldown_timer.timeout.connect(perform_action)
-	add_child(cooldown_timer)
+	
+	if cooldown != 0:
+		cooldown_timer = Timer.new()
+		cooldown_timer.wait_time = cooldown
+		cooldown_timer.autostart = true
+		cooldown_timer.timeout.connect(perform_action)
+		add_child(cooldown_timer)
 
 	signal_line = Line2D.new()
 	signal_line.width = 1.5
@@ -138,7 +139,6 @@ func take_decay_damage(damage_taken: float) -> void:
 
 
 func die() -> void:
-	cooldown_timer.stop()
 	if player == Constants.PLAYERS.P1:
 		GameState.p1_towers.erase(self)
 	else:

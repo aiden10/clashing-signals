@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://jke4yo3sjiqx"]
+
+[ext_resource type="Script" uid="uid://c8hynlbibh3qa" path="res://Buildings/extractor.gd" id="1_lx818"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lx818"]
+radius = 16.124516
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxyy6"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u115k"]
+radius = 20.024984
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxyy6"]
+radius = 250.008
+
+[node name="Extractor" type="CharacterBody2D"]
+script = ExtResource("1_lx818")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lx818")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CompressedTexture2D_dxyy6")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_u115k")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_dxyy6")

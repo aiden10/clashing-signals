@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ydlk5dcba6ad"]
 
-[ext_resource type="Script" uid="uid://cray0ie8qfc6q" path="res://boulder.gd" id="1_6hdla"]
+[ext_resource type="Script" path="res://projectiles/boulder.gd" id="1_uy5q0"]
 [ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="2_uy5q0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84txs"]
@@ -8,7 +8,7 @@ radius = 3.9998477
 height = 35.99863
 
 [node name="Boulder" type="Node2D"]
-script = ExtResource("1_6hdla")
+script = ExtResource("1_uy5q0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.26171875, 0.03515625)

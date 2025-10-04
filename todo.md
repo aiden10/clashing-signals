@@ -1,5 +1,7 @@
 
 - Prevent cursors from going off screen and from placing units on enemy side
+	- the cursor should be greyed out they cannot play the unit
+	- spells can be played anywhere
 
 - Game over screen
 	- I'm already checking for game overs in game.gd
@@ -36,5 +38,5 @@
 
 - Provide at least three viable builds + multipurpose units that could fit into multiple builds
     - Rush: cheap units
-    - Defensive: mainly buildings
+    - Defensive: mainly buildings 
     

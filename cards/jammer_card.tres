@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://3gj1dgdyr5gk"]
+
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_n2i1l"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_nrgvk"]
+[ext_resource type="PackedScene" uid="uid://ct1t0gx5g3xj4" path="res://Buildings/Jammer.tscn" id="2_hjax7"]
+
+[resource]
+script = ExtResource("1_nrgvk")
+name = "Jammer"
+cost = 4
+image = ExtResource("1_n2i1l")
+scene = ExtResource("2_hjax7")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

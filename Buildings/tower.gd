@@ -64,7 +64,10 @@ func get_nearest_target() -> Unit:
 	return nearest_target
 
 func shoot() -> void:
+	if not self.target:
+		self.target = get_nearest_target()
 	if self.target and is_instance_valid(self.target):
+		print("shooting projectile")
 		var projectile: Projectile = self.projectile_scene.instantiate()
 		projectile.player = self.player
 		projectile.target_position = self.target.global_position
@@ -87,3 +90,4 @@ func die() -> void:
 		GameState.p2_towers.erase(self)
 	EventBus.tower_destroyed.emit()
 	queue_free()
+	
