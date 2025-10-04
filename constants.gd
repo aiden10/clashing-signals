@@ -6,10 +6,14 @@ enum CARD_TYPES {UNIT, SPELL, BUILDING}
 # used for deckbuilding ui
 enum SelectionArea { SELECTION, DECK, READY }
 
+## Cursor
+const COLOR_P1 = Color("TOMATO")
+const COLOR_P2 = Color("DEEP_SKY_BLUE")
+const CURSOR_SPEED: float = 500
+
 ## MISCELLANEOUS
 const ELIXIR_COOLDOWN: float = 2.5
 const MAX_ELIXIR: int = 10
-const CURSOR_SPEED: float = 500
 const MAX_DECK_SIZE: int = 8
 const MAX_HAND_SIZE: int = 5
 const DRAW_COOLDOWN: float = 2.0
@@ -22,6 +26,10 @@ const SEVER_DEBUFF: float = 2.0
 ## SPELLS
 const SIGNAL_BOOST_DURATION: float = 5
 const EMP_DURATION: float = 5
+
+const FIREBALL_DAMAGE = 10
+const FIREBALL_DURATION = 1
+const FIREBALL_SPEED = 800
 
 ## UNITS
 const KNIGHT_HEALTH: int = 10
@@ -113,7 +121,8 @@ const JUGGERNAUT_CARD: Card = preload("res://cards/juggernaut_card.tres")
 const JAMMER_CARD: Card = preload("res://cards/jammer_card.tres")
 const EXTRACTOR_CARD: Card = preload("res://cards/extractor_card.tres")
 const BACKDOOR_CARD: Card = preload("res://cards/backdoor_card.tres")
+const FIREBALL_CARD: Card = preload("res://cards/fireball_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
-							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD]
+							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD, FIREBALL_CARD]
