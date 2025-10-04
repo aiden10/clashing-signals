@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Building
 
-enum ACTIONS { ATTACK, SPAWN, EFFECT }
+# effect_permanent uses a cooldown while effect_area is constant until unit leaves radius
+enum ACTIONS { ATTACK, SPAWN, EFFECT_PERMANENT, EFFECT_AREA }
 
 var player: Constants.PLAYERS
 var health: float
@@ -41,7 +42,7 @@ func _ready() -> void:
 	elif spawn_scene != null:
 		action = ACTIONS.SPAWN
 	elif effect != "":
-		action = ACTIONS.EFFECT
+		action = ACTIONS.EFFECT_PERMANENT
 
 	if player == Constants.PLAYERS.P1:
 		modulate = Color8(255, 0, 0)
@@ -71,7 +72,7 @@ func perform_action():
 			attack()
 		ACTIONS.SPAWN:
 			spawn_unit()
-		ACTIONS.EFFECT:
+		ACTIONS.EFFECT_PERMANENT:
 			give_effect()
 	take_decay_damage(decay)
 
