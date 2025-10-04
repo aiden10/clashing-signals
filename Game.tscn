@@ -74,7 +74,6 @@ player = 1
 
 [node name="Tower" parent="P2" instance=ExtResource("1_wbfu4")]
 position = Vector2(1420, 540)
-player = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -151.0

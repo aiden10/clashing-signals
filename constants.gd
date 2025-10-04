@@ -6,10 +6,14 @@ enum CARD_TYPES {UNIT, SPELL, BUILDING}
 # used for deckbuilding ui
 enum SelectionArea { SELECTION, DECK, READY }
 
+## Cursor
+const COLOR_P1 = Color("TOMATO")
+const COLOR_P2 = Color("DEEP_SKY_BLUE")
+const CURSOR_SPEED: float = 500
+
 ## MISCELLANEOUS
 const ELIXIR_COOLDOWN: float = 2.5
 const MAX_ELIXIR: int = 10
-const CURSOR_SPEED: float = 500
 const MAX_DECK_SIZE: int = 8
 const MAX_HAND_SIZE: int = 5
 const DRAW_COOLDOWN: float = 2.0
