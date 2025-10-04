@@ -25,7 +25,7 @@ func _ready() -> void:
 	signal_line = Line2D.new()
 	add_child(signal_line)
 	signal_line.top_level = true
-	signal_line.width = 1.5
+	signal_line.width = 2.0
 	
 	initial_hp = self.health
 	
@@ -146,6 +146,7 @@ func _physics_process(_delta: float) -> void:
 
 func update_line() -> void:
 	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
+	self.signal_line.clear_points()
 	
 	if not is_target_in_attack_range():
 		return

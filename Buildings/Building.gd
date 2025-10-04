@@ -13,6 +13,7 @@ var spawn_count: int = 0
 var projectile_scene: PackedScene
 var effect: String = ""
 var target_enemy: bool = true
+var target_friendly: bool = false
 var target: Node2D
 var action: ACTIONS
 var decay: float = 0.0
@@ -21,7 +22,6 @@ var extends_signal: bool = false
 var cooldown_timer: Timer
 var signal_line: Line2D
 var initial_hp: float
-
 
 func _ready() -> void:
 	initial_hp = health
@@ -33,7 +33,7 @@ func _ready() -> void:
 		add_child(cooldown_timer)
 
 	signal_line = Line2D.new()
-	signal_line.width = 1.5
+	signal_line.width = 2.0
 	signal_line.top_level = true
 	add_child(signal_line)
 
@@ -54,11 +54,14 @@ func _ready() -> void:
 		signal_line.default_color = Color8(0, 0, 255)
 		collision_layer = 3
 		collision_mask = 4
-
+	
 	if player == Constants.PLAYERS.P1 and extends_signal:
 		GameState.p1_towers.append(self)
 	if player == Constants.PLAYERS.P2 and extends_signal:
 		GameState.p2_towers.append(self)
+	
+	$DetectionRange.area_entered.connect(signal_buff)
+	$DetectionRange.area_exited.connect(signal_debuff)
 
 func perform_action():
 	match action:
@@ -71,16 +74,10 @@ func perform_action():
 	take_decay_damage(decay)
 
 func attack():
-	var enemy = get_enemy_in_range()
-	if not enemy:
+	if not target:
 		return
 	if projectile_scene:
-		target = enemy
 		shoot()
-	else:
-		enemy.take_damage(damage)
-		Effects.spawn_hit_particle(enemy.global_position)
-	update_line()
 
 func spawn_unit():
 	if not spawn_scene:
@@ -103,6 +100,30 @@ func give_effect():
 func apply_effect(effect_target: Unit):
 	pass
 
+func signal_buff(area: Area2D) -> void:
+	if not extends_signal:
+		return
+
+	var parent = area.get_parent()
+	if parent is Unit:
+		if parent.player == self.player and not parent.severed:
+			parent.damage *= Constants.SIGNAL_BUFF
+			parent.speed *= Constants.SIGNAL_BUFF
+			parent.cooldown /= Constants.SIGNAL_BUFF
+			parent.attack_timer.wait_time = parent.cooldown
+
+func signal_debuff(area: Area2D) -> void:
+	if not extends_signal:
+		return
+
+	var parent = area.get_parent()
+	if parent is Unit:
+		if parent.player == self.player and not parent.severed:
+			parent.damage /= Constants.SIGNAL_BUFF
+			parent.speed /= Constants.SIGNAL_BUFF
+			parent.cooldown *= Constants.SIGNAL_BUFF
+			parent.attack_timer.wait_time = parent.cooldown
+			
 func shoot() -> void:
 	if not is_instance_valid(target) or not is_target_in_attack_range(target):
 		return
@@ -128,7 +149,6 @@ func take_decay_damage(damage_taken: float) -> void:
 	else:
 		die()
 
-
 func die() -> void:
 	if player == Constants.PLAYERS.P1:
 		GameState.p1_towers.erase(self)
@@ -137,36 +157,55 @@ func die() -> void:
 	EventBus.building_destroyed.emit(self)
 	queue_free()
 
-
 func _physics_process(_delta: float) -> void:
-	var enemy = get_enemy_in_range()
+	var t = get_target_in_range()
 	update_line()
-	if enemy:
-		target = enemy
+	if t:
+		target = t
 
 func update_line() -> void:
 	signal_line.modulate.a = float(health) / float(initial_hp)
 	signal_line.clear_points()
 	signal_line.add_point(global_position)
+	
+	if extends_signal:
+		for t in get_targets_in_range():
+			if is_instance_valid(t):
+				if t is Unit:
+					if t.severed:
+						continue
 
+				signal_line.add_point(t.global_position)
+				signal_line.add_point(global_position) 
+	
+	if not is_instance_valid(target):
+		return
+		
 	if not is_target_in_attack_range(target):
 		return
-
+		
 	if is_instance_valid(target):
 		signal_line.add_point(target.global_position)
 		signal_line.add_point(global_position)
-	
-	if extends_signal:
-		var nearest_tower = get_nearest_tower(true)
-		if nearest_tower:
-			signal_line.add_point(nearest_tower.global_position)
 
-func get_enemy_in_range() -> Node2D:
+func get_targets_in_range() -> Array[Node2D]:
+	var targets: Array[Node2D] = []
+	for area in $DetectionRange.get_overlapping_areas():
+		var parent = area.get_parent()
+		if ((parent is Unit or parent is Building) and parent.player == player and parent != self):
+			targets.append(parent)
+
+	return targets
+
+func get_target_in_range() -> Node2D:
 	var nearest_enemy = null
 	var min_dist_sq = INF
 	for area in $DetectionRange.get_overlapping_areas():
 		var parent = area.get_parent()
-		if parent is Unit and parent.player != player:
+		if ((parent is Unit or parent is Building)
+			and ((parent.player != player and target_enemy)
+			or (parent.player == player and target_friendly))
+			and parent != self):
 			var dist_sq = global_position.distance_squared_to(parent.global_position)
 			if dist_sq < min_dist_sq:
 				min_dist_sq = dist_sq
