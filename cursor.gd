@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var player: Constants.PLAYERS
 var speed: float
