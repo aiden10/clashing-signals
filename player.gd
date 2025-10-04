@@ -6,7 +6,7 @@ var player: Constants.PLAYERS
 var hand: Hand
 var deck: Deck
 var cursor: Node2D
-var elixir: int = 0
+var elixir: int = 10
 var can_place: bool = true
 var action_timer: Timer
 

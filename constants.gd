@@ -13,13 +13,22 @@ const MAX_DECK_SIZE: int = 8
 const MAX_HAND_SIZE: int = 4
 const ACTION_COOLDOWN: float = 0.5
 
+## Each signal range boosts stats by this percent
+const SIGNAL_BUFF: float = 1.15
+
 const KNIGHT_HEALTH: int = 10
 const KNIGHT_DAMAGE: float = 2
 const KNIGHT_SPEED: float = 25
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.5
 
-const ARCHER_HEALTH: int = 5
+const GIANT_HEALTH: int = 25
+const GIANT_DAMAGE: float = 5
+const GIANT_SPEED: float = 15
+const GIANT_MELEE: bool = true
+const GIANT_COOLDOWN: float = 2.0
+
+const ARCHER_HEALTH: int = 10
 const ARCHER_DAMAGE: float = 1.5
 const ARCHER_SPEED: float = 45
 const ARCHER_MELEE: bool = false
@@ -37,5 +46,6 @@ const ARROW_PIERCE_LIMIT: int = 1
 const CARD_DISPLAY: PackedScene = preload("res://ui/CardDisplay.tscn")
 const KNIGHT_CARD: Card = preload("res://cards/knight_card.tres")
 const ARCHER_CARD: Card = preload("res://cards/archer_card.tres")
+const GIANT_CARD: Card = preload("res://cards/giant_card.tres")
 
-const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD]
+const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD]

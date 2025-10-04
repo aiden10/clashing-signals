@@ -9,6 +9,7 @@ var is_melee: bool
 var cooldown: float
 var attack_timer: Timer
 var projectile_scene: PackedScene
+var signal_line: Line2D
 
 func _ready() -> void:
 	attack_timer = Timer.new()
@@ -16,10 +17,18 @@ func _ready() -> void:
 	attack_timer.autostart = true
 	attack_timer.timeout.connect(attack)
 	add_child(attack_timer)
+	
+	signal_line = Line2D.new()
+	add_child(signal_line)
+	signal_line.top_level = true
+	signal_line.width = 1.5
+	
 	if self.player == Constants.PLAYERS.P1:
 		self.modulate = Color(255, 0, 0)
+		signal_line.default_color = Color(255, 0, 0)
 	else:
 		self.modulate = Color(0, 0, 255)
+		signal_line.default_color = Color(0, 0, 255)
 	
 	## Prevents collision between friendly units but keeps collision with enemies
 	var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
@@ -65,6 +74,7 @@ func die() -> void:
 func _physics_process(_delta: float) -> void:
 	## Tries to find nearest enemy, and if there are none, then target becomes the enemy nearest tower 
 	var nearest_enemy = get_nearest_enemy()
+	update_line()
 	
 	if nearest_enemy:
 		self.target = nearest_enemy
@@ -86,6 +96,18 @@ func _physics_process(_delta: float) -> void:
 		
 		look_at(self.target.global_position)
 
+func update_line() -> void:
+	self.signal_line.clear_points()
+	self.signal_line.add_point(self.global_position)
+	
+	if is_instance_valid(self.target):
+		self.signal_line.add_point(self.target.global_position)
+		self.signal_line.add_point(self.global_position)
+	
+	var nearest_friendly_tower = get_nearest_tower(true)
+	if nearest_friendly_tower:
+		self.signal_line.add_point(nearest_friendly_tower.global_position)
+		
 func get_nearest_enemy() -> Node2D:
 	var nearest_enemy = null
 	var min_dist_sq = INF
@@ -101,26 +123,23 @@ func get_nearest_enemy() -> Node2D:
 					
 	return nearest_enemy
 
-func get_nearest_tower() -> Node2D:
+func get_nearest_tower(get_friendly: bool = false) -> Node2D:
 	var min_dist_sq: float = INF
 	var nearest: Node2D = null
 	
-	if player == Constants.PLAYERS.P1:
-		for tower in TowersState.p2_towers:
-			if not is_instance_valid(tower):
-				continue
-			var dist_sq = global_position.distance_squared_to(tower.global_position)
-			if dist_sq < min_dist_sq:
-				min_dist_sq = dist_sq
-				nearest = tower
+	var towers_to_search: Array
+	if get_friendly:
+		towers_to_search = GameState.p1_towers if player == Constants.PLAYERS.P1 else GameState.p2_towers
 	else:
-		for tower in TowersState.p1_towers:
-			if not is_instance_valid(tower):
-				continue
-			var dist_sq = global_position.distance_squared_to(tower.global_position)
-			if dist_sq < min_dist_sq:
-				min_dist_sq = dist_sq
-				nearest = tower
+		towers_to_search = GameState.p2_towers if player == Constants.PLAYERS.P1 else GameState.p1_towers
+	
+	for tower in towers_to_search:
+		if not is_instance_valid(tower):
+			continue
+		var dist_sq = global_position.distance_squared_to(tower.global_position)
+		if dist_sq < min_dist_sq:
+			min_dist_sq = dist_sq
+			nearest = tower
 	
 	return nearest
 
