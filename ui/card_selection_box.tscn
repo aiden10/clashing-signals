@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://bxsppk6pjiurl" path="res://cards/archer_card.tres" id="4_orggb"]
 [ext_resource type="Resource" uid="uid://cg7cdxa05p5lc" path="res://cards/giant_card.tres" id="5_at8e8"]
 [ext_resource type="Resource" uid="uid://biepd2xdl0sm6" path="res://cards/signal_boost_card.tres" id="6_qhdtx"]
-[ext_resource type="Resource" uid="uid://clblayv7kqn60" path="res://cards/factory.tres" id="7_og1vh"]
-[ext_resource type="Resource" uid="uid://b7c5skputgfx7" path="res://cards/signal_tower_card.tres" id="8_cavt8"]
+[ext_resource type="Resource" uid="uid://clblayv7kqn60" path="res://cards/factory_card.tres" id="7_og1vh"]
+[ext_resource type="Resource" path="res://cards/signal_tower_card.tres" id="8_cavt8"]
 
 [node name="CardSelectionBox" type="GridContainer"]
 clip_contents = true

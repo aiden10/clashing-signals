@@ -13,7 +13,7 @@ func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player:
-			Effects.add_ring(parent, Color(0.5, 0.9, 0.1))
+			Effects.add_ring(parent, name, Color(0.5, 0.9, 0.1))
 			parent.damage *= Constants.SIGNAL_BUFF
 			parent.speed *= Constants.SIGNAL_BUFF
 			parent.cooldown /= Constants.SIGNAL_BUFF
@@ -23,7 +23,7 @@ func on_area_exited(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player:
-			Effects.remove_ring(parent)
+			Effects.remove_ring(parent, name)
 			parent.damage /= Constants.SIGNAL_BUFF
 			parent.speed /= Constants.SIGNAL_BUFF
 			parent.cooldown *= Constants.SIGNAL_BUFF

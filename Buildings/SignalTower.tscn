@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdl4wch4183si"]
+[gd_scene load_steps=7 format=3 uid="uid://bdl4wch4183si"]
 
 [ext_resource type="Script" uid="uid://bex1cotsso7if" path="res://Buildings/signal_tower.gd" id="1_52rxj"]
+[ext_resource type="Texture2D" uid="uid://de7cidaisy81d" path="res://assets/circle.png" id="2_trg3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hccj2"]
 radius = 250.008
@@ -34,6 +35,12 @@ texture = SubResource("CompressedTexture2D_trg3o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_lf20g")
+
+[node name="RangeSprite" type="Sprite2D" parent="."]
+modulate = Color(0.3030216, 0.99999934, 0.36015573, 0.19607843)
+position = Vector2(4, 6)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_trg3o")
 
 [connection signal="area_entered" from="DetectionRange" to="." method="on_area_entered"]
 [connection signal="area_exited" from="DetectionRange" to="." method="on_area_exited"]

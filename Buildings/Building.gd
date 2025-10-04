@@ -45,10 +45,10 @@ func _ready() -> void:
 		action = ACTIONS.EFFECT_PERMANENT
 
 	if player == Constants.PLAYERS.P1:
-		modulate = Color8(255, 0, 0)
+		$Sprite2D.modulate = Color8(255, 0, 0)
 		signal_line.default_color = Color8(255, 0, 0)
 	else:
-		modulate = Color8(0, 0, 255)
+		$Sprite2D.modulate = Color8(0, 0, 255)
 		signal_line.default_color = Color8(0, 0, 255)
 
 	if player == Constants.PLAYERS.P1:

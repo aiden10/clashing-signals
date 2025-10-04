@@ -9,14 +9,14 @@ func spawn_hit_particle(destination: Vector2) -> void:
 	hit_particle.emitting = true
 	get_tree().current_scene.add_child(hit_particle)
 
-func add_ring(target: Node, color: Color=Color(1.0, 1.0, 1.0, 1.0)) -> void:
+func add_ring(target: Node, source: String, color: Color=Color(1.0, 1.0, 1.0, 1.0)) -> void:
 	var ring_sprite: Sprite2D = Sprite2D.new()
 	ring_sprite.texture = RING_TEXTURE
-	ring_sprite.name = "RingSprite"
+	ring_sprite.name = source
 	ring_sprite.modulate = color
 	target.add_child(ring_sprite)
 
-func remove_ring(target: Node) -> void:
-	var ring = target.get_node_or_null("RingSprite")
+func remove_ring(target: Node, source: String) -> void:
+	var ring = target.find_child(source, false, false)
 	if ring:
 		ring.queue_free()

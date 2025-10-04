@@ -74,7 +74,10 @@ const KNIGHT_CARD: Card = preload("res://cards/knight_card.tres")
 const ARCHER_CARD: Card = preload("res://cards/archer_card.tres")
 const GIANT_CARD: Card = preload("res://cards/giant_card.tres")
 const SIGNAL_BOOST_CARD: Card = preload("res://cards/signal_boost_card.tres")
-const FACTORY_CARD: Card = preload("res://cards/factory.tres")
+const FACTORY_CARD: Card = preload("res://cards/factory_card.tres")
 const EMP_CARD: Card = preload("res://cards/emp_card.tres")
+const SIGNAL_TOWER_CARD: Card = preload("res://cards/signal_tower_card.tres")
 
-const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD]
+const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
+							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD,
+							SIGNAL_TOWER_CARD]
