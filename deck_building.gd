@@ -10,6 +10,7 @@ func _ready() -> void:
 	players[1].ready_element.ready_pressed.connect(ready_pressed)
 
 func ready_pressed():
-	print(self, players)
 	if players[0].is_ready and players[1].is_ready:
-		print("switch scenes")
+		GameState.p1_deck = players[0].deck
+		GameState.p2_deck = players[1].deck
+		GameStateManager.goto_scene("game scene")

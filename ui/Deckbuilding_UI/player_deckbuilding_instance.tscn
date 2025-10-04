@@ -98,8 +98,9 @@ script = ExtResource("6_yb3gy")
 [node name="Label" type="Label" parent="ReadyButton"]
 texture_filter = 3
 layout_mode = 0
-offset_left = 102.0
-offset_top = 12.0
-offset_right = 354.0
-offset_bottom = 63.0
-text = "Ready"
+offset_top = -1.0
+offset_right = 252.0
+offset_bottom = 50.0
+text = "Not Ready"
+horizontal_alignment = 1
+vertical_alignment = 1

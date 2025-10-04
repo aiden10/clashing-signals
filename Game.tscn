@@ -16,7 +16,6 @@ autostart = true
 [node name="Cursor" parent="P1" instance=ExtResource("3_u44n3")]
 
 [node name="PlayerDisplay" parent="P1" instance=ExtResource("4_sb48q")]
-anchors_preset = 0
 
 [node name="Tower" parent="P1" instance=ExtResource("1_wbfu4")]
 position = Vector2(960, 820)
