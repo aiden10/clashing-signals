@@ -10,11 +10,12 @@ signal ready_pressed
 func handle_input(input: Dictionary) -> void:
 	if input["down"]:
 		unhighlight()
-		switched_element.emit(Vector2.DOWN, self.Position)
+		switched_element.emit(Vector2.DOWN, get_global_position())
 	elif input["left"]:
 		unhighlight()
-		switched_element.emit(Vector2.LEFT, self.Position)
+		switched_element.emit(Vector2.LEFT, get_global_position())
 	elif input["use"]:
+		print("[ready] ready pressed")
 		ready_pressed.emit()
 
 func highlight() -> void:

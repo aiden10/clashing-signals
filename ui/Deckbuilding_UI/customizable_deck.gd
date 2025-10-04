@@ -1,14 +1,22 @@
-extends Node
+extends GridContainer
 # reuses hand functionality but adds card removal and different max size
+
+@export var empty_name: String
+@export var empty_image: Texture2D
+@export var empty_cost: int
+
+@export var player_ID: Constants.PLAYERS
+
 
 var max_size: int
 var player: Constants.PLAYERS
-var cards: Array[Card] = []
+@export var cards: Array[Card] = []
 var displayed_cards: Array[CardDisplay] = []
 var num_displayed: int = 8
 var selected_index: int = 0
 
 signal switched_element
+signal card_removed
 
 
 func _ready() -> void:
@@ -18,15 +26,11 @@ func _ready() -> void:
 		if node is CardDisplay:
 			displayed_cards.append(node)
 
-func add_card(card: Card) -> void:
+func add_card(card: Card, index: int) -> void:
 	
-	var slot := find_available_slot()
-	if slot == -1:
-		push_warning("No available display slot for card: %s" % card.name)
-		return
 		
-	cards.append(card)
-	displayed_cards[slot].setup(card.name, card.image, card.cost)
+	cards[index] = card
+	displayed_cards[index].setup(card.name, card.image, card.cost)
 
 func handle_input(input: Dictionary) -> void:
 	if input["up"]:
@@ -54,7 +58,11 @@ func handle_input(input: Dictionary) -> void:
 			var pos = displayed_cards[selected_index].get_global_position() + displayed_cards[selected_index].size / 2
 			switched_element.emit(Vector2.RIGHT, pos)
 	if input["use"]:
-		print("Selected card:", get_selected())
+		card_removed.emit(selected_index)
+
+func remove_card(index: int):
+	cards[index] = null
+	displayed_cards[index].setup(empty_name, empty_image, empty_cost)
 
 func next_card(): 
 	self.selected_index = (self.selected_index + 1) % self.cards.size() 
@@ -74,6 +82,7 @@ func update_selection(index: int) -> void:
 
 func find_available_slot() -> int:
 	for i in range(displayed_cards.size()):
+		print(i, displayed_cards[i].is_empty())
 		if displayed_cards[i].is_empty():
 			return i
 		
