@@ -40,18 +40,23 @@ const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
+const DRONE_HEALTH: int = 1
+const DRONE_DAMAGE: float = 1
+const DRONE_SPEED: float = 75
+const DRONE_MELEE: bool = true
+const DRONE_COOLDOWN: float = 1.3
+
+
 const TOWER_COOLDOWN: float = 2.0
 const TOWER_HEALTH: int = 100
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
 # BUILDINGS
 const FACTORY_HEALTH = 20
-const FACTORY_COOLDOWN = 20
-const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Knight.tscn")
-const FACTORY_SPAWN_COUNT = 2
-const FACTORY_DECAY_DAMAGE = 0
-
-
+const FACTORY_COOLDOWN = 10
+const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
+const FACTORY_SPAWN_COUNT = 3
+const FACTORY_DECAY_DAMAGE = 4
 
 
 ## PROJECTILES

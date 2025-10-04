@@ -25,20 +25,17 @@ var initial_hp: int
 func _ready() -> void:
 	initial_hp = health
 
-	# --- Setup cooldown timer ---
 	cooldown_timer = Timer.new()
 	cooldown_timer.wait_time = cooldown
 	cooldown_timer.autostart = true
 	cooldown_timer.timeout.connect(perform_action)
 	add_child(cooldown_timer)
 
-	# --- Setup signal/debug line ---
 	signal_line = Line2D.new()
 	signal_line.width = 1.5
 	signal_line.top_level = true
 	add_child(signal_line)
 
-	# --- Determine action type automatically ---
 	if damage > 0:
 		action = ACTIONS.ATTACK
 	elif spawn_scene != null:
@@ -46,7 +43,6 @@ func _ready() -> void:
 	elif effect != "":
 		action = ACTIONS.EFFECT
 
-	# --- Visual color by player ---
 	if player == Constants.PLAYERS.P1:
 		modulate = Color8(255, 0, 0)
 		signal_line.default_color = Color8(255, 0, 0)
@@ -54,13 +50,11 @@ func _ready() -> void:
 		modulate = Color8(0, 0, 255)
 		signal_line.default_color = Color8(0, 0, 255)
 
-	# --- Register in GameState for targeting ---
 	if player == Constants.PLAYERS.P1:
 		GameState.p1_towers.append(self)
 	else:
 		GameState.p2_towers.append(self)
 
-	# --- Collision setup (same as Unit) ---
 	if player == Constants.PLAYERS.P1:
 		collision_layer = 4
 		collision_mask = 3
@@ -80,11 +74,6 @@ func perform_action():
 		ACTIONS.EFFECT:
 			give_effect()
 	take_decay_damage(decay)
-
-
-# --------------------------
-# ACTIONS
-# --------------------------
 
 func attack():
 	var enemy = get_enemy_in_range()

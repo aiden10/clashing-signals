@@ -16,8 +16,8 @@
 - Sprites for each unit and towers. These can just be basic shapes
 
 - 	Signal servering effect. When a signal is severed, that unit loses half of its stats (damage, speed, cooldown)
-    - Add "severed" property to unit class. If severed is true, then don't draw line to nearest friendly tower
-    - Maybe also add a visual to show when a unit's signal is severed, particle effect or maybe just stick a sprite on them (like a warning png)
+	- Add "severed" property to unit class. If severed is true, then don't draw line to nearest friendly tower
+	- Maybe also add a visual to show when a unit's signal is severed, particle effect or maybe just stick a sprite on them (like a warning png)
     - Any unit or spell that severs signals needs to rebuff the affected units when it goes away, and set severed back to false
 
 - Figure out a way to better incorporate the theme
@@ -40,4 +40,3 @@
     - Rush: cheap units
     - Defensive: mainly buildings
     
-
