@@ -54,4 +54,4 @@ theme_override_fonts/font = ExtResource("5_0chp0")
 theme_override_font_sizes/font_size = 36
 text = "MISSING"
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 1
