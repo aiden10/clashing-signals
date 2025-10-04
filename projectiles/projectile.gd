@@ -7,7 +7,8 @@ var target_position: Vector2 = Vector2.ZERO
 var pierce_limit: int
 var hit_count: int = 0
 var direction: Vector2 = Vector2.ZERO 
-#
+
+var end_pos: Vector2 = Vector2.ZERO
 var destroyed: bool = false
 
 func _ready() -> void:
@@ -30,6 +31,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var velocity = direction * speed
 	position += velocity * delta
+	if end_pos != Vector2.LEFT and position.distance_squared_to(end_pos) > 100:
+		on_destroy()
+		
+
+func on_destroy():
+	pass
 
 func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()

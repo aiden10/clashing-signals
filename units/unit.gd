@@ -61,7 +61,7 @@ func detection_range_entered(area: Area2D) -> void:
 func attack() -> void:
 	pass
 
-func shoot() -> void:
+func shoot(end_pos = Vector2.LEFT) -> void:
 	if not is_instance_valid(self.target) or not is_target_in_attack_range():
 		return
 	var projectile: Projectile = self.projectile_scene.instantiate()
@@ -70,6 +70,8 @@ func shoot() -> void:
 	projectile.global_position = self.global_position
 	 ## I'm not sure if projectiles should keep their own damage, or get it from the shooter
 	projectile.damage = self.damage
+	if end_pos != Vector2.LEFT:
+		projectile.end_pos = end_pos
 	get_tree().current_scene.add_child(projectile)
 
 func sever() -> void:
@@ -78,6 +80,7 @@ func sever() -> void:
 	self.cooldown *= Constants.SEVER_DEBUFF
 	attack_timer.wait_time = self.cooldown
 	self.severed = true
+	severed_changed(true)
 
 func unsever() -> void:
 	self.damage *= Constants.SEVER_DEBUFF
@@ -85,6 +88,7 @@ func unsever() -> void:
 	self.cooldown /= Constants.SEVER_DEBUFF
 	attack_timer.wait_time = self.cooldown
 	self.severed = false
+	severed_changed(false)
 
 func take_damage(damage_taken: int) -> void:
 	self.health -= damage_taken
@@ -128,7 +132,7 @@ func _physics_process(_delta: float) -> void:
 			var direction = (next_path_pos - global_position).normalized()
 			self.velocity = direction * speed
 			move_and_slide()
-
+	
 	look_at(target.global_position)
 
 
@@ -192,3 +196,6 @@ func is_target_in_attack_range() -> bool:
 			return true
 	
 	return false
+
+func severed_changed(severed) -> void:
+	pass

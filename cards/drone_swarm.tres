@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://ba5g4vw2nesn5"]
+
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_1r2ic"]
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_5ey0o"]
+[ext_resource type="PackedScene" uid="uid://bpv6c2d3supu0" path="res://units/Drone.tscn" id="2_2n842"]
+
+[resource]
+script = ExtResource("1_1r2ic")
+name = "Drone Swarm"
+cost = 4
+count = 4
+image = ExtResource("1_5ey0o")
+scene = ExtResource("2_2n842")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"
