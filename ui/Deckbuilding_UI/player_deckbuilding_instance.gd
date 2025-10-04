@@ -13,14 +13,14 @@ var is_ready:bool = false
 
 
 func _ready() -> void:
-	deck.resize(8)
+	deck.resize(Constants.MAX_DECK_SIZE)
+
+	card_selection_element.card_added.connect(add_card)
+	card_selection_element.switched_element.connect(switch_element)
+	card_selection_element.player_ID = player_ID
 	
-	$CardSelectionBox.card_added.connect(add_card)
-	$CardSelectionBox.switched_element.connect(switch_element)
-	$CardSelectionBox.player_ID = player_ID
-	
-	$Deck.switched_element.connect(switch_element)
-	$Deck.card_removed.connect(remove_card)
+	deck_element.switched_element.connect(switch_element)
+	deck_element.card_removed.connect(remove_card)
 	
 	$ReadyButton.switched_element.connect(switch_element)
 	$ReadyButton.ready_pressed.connect(on_ready_pressed)
@@ -42,9 +42,9 @@ func _process(delta: float) -> void:
 
 	match current_area:
 		Constants.SelectionArea.SELECTION:
-			$CardSelectionBox.handle_input(input)
+			card_selection_element.handle_input(input)
 		Constants.SelectionArea.DECK:
-			$Deck.handle_input(input)
+			deck_element.handle_input(input)
 		Constants.SelectionArea.READY:
 			pass
 			$ReadyButton.handle_input(input)
@@ -53,13 +53,13 @@ func switch_element(direction: Vector2, from_pos: Vector2) -> void:
 	match direction:
 		Vector2.UP:
 			current_area = Constants.SelectionArea.DECK
-			var index = find_nearest($Deck.displayed_cards, from_pos)
-			$Deck.focus(index)
+			var index = find_nearest(deck_element.displayed_cards, from_pos)
+			deck_element.focus(index)
 
 		Vector2.DOWN:
 			current_area = Constants.SelectionArea.SELECTION
-			var index = find_nearest($CardSelectionBox.displayed_cards, from_pos)
-			$CardSelectionBox.focus(index)
+			var index = find_nearest(card_selection_element.displayed_cards, from_pos)
+			card_selection_element.focus(index)
 
 		Vector2.RIGHT:
 			current_area = Constants.SelectionArea.READY
@@ -67,8 +67,8 @@ func switch_element(direction: Vector2, from_pos: Vector2) -> void:
 		
 		Vector2.LEFT:
 			current_area = Constants.SelectionArea.DECK
-			var index = find_nearest($Deck.displayed_cards, from_pos)
-			$Deck.focus(index)
+			var index = find_nearest(deck_element.displayed_cards, from_pos)
+			deck_element.focus(index)
 			
 
 func find_nearest(elements: Array, from_pos: Vector2) -> int:
@@ -86,12 +86,12 @@ func add_card(card: Card):
 	var slot = deck_element.find_available_slot()
 	if slot != -1:
 		deck[slot] = card
-		$Deck.add_card(card, slot)
+		deck_element.add_card(card, slot)
 	return
 
 func remove_card(index: int):
 	deck[index] = null
-	$Deck.remove_card(index)
+	deck_element.remove_card(index)
 
 
 func on_ready_pressed():

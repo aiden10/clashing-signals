@@ -4,6 +4,7 @@ class_name CardDisplay
 
 @onready var highlighted_panel: StyleBoxFlat = preload("res://ui/Highlight.tres")
 @onready var unhighlighted_panel: StyleBoxFlat = preload("res://ui/Unhighlight.tres")
+@onready var name_label: Label = $MarginContainer/VBoxContainer/CardName
 
 func setup(card_name: String, image: Texture, cost: int) -> void:
 	$MarginContainer/VBoxContainer/CardName.text = card_name

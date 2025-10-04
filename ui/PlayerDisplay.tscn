@@ -62,12 +62,11 @@ layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="Hand" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(150, 1040)
+custom_minimum_size = Vector2(150, 1000)
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 15
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/Hand"]
 layout_mode = 2

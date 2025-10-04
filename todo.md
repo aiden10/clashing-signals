@@ -9,8 +9,6 @@
 - More cards
     - Elixir farming buildings
 
-- Draw cooldown + draw cooldown UI visual
-
 - Sounds/Music
 
 - Sprites for each unit and towers. These can just be basic shapes
