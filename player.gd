@@ -51,9 +51,7 @@ func _physics_process(delta: float) -> void:
 		action_timer.start()
 
 	if direction != Vector2.ZERO:
-		var collision = self.cursor.move_and_collide(direction.normalized() * self.cursor.speed * delta)
-		if (collision):
-			print(collision)
+		self.cursor.move_and_collide(direction.normalized() * self.cursor.speed * delta)
 
 func use_selected_card():
 	var card = self.hand.get_selected()
