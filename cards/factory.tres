@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://clblayv7kqn60"]
+
+[ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_tnwru"]
+[ext_resource type="PackedScene" uid="uid://b3x0itxc1iqs" path="res://Buildings/factory.tscn" id="2_xckfr"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="3_ghbxe"]
+
+[resource]
+script = ExtResource("3_ghbxe")
+name = "Factory"
+cost = 6
+image = ExtResource("1_tnwru")
+scene = ExtResource("2_xckfr")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

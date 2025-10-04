@@ -1,7 +1,7 @@
 extends Node
 
 enum PLAYERS {P1, P2}
-enum CARD_TYPES {UNIT, SPELL}
+enum CARD_TYPES {UNIT, SPELL, BUILDING}
 
 # used for deckbuilding ui
 enum SelectionArea { SELECTION, DECK, READY }
@@ -44,6 +44,16 @@ const TOWER_COOLDOWN: float = 2.0
 const TOWER_HEALTH: int = 100
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
+# BUILDINGS
+const FACTORY_HEALTH = 20
+const FACTORY_COOLDOWN = 20
+const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Knight.tscn")
+const FACTORY_SPAWN_COUNT = 2
+const FACTORY_DECAY_DAMAGE = 0
+
+
+
+
 ## PROJECTILES
 const ARROW_SPEED: float = 500
 const ARROW_DAMAGE: float = 3
@@ -55,5 +65,6 @@ const KNIGHT_CARD: Card = preload("res://cards/knight_card.tres")
 const ARCHER_CARD: Card = preload("res://cards/archer_card.tres")
 const GIANT_CARD: Card = preload("res://cards/giant_card.tres")
 const SIGNAL_BOOST_CARD: Card = preload("res://cards/signal_boost_card.tres")
+const FACTORY_CARD: Card = preload("res://cards/factory.tres")
 
-const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, SIGNAL_BOOST_CARD]
+const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, SIGNAL_BOOST_CARD, FACTORY_CARD]
