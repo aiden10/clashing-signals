@@ -107,11 +107,20 @@ func _physics_process(_delta: float) -> void:
 	update_line()
 
 	var nearest_enemy = get_nearest_enemy()
-	if nearest_enemy:
-		target = nearest_enemy
-	elif not is_instance_valid(target):
-		target = get_nearest_tower()
+	var nearest_tower = get_nearest_tower()
+	var enemy_dist = INF
+	var tower_dist = INF
 	
+	if nearest_enemy and is_instance_valid(nearest_enemy):
+		enemy_dist = global_position.distance_squared_to(nearest_enemy.global_position)
+	if nearest_tower and is_instance_valid(nearest_tower):
+		tower_dist = global_position.distance_squared_to(nearest_tower.global_position)
+	
+	if enemy_dist < tower_dist:
+		target = nearest_enemy
+	else:
+		target = nearest_tower
+		
 	if not is_instance_valid(target):
 		self.velocity = Vector2.ZERO
 		move_and_slide()
@@ -121,7 +130,7 @@ func _physics_process(_delta: float) -> void:
 		nav_agent.target_position = target.global_position
 	var target_in_range = is_target_in_attack_range()
 
-	if target_in_range:
+	if target_in_range and not target.is_in_group("backdoors"):
 		self.velocity = Vector2.ZERO
 	else:
 		# NavigationAgent handles the path
@@ -135,7 +144,6 @@ func _physics_process(_delta: float) -> void:
 	
 	look_at(target.global_position)
 
-
 func update_line() -> void:
 	self.signal_line.clear_points()
 	self.signal_line.add_point(self.global_position)
@@ -143,11 +151,6 @@ func update_line() -> void:
 	if is_instance_valid(self.target):
 		self.signal_line.add_point(self.target.global_position)
 		self.signal_line.add_point(self.global_position)
-	
-	if not self.severed:
-		var nearest_friendly_tower = get_nearest_tower(true)
-		if nearest_friendly_tower:
-			self.signal_line.add_point(nearest_friendly_tower.global_position)
 
 	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
 

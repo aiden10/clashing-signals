@@ -23,4 +23,6 @@ func prev_card():
 	EventBus.selection_updated.emit(self.player, self.selected_index)
 
 func get_selected() -> Card:
-	return self.cards[self.selected_index]
+	if self.cards[self.selected_index]:
+		return self.cards[self.selected_index]
+	return null

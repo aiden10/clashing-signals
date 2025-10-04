@@ -1,5 +1,7 @@
 extends Node2D
+
 class_name Projectile
+
 var player: Constants.PLAYERS
 var speed: float
 var damage: float
@@ -40,7 +42,7 @@ func on_destroy():
 
 func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent is Tower or parent is Unit:
+	if parent is Building or parent is Unit:
 		if parent.player != self.player:
 			if hit_count >= pierce_limit:
 				destroyed = true

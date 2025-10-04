@@ -6,7 +6,7 @@ var player: Constants.PLAYERS
 var hand: Hand
 var deck: Deck
 var cursor: CharacterBody2D
-var elixir: int = 10
+var elixir: int = 100
 var can_place: bool = true
 var action_timer: Timer
 var draw_timer: Timer 
@@ -93,8 +93,16 @@ func use_selected_card():
 		spell.global_position = cursor.global_position
 		spell.player = self.player
 		get_tree().current_scene.add_child(spell)
-
+	
+	if card.type == Constants.CARD_TYPES.BUILDING:
+		var building = card.scene.instantiate()
+		building.global_position = cursor.global_position
+		building.player = self.player
+		get_tree().current_scene.add_child(building)
+	
 	self.hand.cards.pop_at(self.hand.selected_index)
+	if self.hand.selected_index > 0:
+		self.hand.selected_index -= 1
 	EventBus.hand_updated.emit(self.player)
 	
 	if self.hand.cards.size() < Constants.MAX_HAND_SIZE and draw_timer.is_stopped():

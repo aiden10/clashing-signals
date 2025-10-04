@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://b7c5skputgfx7"]
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://ctx0rga2it7ch"]
 
 [ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="1_0os4g"]
 [ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_k10qh"]
@@ -9,5 +9,6 @@ script = ExtResource("1_k10qh")
 name = "Signal Tower"
 cost = 5
 image = ExtResource("1_0os4g")
+type = 2
 scene = ExtResource("2_psnnk")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

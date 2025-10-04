@@ -9,5 +9,6 @@ script = ExtResource("3_ghbxe")
 name = "Factory"
 cost = 6
 image = ExtResource("1_tnwru")
+type = 2
 scene = ExtResource("2_xckfr")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

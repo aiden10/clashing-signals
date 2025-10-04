@@ -17,6 +17,7 @@ var target_enemy: bool = true
 var target: Node2D
 var action: ACTIONS
 var decay: float = 0.0
+var extends_signal: bool = false
 
 var cooldown_timer: Timer
 var signal_line: Line2D
@@ -25,7 +26,6 @@ var initial_hp: float
 
 func _ready() -> void:
 	initial_hp = health
-	
 	if cooldown != 0:
 		cooldown_timer = Timer.new()
 		cooldown_timer.wait_time = cooldown
@@ -48,24 +48,18 @@ func _ready() -> void:
 	if player == Constants.PLAYERS.P1:
 		$Sprite2D.modulate = Color8(255, 0, 0)
 		signal_line.default_color = Color8(255, 0, 0)
-	else:
-		$Sprite2D.modulate = Color8(0, 0, 255)
-		signal_line.default_color = Color8(0, 0, 255)
-
-	if player == Constants.PLAYERS.P1:
-		GameState.p1_towers.append(self)
-	else:
-		GameState.p2_towers.append(self)
-
-	if player == Constants.PLAYERS.P1:
 		collision_layer = 4
 		collision_mask = 3
 	else:
+		$Sprite2D.modulate = Color8(0, 0, 255)
+		signal_line.default_color = Color8(0, 0, 255)
 		collision_layer = 3
 		collision_mask = 4
-		
-	
 
+	if player == Constants.PLAYERS.P1 and extends_signal:
+		GameState.p1_towers.append(self)
+	if player == Constants.PLAYERS.P2 and extends_signal:
+		GameState.p2_towers.append(self)
 
 func perform_action():
 	match action:
@@ -89,7 +83,6 @@ func attack():
 		Effects.spawn_hit_particle(enemy.global_position)
 	update_line()
 
-
 func spawn_unit():
 	if not spawn_scene:
 		return
@@ -108,7 +101,7 @@ func give_effect():
 				apply_effect(parent)
 	update_line()
 
-func apply_effect(_effect_target: Unit):
+func apply_effect(effect_target: Unit):
 	pass
 
 func shoot() -> void:
@@ -121,8 +114,7 @@ func shoot() -> void:
 	projectile.target_position = target.global_position
 	get_tree().current_scene.add_child(projectile)
 
-
-func take_damage(damage_taken: int) -> void:
+func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	Effects.spawn_hit_particle(global_position)
 	if health > 0:
@@ -152,17 +144,21 @@ func _physics_process(_delta: float) -> void:
 	update_line()
 	if enemy:
 		target = enemy
-		look_at(target.global_position)
-
 
 func update_line() -> void:
 	signal_line.clear_points()
 	signal_line.add_point(global_position)
+	
 	if is_instance_valid(target):
 		signal_line.add_point(target.global_position)
 		signal_line.add_point(global_position)
+	
+	if extends_signal:
+		var nearest_tower = get_nearest_tower(true)
+		if nearest_tower:
+			signal_line.add_point(nearest_tower.global_position)
+		
 	signal_line.modulate.a = float(health) / float(initial_hp)
-
 
 func get_enemy_in_range() -> Node2D:
 	var nearest_enemy = null
@@ -176,7 +172,6 @@ func get_enemy_in_range() -> Node2D:
 				nearest_enemy = parent
 	return nearest_enemy
 
-
 func get_nearest_tower(get_friendly: bool = false) -> Node2D:
 	var min_dist_sq: float = INF
 	var nearest: Node2D = null
@@ -187,7 +182,7 @@ func get_nearest_tower(get_friendly: bool = false) -> Node2D:
 		GameState.p1_towers
 	)
 	for tower in towers_to_search:
-		if not is_instance_valid(tower):
+		if not is_instance_valid(tower) or tower == self:
 			continue
 		var dist_sq = global_position.distance_squared_to(tower.global_position)
 		if dist_sq < min_dist_sq:

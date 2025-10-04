@@ -67,21 +67,27 @@ const TOWER_HEALTH: int = 100
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
 # BUILDINGS
-const FACTORY_HEALTH = 20
-const FACTORY_COOLDOWN = 10
+const FACTORY_HEALTH: float = 20
+const FACTORY_COOLDOWN: float = 10
 const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
-const FACTORY_SPAWN_COUNT = 3
-const FACTORY_DECAY_DAMAGE = 4
+const FACTORY_SPAWN_COUNT: float = 3
+const FACTORY_DECAY_DAMAGE: float = 4
 
-const SIGNAL_TOWER_HEALTH = 20
-const SIGNAL_TOWER_DECAY_DAMAGE = 2
+const SIGNAL_TOWER_HEALTH: float = 20
+const SIGNAL_TOWER_DECAY_DAMAGE: float = 2
 
-const JAMMER_TOWER_HEALTH = 20
-const JAMMER_TOWER_DECAY_DAMAGE = 2
+const JAMMER_TOWER_HEALTH: float = 20
+const JAMMER_TOWER_DECAY_DAMAGE: float = 2
 
-const EXTRACTOR_HEALTH = 20
-const EXTRACTOR_DECAY_DAMAGE = EXTRACTOR_HEALTH/12
-const EXTRACTOR_COOLDOWN = 3
+const EXTRACTOR_HEALTH: float = 20
+const EXTRACTOR_DECAY_DAMAGE: float = EXTRACTOR_HEALTH/12
+const EXTRACTOR_COOLDOWN: float = 3
+
+const BACKDOOR_HEALTH: float = 20
+const BACKDOOR_DECAY_DAMAGE: float = BACKDOOR_HEALTH/200
+const BACKDOOR_COOLDOWN: float = 0.1
+const BACKDOOR_SPAWN_SCENE: PackedScene = preload("res://Buildings/BackDoor.tscn")
+const BACKDOOR_TARGET_ENEMY: bool = false
 
 ## PROJECTILES
 const ARROW_SPEED: float = 500
@@ -105,7 +111,8 @@ const CANNON_CARD: Card = preload("res://cards/cannon_card.tres")
 const JUGGERNAUT_CARD: Card = preload("res://cards/juggernaut_card.tres")
 const JAMMER_CARD: Card = preload("res://cards/jammer_card.tres")
 const EXTRACTOR_CARD: Card = preload("res://cards/extractor_card.tres")
+const BACKDOOR_CARD: Card = preload("res://cards/backdoor_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
-							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD,
+							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
 							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD]
