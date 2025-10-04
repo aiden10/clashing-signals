@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dapfbmxyjm806"]
+[gd_scene load_steps=10 format=3 uid="uid://dapfbmxyjm806"]
 
 [ext_resource type="PackedScene" uid="uid://dvd0nxqa3vfew" path="res://Tower.tscn" id="1_wbfu4"]
 [ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
@@ -36,6 +36,9 @@ shader_parameter/viewport_size_override = Vector2(0, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sb48q"]
 normal = Vector2(0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t88pq"]
+size = Vector2(966, 1080)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_xkndl")
 
@@ -48,19 +51,19 @@ autostart = true
 [node name="P1" type="Node" parent="."]
 
 [node name="Cursor" parent="P1" instance=ExtResource("3_u44n3")]
-position = Vector2(960, 400)
+position = Vector2(720, 540)
 
 [node name="Tower" parent="P1" instance=ExtResource("1_wbfu4")]
-position = Vector2(960, 820)
+position = Vector2(500, 540)
 
 [node name="P2" type="Node" parent="."]
 
 [node name="Cursor" parent="P2" instance=ExtResource("3_u44n3")]
-position = Vector2(960, 680)
+position = Vector2(1200, 540)
 player = 1
 
 [node name="Tower" parent="P2" instance=ExtResource("1_wbfu4")]
-position = Vector2(960, 200)
+position = Vector2(1420, 540)
 player = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -117,3 +120,21 @@ shape = SubResource("WorldBoundaryShape2D_sb48q")
 position = Vector2(0, 1080)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_sb48q")
+
+[node name="P1Area" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P1Area"]
+position = Vector2(480, 540)
+shape = SubResource("RectangleShape2D_t88pq")
+debug_color = Color(0.6691576, 0.93241715, 0.99999994, 0.41960785)
+
+[node name="P2Area" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="P2Area"]
+position = Vector2(1440, 540)
+shape = SubResource("RectangleShape2D_t88pq")
+debug_color = Color(1, 0.8243778, 0.8235814, 0.41960785)
