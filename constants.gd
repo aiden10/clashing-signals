@@ -83,14 +83,14 @@ const GIANT_SPEED: float = 20
 const GIANT_MELEE: bool = true
 const GIANT_COOLDOWN: float = 2.0
 
-const ARCHER_HEALTH: float = 10
+const ARCHER_HEALTH: float = 5
 const ARCHER_DAMAGE: float = 1.5
 const ARCHER_SPEED: float = 35
 const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
-const POCKET_WIFI_HEALTH: float = 20
+const POCKET_WIFI_HEALTH: float = 5
 const POCKET_WIFI_DAMAGE: float = 2.0
 const POCKET_WIFI_SPEED: float = 40
 const POCKET_WIFI_MELEE: bool = true
