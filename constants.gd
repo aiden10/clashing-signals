@@ -20,6 +20,8 @@ const STAGE1_DURATION: float = 120
 const ELIXIR_COOLDOWN2: float = 1.4
 const STAGE2_DURATION: float = 120
 const ELIXIR_COOLDOWN3: float = 0.9
+const MIN_DISTANCE: float = 50.0  
+const PUSH_STRENGTH: float = 500.0
 
 const MAX_ELIXIR: int = 10
 const MAX_DECK_SIZE: int = 8
