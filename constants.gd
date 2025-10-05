@@ -99,7 +99,7 @@ const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
 const FACTORY_HEALTH: float = 20
 const FACTORY_COOLDOWN: float = 10
 const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
-const FACTORY_SPAWN_COUNT: float = 3
+const FACTORY_SPAWN_COUNT: int = 3
 const FACTORY_DECAY_DAMAGE: float = 4
 
 const SIGNAL_TOWER_HEALTH: float = 20
@@ -125,7 +125,7 @@ const ARROW_PIERCE_LIMIT: int = 1
 
 const CANNONBALL_SPEED: float = 400
 const CANNONBALL_DAMAGE: float = 5
-const CANNONBALL_PIERCE_LIMIT: float = 3
+const CANNONBALL_PIERCE_LIMIT: int = 3
 
 ## CARDS
 const CARD_DISPLAY: PackedScene = preload("res://ui/CardDisplay.tscn")

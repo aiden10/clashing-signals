@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Unit
 var player: Constants.PLAYERS
-var health: int
+var health: float
 
 var base_cooldown: float
 var base_damage: float
@@ -16,7 +16,7 @@ var is_melee: bool
 var attack_timer: Timer
 var projectile_scene: PackedScene
 var signal_line: Line2D
-var initial_hp: int 
+var initial_hp: float
 var severed: bool = false
 
 var nav_agent: NavigationAgent2D
