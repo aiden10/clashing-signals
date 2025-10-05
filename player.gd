@@ -95,10 +95,10 @@ func use_selected_card():
 	if card.type == Constants.CARD_TYPES.UNIT:
 		for i in range(card.count):
 			var unit = card.scene.instantiate()
-			unit.global_position = cursor.global_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
+			unit.global_position = cursor.global_position + Vector2(randi_range(-25, 25), randi_range(-25, 25))
 			unit.player = self.player
 			get_tree().current_scene.add_child(unit)
-	
+
 	elif card.type == Constants.CARD_TYPES.SPELL:
 		var spell = card.scene.instantiate()
 		spell.global_position = cursor.global_position

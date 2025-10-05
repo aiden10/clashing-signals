@@ -26,5 +26,5 @@ func _ready() -> void:
 
 func apply_effect(effect_target: Unit) -> void:
 	if backdoor_exit:
-		effect_target.global_position = backdoor_exit.global_position
+		effect_target.global_position = backdoor_exit.global_position + Vector2(randi_range(-10, 10), randi_range(-10, 10))
 		
