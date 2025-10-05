@@ -71,7 +71,6 @@ func _on_selection_updated(received_player: Constants.PLAYERS, _selected_index) 
 		selected_card = GameState.p1.hand.get_selected()
 	else:
 		selected_card = GameState.p2.hand.get_selected()
-	print("hand update, ", received_player, " is now holding ", selected_card.name)
 	
 	if selected_card:
 		holding_spell = (selected_card.type == Constants.CARD_TYPES.SPELL)
