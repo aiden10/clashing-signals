@@ -20,19 +20,21 @@ func attack() -> void:
 func signal_buff() -> void:
 	super()
 	if connection_count > 0:
-		Effects.add_image(self, name, Effects.IMAGES.WARNING)
+		Effects.remove_image(self, name)
 		disabled = false
 
 func signal_unbuff() -> void:
 	super()
 	if connection_count == 0:
-		Effects.remove_image(self, name)
+		Effects.add_image(self, name, Effects.IMAGES.WARNING)
 		disabled = true
 
 func severed_changed() -> void:
 	if severed:
+		Effects.add_image(self, name, Effects.IMAGES.WARNING)
 		disabled = true
 	else:
+		Effects.remove_image(self, name)
 		disabled = false
 
 func on_area_entered(area: Area2D) -> void:

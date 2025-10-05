@@ -37,8 +37,10 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m0fjy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_p4px1")
+flip_v = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 

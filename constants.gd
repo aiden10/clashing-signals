@@ -129,6 +129,11 @@ const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
 const FACTORY_SPAWN_COUNT: int = 4
 const FACTORY_DECAY_DAMAGE: float = 3
 
+const BALLISTA_HEALTH: float = 20
+const BALLISTA_COOLDOWN: float = 2.5
+const BALLISTA_PROJECTILE_SCENE: PackedScene = preload("res://projectiles/BigArrow.tscn")
+const BALLISTA_DECAY_DAMAGE: float = BALLISTA_HEALTH/8
+
 const SIGNAL_TOWER_HEALTH: float = 20
 const SIGNAL_TOWER_DECAY_DAMAGE: float = 2
 
@@ -151,8 +156,12 @@ const BACKDOOR_TARGET_ENEMY: bool = false
 
 ## PROJECTILES
 const ARROW_SPEED: float = 1000
-const ARROW_DAMAGE: float = 3
+const ARROW_DAMAGE: float = 2
 const ARROW_PIERCE_LIMIT: int = 1
+
+const BIG_ARROW_SPEED: float = 700
+const BIG_ARROW_DAMAGE: float = 3
+const BIG_ARROW_PIERCE_LIMIT: int = 5
 
 const CANNONBALL_SPEED: float = 400
 const CANNONBALL_DAMAGE: float = 5
@@ -181,10 +190,11 @@ const PAWN_CARD: Card = preload("res://cards/pawn_card.tres")
 const WALL_CARD: Card = preload("res://cards/wall_card.tres")
 const POCKET_WIFI_CARD: Card = preload("res://cards/pocket_wifi_card.tres")
 const REPAIR_CARD: Card = preload("res://cards/repair_card.tres")
+const BALLISTA_CARD: Card = preload("res://cards/ballista_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
 							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD,
 							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD, PEOPLE_CARD,
 							HP_EQUALIZER_CARD, CLONE_CARD, PAWN_CARD, WALL_CARD,
-							POCKET_WIFI_CARD, REPAIR_CARD]
+							POCKET_WIFI_CARD, REPAIR_CARD, BALLISTA_CARD]

@@ -16,7 +16,7 @@ func on_area_entered(area: Area2D) -> void:
 		return
 	var parent = area.get_parent()
 	if parent is Unit:
-		if parent.player == player and parent not in to_clone:
+		if parent.player == player and parent not in to_clone and not parent.is_clone:
 			to_clone.append(parent)
 
 func cleanup() -> void:
@@ -31,6 +31,7 @@ func cleanup() -> void:
 		clone.health = unit.health / Constants.CLONE_DEBUFF
 		clone.speed = unit.speed / Constants.CLONE_DEBUFF
 		clone.player = unit.player
+		clone.is_clone = true
 		clone.global_position += Vector2(randf_range(-15, 15), randf_range(-15, 15))
 		Effects.add_image(clone, name, Effects.IMAGES.HELIX)
 		get_tree().current_scene.add_child(clone)
