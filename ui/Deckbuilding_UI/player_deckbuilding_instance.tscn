@@ -58,9 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.075
 anchor_right = 0.5
 anchor_bottom = 0.15
-offset_left = -346.0
-offset_right = 346.0
-offset_bottom = 632.0
+offset_left = -430.0
+offset_top = -109.95001
+offset_right = 274.0
+offset_bottom = 856.05
 grow_horizontal = 2
 theme_override_constants/separation = 15
 
@@ -109,10 +110,10 @@ layout_mode = 2
 
 [node name="ReadyButton" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 646.0
-offset_top = 22.0
-offset_right = 898.0
-offset_bottom = 73.0
+offset_left = 666.0
+offset_top = 17.0
+offset_right = 918.0
+offset_bottom = 68.0
 theme_type_variation = &"Toggle On"
 theme_override_styles/panel = ExtResource("5_7crjo")
 script = ExtResource("6_yb3gy")

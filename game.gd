@@ -31,6 +31,7 @@ func _init() -> void:
 	p2.deck = p2_deck
 
 func _ready() -> void:
+	EventBus.game_started.emit()
 	EventBus.tower_destroyed.connect(check_game_over)
 	elixir_timer.wait_time = Constants.ELIXIR_COOLDOWN
 	elixir_timer.timeout.connect(add_elixir)

@@ -17,6 +17,8 @@ var target: Node2D
 var action: ACTIONS
 var decay: float = 0.0
 var extends_signal: bool = false
+var friendly_signals: int
+var opposing_signals: int
 
 var cooldown_timer: Timer
 var signal_line: Line2D

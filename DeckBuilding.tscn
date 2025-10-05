@@ -8,9 +8,7 @@ script = ExtResource("1_qn21b")
 
 [node name="Player1Instance" parent="." instance=ExtResource("2_qn21b")]
 
-[node name="Player2Instance" parent="." instance=ExtResource("2_qn21b")]
-offset_left = 928.0
-offset_top = 7.0
-offset_right = 1958.0
-offset_bottom = 1080.0
+[node name="Player1Instance2" parent="." instance=ExtResource("2_qn21b")]
+offset_left = 930.0
+offset_right = 1860.0
 player_ID = 1

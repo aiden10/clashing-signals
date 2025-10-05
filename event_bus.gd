@@ -1,5 +1,6 @@
 extends Node
 
+signal game_started
 signal tower_destroyed
 signal unit_died
 signal building_destroyed
