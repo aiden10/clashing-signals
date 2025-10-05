@@ -15,6 +15,7 @@ const INVALID_DARKENING = 0.50
 const CURSOR_SPEED: float = 300
 
 ## MISCELLANEOUS
+const STARTING_ELIXIR: float = 4.0
 const ELIXIR_COOLDOWN: float = 2.8
 const STAGE1_DURATION: float = 120
 const ELIXIR_COOLDOWN2: float = 1.4
@@ -64,7 +65,7 @@ const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.0
 
 const PAWN_HEALTH: float = 7.5
-const PAWN_DAMAGE: float = 1.5
+const PAWN_DAMAGE: float = 1
 const PAWN_SPEED: float = 50
 const PAWN_MELEE: bool = true
 const PAWN_COOLDOWN: float = 1.0
@@ -81,11 +82,11 @@ const PERSON_SPEED: float = 50
 const PERSON_MELEE: bool = true
 const PERSON_COOLDOWN: float = 1.0
 
-const GIANT_HEALTH: float = 50
+const GIANT_HEALTH: float = 40
 const GIANT_DAMAGE: float = 5
-const GIANT_SPEED: float = 35
+const GIANT_SPEED: float = 30
 const GIANT_MELEE: bool = true
-const GIANT_COOLDOWN: float = 2.0
+const GIANT_COOLDOWN: float = 4.0
 
 const ARCHER_HEALTH: float = 5
 const ARCHER_DAMAGE: float = 1.5
@@ -130,7 +131,7 @@ const FACTORY_HEALTH: float = 20
 const FACTORY_COOLDOWN: float = 10
 const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
 const FACTORY_SPAWN_COUNT: int = 4
-const FACTORY_DECAY_DAMAGE: float = 3
+const FACTORY_DECAY_DAMAGE: float = 0.5
 
 const HOSPITAL_HEALTH: float = 15
 const HOSPITAL_COOLDOWN: float = 1.0
@@ -142,24 +143,24 @@ const BALLISTA_HEALTH: float = 20
 const BALLISTA_DAMAGE: float = 3
 const BALLISTA_COOLDOWN: float = 2.5
 const BALLISTA_PROJECTILE_SCENE: PackedScene = preload("res://projectiles/BigArrow.tscn")
-const BALLISTA_DECAY_DAMAGE: float = BALLISTA_HEALTH/8
+const BALLISTA_DECAY_DAMAGE: float = BALLISTA_HEALTH/20
 
 const SIGNAL_TOWER_HEALTH: float = 20
-const SIGNAL_TOWER_DECAY_DAMAGE: float = 2
+const SIGNAL_TOWER_DECAY_DAMAGE: float = 0.5
 
 const JAMMER_TOWER_HEALTH: float = 20
-const JAMMER_TOWER_DECAY_DAMAGE: float = 2
+const JAMMER_TOWER_DECAY_DAMAGE: float = 0.5
 
 const EXTRACTOR_HEALTH: float = 20
-const EXTRACTOR_DECAY_DAMAGE: float = EXTRACTOR_HEALTH/12
-const EXTRACTOR_COOLDOWN: float = 3
+const EXTRACTOR_DECAY_DAMAGE: float = 0.5
+const EXTRACTOR_COOLDOWN: float = 4
 
 const WALL_HEALTH: float = 10
-const WALL_DECAY_DAMAGE: float = WALL_HEALTH/30
+const WALL_DECAY_DAMAGE: float = WALL_HEALTH/40
 const WALL_COOLDOWN: float = 1.0
 
 const BACKDOOR_HEALTH: float = 20
-const BACKDOOR_DECAY_DAMAGE: float = BACKDOOR_HEALTH/200
+const BACKDOOR_DECAY_DAMAGE: float = BACKDOOR_HEALTH/20
 const BACKDOOR_COOLDOWN: float = 0.1
 const BACKDOOR_SPAWN_SCENE: PackedScene = preload("res://Buildings/BackDoor.tscn")
 const BACKDOOR_TARGET_ENEMY: bool = false

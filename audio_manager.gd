@@ -67,3 +67,6 @@ func _get_available_player() -> AudioStreamPlayer:
 		if not player.playing:
 			return player
 	return null
+
+func _exit_tree() -> void:
+	play_song("battle_song")

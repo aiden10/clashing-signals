@@ -16,6 +16,8 @@ func _ready() -> void:
 	EventBus.hand_updated.connect(update_hand)
 	EventBus.elixir_updated.connect(update_elixir)
 	EventBus.selection_updated.connect(update_hand_selection)
+	
+	#GameState.stage1_timer
 
 func _process(_delta: float) -> void:
 	update_draw_progress()

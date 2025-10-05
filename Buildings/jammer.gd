@@ -11,7 +11,6 @@ func on_area_entered(area: Area2D) -> void:
 		if not parent.severed:
 			Effects.add_image(parent, name, Effects.IMAGES.WARNING, Color(1.0, 1.0, 0.0))
 			parent.sever()
-			take_decay_damage(self.decay)
 
 func on_area_exited(area: Area2D) -> void:
 	var parent = area.get_parent()

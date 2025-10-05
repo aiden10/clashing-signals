@@ -98,9 +98,6 @@ func calc_damage() -> float:
 
 func take_damage(damage_taken: float) -> void:
 	self.health -= damage_taken
-	if health > initial_hp:
-		print("unit ", self, " got overhealthed to ", health, "/", initial_hp)
-		health = initial_hp
 	
 	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(self.global_position)

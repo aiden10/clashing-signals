@@ -21,6 +21,7 @@ var friendly_signals: int
 var opposing_signals: int
 
 var cooldown_timer: Timer
+var decay_timer: Timer
 var signal_line: Line2D
 var initial_hp: float
 
@@ -32,6 +33,13 @@ func _ready() -> void:
 		cooldown_timer.autostart = true
 		cooldown_timer.timeout.connect(perform_action)
 		add_child(cooldown_timer)
+		
+	decay_timer = Timer.new()
+	decay_timer.wait_time = 1.0
+	decay_timer.autostart = true
+	decay_timer.timeout.connect(func(): take_decay_damage(self.decay))
+	
+	add_child(decay_timer)
 
 	signal_line = Line2D.new()
 	signal_line.width = 2.0
@@ -56,8 +64,9 @@ func _ready() -> void:
 		collision_layer = 3
 		collision_mask = 4
 	
-	$DetectionRange.area_entered.connect(signal_buff)
-	$DetectionRange.area_exited.connect(signal_debuff)
+	if extends_signal:
+		$DetectionRange.area_entered.connect(signal_buff)
+		$DetectionRange.area_exited.connect(signal_debuff)
 
 func perform_action():
 	match action:
@@ -67,7 +76,6 @@ func perform_action():
 			spawn_unit()
 		ACTIONS.EFFECT:
 			give_effect()
-	take_decay_damage(decay)
 
 func attack():
 	if not target:
@@ -157,7 +165,8 @@ func die() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var t = get_target_in_range()
-	update_line()
+	if extends_signal:
+		update_line()
 	if t:
 		target = t
 

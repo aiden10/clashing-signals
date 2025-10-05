@@ -92,7 +92,7 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_70w2u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hma7l")
 max_value = 10.0
-value = 10.0
+value = 8.0
 show_percentage = false
 
 [node name="ElixirLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer"]

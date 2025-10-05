@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 	var lifespan_timer: Timer = Timer.new()
 	add_child(lifespan_timer)
-	lifespan_timer.wait_time = 5
+	lifespan_timer.wait_time = 1
 	lifespan_timer.start()
 	lifespan_timer.timeout.connect(queue_free)
 	
