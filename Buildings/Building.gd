@@ -32,13 +32,14 @@ func _ready() -> void:
 		cooldown_timer.wait_time = cooldown
 		cooldown_timer.autostart = true
 		cooldown_timer.timeout.connect(perform_action)
-		
-		decay_timer = Timer.new()
-		decay_timer.wait_time = 1.0
-		decay_timer.autostar = true
-		decay_timer.timeout.connect(func(): take_decay_damage(self.decay))
-		
 		add_child(cooldown_timer)
+		
+	decay_timer = Timer.new()
+	decay_timer.wait_time = 1.0
+	decay_timer.autostart = true
+	decay_timer.timeout.connect(func(): take_decay_damage(self.decay))
+	
+	add_child(decay_timer)
 
 	signal_line = Line2D.new()
 	signal_line.width = 2.0

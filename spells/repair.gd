@@ -19,7 +19,8 @@ func on_area_entered(area: Area2D) -> void:
 
 func cleanup() -> void:
 	for building in repaired:
-		Effects.remove_image(building, name)
+		if is_instance_valid(building):
+			Effects.remove_image(building, name)
 
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 0.5)
