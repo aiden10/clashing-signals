@@ -23,8 +23,6 @@ func _ready() -> void:
 	EventBus.building_destroyed.connect(func(): play_sound("building_destroyed"))
 	EventBus.tower_destroyed.connect(func(): play_sound("tower_destroyed"))
 	#EventBus.damage_taken.connect(func(): play_sound("damage_taken"))
-	EventBus.game_started.connect(func(): play_sound("battle_song"))
-	EventBus.game_over.connect(func(_player: Constants.PLAYERS): curr_song_player.stop())
 	
 func set_master_volume() -> void:
 	var normalized_volume = _get_normalized_volume(sound_level)
@@ -67,3 +65,6 @@ func _get_available_player() -> AudioStreamPlayer:
 		if not player.playing:
 			return player
 	return null
+
+func _exit_tree() -> void:
+	play_song("battle_song")
