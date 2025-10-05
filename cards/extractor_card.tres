@@ -7,6 +7,6 @@
 script = ExtResource("1_qfqlt")
 name = "Extractor"
 cost = 6
-description = "Provides a constant suspply of bitcoin"
+description = "Generates additional bars"
 scene = ExtResource("2_5w017")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

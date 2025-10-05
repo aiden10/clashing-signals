@@ -7,7 +7,7 @@
 script = ExtResource("1_itwiw")
 name = "Wall"
 cost = 1
-description = "A solid barrier that blocks movement and absorbs incoming attacks."
+description = "A wall which blocks enemies"
 type = 2
 scene = ExtResource("1_u7iuy")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_eyuh6")
-name = "People"
+name = "Elderly People"
 cost = 3
 count = 15
-description = "Ordinary citizens turned fighters. Some of them may die but its a sacrifice you are willing to make."
+description = "Large group of weaker people"
 scene = ExtResource("1_dqfp0")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

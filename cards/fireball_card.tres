@@ -7,7 +7,7 @@
 script = ExtResource("1_upxqa")
 name = "Fireball"
 cost = 4
-description = "Launches an explosive blast that burns everything in its radius."
+description = "Launches a damaging ball, damaging enemies"
 type = 1
 scene = ExtResource("2_poy7k")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

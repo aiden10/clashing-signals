@@ -82,7 +82,7 @@ func sever() -> void:
 	self.speed /= Constants.SEVER_DEBUFF
 	self.cooldown_mult *= Constants.SEVER_DEBUFF
 	self.severed = true
-	severed_changed(true)
+	severed_changed()
 
 func unsever() -> void:
 	self.damage *= Constants.SEVER_DEBUFF
@@ -90,7 +90,7 @@ func unsever() -> void:
 	self.cooldown_mult /= Constants.SEVER_DEBUFF
 	attack_timer.wait_time = self.cooldown
 	self.severed = false
-	severed_changed(false)
+	severed_changed()
 
 func calc_damage() -> float:
 	return max(0, damage * (1 + percentage_damage_mod));
@@ -255,7 +255,7 @@ func is_target_in_attack_range() -> bool:
 	
 	return false
 
-func severed_changed(severed) -> void:
+func severed_changed() -> void:
 	pass
 	
 func signal_buff() -> void:

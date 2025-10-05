@@ -7,7 +7,7 @@
 script = ExtResource("1_myrhm")
 name = "EMP"
 cost = 2
-description = "Releases a powerful pulse that disables all signals temporarily."
+description = "Releases a pulse that disables ALL signals temporarily."
 type = 1
 scene = ExtResource("1_blgh5")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

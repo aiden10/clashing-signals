@@ -7,7 +7,7 @@
 script = ExtResource("1_bl415")
 name = "HP Equalizer"
 cost = 3
-description = "Redistributes health among all allies, balancing the field in an instant."
+description = "Sets health of ALL units in spell range to 5"
 type = 1
 scene = ExtResource("1_66gwr")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"
