@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cwlhyjuou8xxy"]
 
-[ext_resource type="PackedScene" uid="uid://i1lnsbfqml00" path="res://units/Dummy.tscn" id="1_4x7ii"]
-[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_kbt4o"]
+[ext_resource type="PackedScene" uid="uid://i1lnsbfqml00" path="res://units/Dummy.tscn" id="1_nrkee"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="2_d7uwj"]
 
 [resource]
-script = ExtResource("1_kbt4o")
-name = "Dummy"
+script = ExtResource("2_d7uwj")
+name = "Person"
 cost = 1
-count = 3
-scene = ExtResource("1_4x7ii")
+scene = ExtResource("1_nrkee")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

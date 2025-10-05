@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dapfbmxyjm806"]
+[gd_scene load_steps=14 format=3 uid="uid://dapfbmxyjm806"]
 
 [ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://n6jmxacj44r4" path="res://Cursor.tscn" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://s7jtb02p6dox" path="res://ui/PlayerDisplay.tscn" id="4_sb48q"]
+[ext_resource type="PackedScene" uid="uid://bf63fkilkgciu" path="res://ui/game_over/GameOver.tscn" id="5_3mrqo"]
 [ext_resource type="Shader" uid="uid://winj22x5v8kf" path="res://effects/crt.gdshader" id="5_t88pq"]
+[ext_resource type="Script" uid="uid://b3prtgpwt015t" path="res://audio_manager.gd" id="6_3mrqo"]
 [ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="6_r0x5m"]
 
 [sub_resource type="Environment" id="Environment_sb48q"]
@@ -56,6 +58,10 @@ environment = SubResource("Environment_sb48q")
 
 [node name="ElixirTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Stage1Timer" type="Timer" parent="."]
+
+[node name="Stage2Timer" type="Timer" parent="."]
 
 [node name="P1" type="Node" parent="."]
 
@@ -118,6 +124,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("5_3mrqo")]
+process_mode = 2
+modulate = Color(1, 1, 1, 0)
 
 [node name="ArenaBorder" type="StaticBody2D" parent="."]
 collision_layer = 129
@@ -194,3 +204,6 @@ modulate = Color(0, 4.415934, 0, 1)
 position = Vector2(-6, 407)
 scale = Vector2(1.265625, 2.2578125)
 texture = ExtResource("6_r0x5m")
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("6_3mrqo")

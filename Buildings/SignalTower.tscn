@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdl4wch4183si"]
+[gd_scene load_steps=8 format=3 uid="uid://bdl4wch4183si"]
 
 [ext_resource type="Script" uid="uid://bex1cotsso7if" path="res://Buildings/signal_tower.gd" id="1_52rxj"]
 [ext_resource type="Texture2D" uid="uid://rwws1ug2mg7j" path="res://assets/sprites/antena.png" id="2_lf20g"]
@@ -7,11 +7,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hccj2"]
 radius = 250.008
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_52rxj"]
-radius = 16.124516
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lf20g"]
+height = 96.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lf20g"]
-radius = 20.024984
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxm5e"]
+height = 92.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xfa82"]
+radius = 23.0
+height = 46.0
 
 [node name="SignalTower" type="CharacterBody2D"]
 script = ExtResource("1_52rxj")
@@ -23,16 +27,20 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_hccj2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_52rxj")
+shape = SubResource("CapsuleShape2D_lf20g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_lf20g")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_lf20g")
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_pxm5e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3, -30)
+shape = SubResource("CapsuleShape2D_xfa82")
 
 [node name="RangeSprite" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 0.19607843)

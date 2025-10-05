@@ -37,10 +37,10 @@ func _ready() -> void:
 		signal_line.default_color = Color8(0, 0, 512)
 	
 	## Prevents collision between friendly units but keeps collision with enemies
-	var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
-	var col_layer = 4 if self.player == Constants.PLAYERS.P1 else 3
-	self.collision_layer = col_layer
-	self.collision_mask = mask
+	#var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
+	#var col_layer = 4 if self.player == Constants.PLAYERS.P1 else 3
+	#self.collision_layer = col_layer
+	#self.collision_mask = mask
 	
 	## Putting this hardcoded node name in here reduces redundancy in child unit classes, but means that 
 	## the detection Area2D must be named "DetectionRange"
@@ -90,9 +90,10 @@ func unsever() -> void:
 
 func take_damage(damage_taken: int) -> void:
 	self.health -= damage_taken
+	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(self.global_position)
 	if self.health > 0:
-		self.modulate.a = float(self.health) / float(initial_hp)
+		self.modulate.a = max(float(self.health) / float(initial_hp), 0.25)
 	else:
 		die()
 

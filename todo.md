@@ -3,11 +3,6 @@
 	- the cursor should be greyed out they cannot play the unit
 	- spells can be played anywhere
 
-- More cards
-    - Elixir farming buildings
-
-- Sounds/Music
-
 - Sprites for each unit and towers. These can just be basic shapes
 
 - Figure out a way to better incorporate the theme

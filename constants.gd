@@ -14,7 +14,12 @@ const COLOR_P2 = Color("DEEP_SKY_BLUE")
 const CURSOR_SPEED: float = 500
 
 ## MISCELLANEOUS
-const ELIXIR_COOLDOWN: float = 2.5
+const ELIXIR_COOLDOWN: float = 2.8
+const STAGE1_DURATION: float = 120
+const ELIXIR_COOLDOWN2: float = 1.4
+const STAGE2_DURATION: float = 120
+const ELIXIR_COOLDOWN3: float = 0.9
+
 const MAX_ELIXIR: int = 10
 const MAX_DECK_SIZE: int = 8
 const MAX_HAND_SIZE: int = 5
@@ -22,7 +27,7 @@ const DRAW_COOLDOWN: float = 2.0
 const ACTION_COOLDOWN: float = 0.5
 
 ## Each signal range boosts stats by this percent
-const SIGNAL_BUFF: float = 2
+const SIGNAL_BUFF: float = 1.15
 const SEVER_DEBUFF: float = 2.0
 
 ## SPELLS
@@ -34,52 +39,53 @@ const FIREBALL_DURATION = 1
 const FIREBALL_SPEED = 800
 
 ## UNITS
-const KNIGHT_HEALTH: int = 10
+const KNIGHT_HEALTH: float = 10
 const KNIGHT_DAMAGE: float = 2
 const KNIGHT_SPEED: float = 20
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.5
 
-const DUMMY_HEALTH: int = 3
+const DUMMY_HEALTH: float = 0.1
 const DUMMY_DAMAGE: float = 0.5
 const DUMMY_SPEED: float = 25
 const DUMMY_MELEE: bool = true
 const DUMMY_COOLDOWN: float = 1.0
 
-const GIANT_HEALTH: int = 35
+const GIANT_HEALTH: float = 35
 const GIANT_DAMAGE: float = 5
 const GIANT_SPEED: float = 15
 const GIANT_MELEE: bool = true
 const GIANT_COOLDOWN: float = 2.0
 
-const ARCHER_HEALTH: int = 10
+const ARCHER_HEALTH: float = 10
 const ARCHER_DAMAGE: float = 1.5
 const ARCHER_SPEED: float = 30
 const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
-const DRONE_HEALTH: int = 1
+const DRONE_HEALTH: float = 1
 const DRONE_DAMAGE: float = 1
 const DRONE_SPEED: float = 75
 const DRONE_MELEE: bool = true
 const DRONE_COOLDOWN: float = 1.3
 
-const CANNON_HEALTH: int = 10
+const CANNON_HEALTH: float = 10
 const CANNON_DAMAGE: float = 5
 const CANNON_SPEED: float = 10
 const CANNON_MELEE: bool = false
 const CANNON_COOLDOWN: float = 10
 const CANNON_PROJECTILE: PackedScene = preload("res://projectiles/Boulder.tscn")
 
-const JUGGERNAUT_HEALTH: int = 60
+const JUGGERNAUT_HEALTH: float = 60
 const JUGGERNAUT_DAMAGE: float = 8
 const JUGGERNAUT_SPEED: float = 15
 const JUGGERNAUT_MELEE: bool = true
 const JUGGERNAUT_COOLDOWN: float = 2.0
 
 const TOWER_COOLDOWN: float = 2.0
-const TOWER_HEALTH: int = 100
+const TOWER_DAMAGE: float = 2.5
+const TOWER_HEALTH: int = 50
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
 
@@ -131,8 +137,9 @@ const EXTRACTOR_CARD: Card = preload("res://cards/extractor_card.tres")
 const BACKDOOR_CARD: Card = preload("res://cards/backdoor_card.tres")
 const FIREBALL_CARD: Card = preload("res://cards/fireball_card.tres")
 const DUMMY_CARD: Card = preload("res://cards/dummy_card.tres")
+const PEOPLE_CARD: Card = preload("res://cards/people_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
 							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD,
-							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD]
+							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD, PEOPLE_CARD]

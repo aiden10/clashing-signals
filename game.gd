@@ -1,5 +1,9 @@
 extends Node
 
+@onready var elixir_timer: Timer = $ElixirTimer
+@onready var stage1_timer: Timer = $Stage1Timer
+@onready var stage2_timer: Timer = $Stage2Timer
+
 var p1: Player
 var p2: Player
 
@@ -28,8 +32,22 @@ func _init() -> void:
 
 func _ready() -> void:
 	EventBus.tower_destroyed.connect(check_game_over)
-	$ElixirTimer.wait_time = Constants.ELIXIR_COOLDOWN
-	$ElixirTimer.timeout.connect(add_elixir)
+	elixir_timer.wait_time = Constants.ELIXIR_COOLDOWN
+	elixir_timer.timeout.connect(add_elixir)
+	
+	stage1_timer.wait_time = Constants.STAGE1_DURATION
+	stage1_timer.one_shot = true
+	stage2_timer.wait_time = Constants.STAGE2_DURATION
+	stage2_timer.one_shot = true
+	stage2_timer.timeout.connect(func():
+		elixir_timer.wait_time = Constants.ELIXIR_COOLDOWN3
+	)
+	stage1_timer.timeout.connect(func():
+		elixir_timer.wait_time = Constants.ELIXIR_COOLDOWN2
+		stage2_timer.start()
+	)
+	stage1_timer.start()
+	
 	p1.cursor = $P1/Cursor
 	p2.cursor = $P2/Cursor
 	add_child(p1)
@@ -62,9 +80,11 @@ func add_elixir_specific(player: Constants.PLAYERS) -> void:
 	EventBus.elixir_updated.emit()
 
 func check_game_over() -> void:
+	print("P1 towers: ", GameState.p1_towers.size())
+	print("P2 towers: ", GameState.p2_towers.size())
 	if GameState.p1_towers.size() == 0:
 		EventBus.game_over.emit(Constants.PLAYERS.P2)
-		
+		print("p2 wins")
 	if GameState.p2_towers.size() == 0:
 		EventBus.game_over.emit(Constants.PLAYERS.P1)
-		
+		print("p1 wins")

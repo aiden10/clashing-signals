@@ -3,6 +3,7 @@ extends Node
 var players: Array[Node]
 
 func _ready() -> void:
+	get_tree().paused = false
 	players = get_children()
 	print("[scene]", players)
 	players[0].ready_element.ready_pressed.connect(ready_pressed)

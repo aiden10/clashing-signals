@@ -81,6 +81,7 @@ text = "placeholder"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+process_mode = 2
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2

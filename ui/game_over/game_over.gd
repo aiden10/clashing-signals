@@ -10,6 +10,7 @@ func _ready() -> void:
 	$VBoxContainer/Button.pressed.connect(func(): GameStateManager.goto_scene(Constants.GAME_SCENES.DECK))
 	
 	EventBus.game_over.connect(func(winner):
+		get_tree().paused = true
 		var fade_tween = create_tween()
 		fade_tween.tween_property(self, "modulate:a", 1.0, 0.5)
 		fade_tween.finished.connect(func(): display(winner))

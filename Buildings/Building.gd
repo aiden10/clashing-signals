@@ -55,11 +55,6 @@ func _ready() -> void:
 		collision_layer = 3
 		collision_mask = 4
 	
-	if player == Constants.PLAYERS.P1 and extends_signal:
-		GameState.p1_towers.append(self)
-	if player == Constants.PLAYERS.P2 and extends_signal:
-		GameState.p2_towers.append(self)
-	
 	$DetectionRange.area_entered.connect(signal_buff)
 	$DetectionRange.area_exited.connect(signal_debuff)
 
@@ -136,9 +131,10 @@ func shoot() -> void:
 
 func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
+	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(global_position)
 	if health > 0:
-		modulate.a = float(health) / float(initial_hp)
+		self.modulate.a = max(float(self.health) / float(initial_hp), 0.25)
 	else:
 		die()
 
@@ -150,11 +146,7 @@ func take_decay_damage(damage_taken: float) -> void:
 		die()
 
 func die() -> void:
-	if player == Constants.PLAYERS.P1:
-		GameState.p1_towers.erase(self)
-	else:
-		GameState.p2_towers.erase(self)
-	EventBus.building_destroyed.emit(self)
+	EventBus.building_destroyed.emit()
 	queue_free()
 
 func _physics_process(_delta: float) -> void:

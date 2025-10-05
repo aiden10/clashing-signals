@@ -11,6 +11,7 @@ func _ready() -> void:
 func _init() -> void:
 	self.health = Constants.TOWER_HEALTH
 	self.cooldown = Constants.TOWER_COOLDOWN
+	self.damage = Constants.TOWER_DAMAGE
 	self.action = ACTIONS.ATTACK
 	self.projectile_scene = Constants.TOWER_PROJECTILE
 	self.decay = 0
