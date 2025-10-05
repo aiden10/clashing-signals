@@ -127,6 +127,7 @@ func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(global_position)
+	if damage_taken > 0: print("damage taken: ", damage_taken, self)
 	if health > 0:
 		self.modulate.a = max(float(self.health) / float(initial_hp), 0.25)
 	else:
