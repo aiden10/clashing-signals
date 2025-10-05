@@ -1,18 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3pq013gor3wo"]
 
 [ext_resource type="Script" uid="uid://benmfahq57niu" path="res://units/knight.gd" id="1_7dkfr"]
+[ext_resource type="Texture2D" uid="uid://b3qym12486n5a" path="res://assets/sprites/knight.png" id="2_7dkfr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icn0d"]
 radius = 122.0041
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dkfr"]
-radius = 20.024984
+radius = 41.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytcvi"]
-radius = 16.124516
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ytcvi"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+radius = 26.172504
 
 [node name="Knight" type="CharacterBody2D"]
 script = ExtResource("1_7dkfr")
@@ -24,19 +22,22 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_icn0d")
 
 [node name="AttackRange" type="Area2D" parent="."]
+position = Vector2(0, 4)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_7dkfr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ytcvi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_ytcvi")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7dkfr")
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_ytcvi")

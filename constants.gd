@@ -37,9 +37,15 @@ const FIREBALL_SPEED = 800
 ## UNITS
 const KNIGHT_HEALTH: int = 10
 const KNIGHT_DAMAGE: float = 2
-const KNIGHT_SPEED: float = 25
+const KNIGHT_SPEED: float = 20
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.5
+
+const DUMMY_HEALTH: int = 3
+const DUMMY_DAMAGE: float = 0.5
+const DUMMY_SPEED: float = 25
+const DUMMY_MELEE: bool = true
+const DUMMY_COOLDOWN: float = 1.0
 
 const GIANT_HEALTH: int = 35
 const GIANT_DAMAGE: float = 5
@@ -49,7 +55,7 @@ const GIANT_COOLDOWN: float = 2.0
 
 const ARCHER_HEALTH: int = 10
 const ARCHER_DAMAGE: float = 1.5
-const ARCHER_SPEED: float = 45
+const ARCHER_SPEED: float = 30
 const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
@@ -125,7 +131,9 @@ const JAMMER_CARD: Card = preload("res://cards/jammer_card.tres")
 const EXTRACTOR_CARD: Card = preload("res://cards/extractor_card.tres")
 const BACKDOOR_CARD: Card = preload("res://cards/backdoor_card.tres")
 const FIREBALL_CARD: Card = preload("res://cards/fireball_card.tres")
+const DUMMY_CARD: Card = preload("res://cards/dummy_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
-							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD, EXTRACTOR_CARD, FIREBALL_CARD]
+							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD,
+							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD]

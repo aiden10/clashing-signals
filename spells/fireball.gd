@@ -9,8 +9,6 @@ var target_pos: Vector2 = Vector2.ZERO
 
 func _init() -> void:
 	damage = Constants.FIREBALL_DAMAGE
-	
-
 
 func _ready() -> void:
 	if player == Constants.PLAYERS.P1:
@@ -33,13 +31,14 @@ func _ready() -> void:
 	var tween = get_tree().create_tween()
 	tween.finished.connect(tween_finished)
 	
-	print("aa",target_pos, own_tower_pos, self.position, time_to_target)
 	if player == Constants.PLAYERS.P1:
 		tween.tween_property(self, "position", target_pos, time_to_target).from(own_tower_pos)
 	
 	elif player == Constants.PLAYERS.P2:
 		tween.tween_property(self, "position", target_pos, time_to_target).from(own_tower_pos)
-	
+
+	var rotation_tween = create_tween()
+	rotation_tween.tween_property($Sprite2D, "rotation", 90, 3.0)
 
 func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
@@ -48,16 +47,13 @@ func on_area_entered(area: Area2D) -> void:
 			parent.take_damage(damage)
 
 func tween_finished() -> void:
-	print("tween finished")
 	self.monitoring = true
 	$Timer.start()
 	
 	var tween = create_tween()
-	tween.tween_property($Sprite2D, "modulate:a", 0, 0.5)
-	
-	
+	tween.tween_property($Sprite2D, "modulate:a", 0, 0.2)
 
 func cleanup() -> void:
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0, 0.5)
+	tween.tween_property(self, "modulate:a", 0, 0.2)
 	tween.finished.connect(queue_free)

@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://jke4yo3sjiqx"]
 
-[ext_resource type="Script" uid="uid://c8hynlbibh3qa" path="res://Buildings/extractor.gd" id="1_lx818"]
+[ext_resource type="Script" path="res://Buildings/extractor.gd" id="1_lx818"]
+[ext_resource type="Texture2D" uid="uid://b0k4ij65j6c4k" path="res://assets/sprites/extractor.png" id="2_dxyy6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lx818"]
-radius = 16.124516
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u115k"]
+radius = 25.0
+height = 68.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxyy6"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u115k"]
-radius = 20.024984
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ad1k0"]
+radius = 25.0
+height = 68.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxyy6"]
 radius = 250.008
@@ -18,16 +18,16 @@ radius = 250.008
 script = ExtResource("1_lx818")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lx818")
+shape = SubResource("CapsuleShape2D_u115k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_dxyy6")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dxyy6")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_u115k")
+shape = SubResource("CapsuleShape2D_ad1k0")
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 2
