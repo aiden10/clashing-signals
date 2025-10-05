@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dapfbmxyjm806"]
+[gd_scene load_steps=11 format=3 uid="uid://dapfbmxyjm806"]
 
 [ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://n6jmxacj44r4" path="res://Cursor.tscn" id="3_u44n3"]
@@ -35,9 +35,6 @@ shader_parameter/viewport_size_override = Vector2(0, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sb48q"]
 normal = Vector2(0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t88pq"]
-size = Vector2(966, 1080)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r0x5m"]
 vertices = PackedVector2Array(1867.9531, 55, 1867.0469, 1022.0781, 1094.5, 755.5, 1094, 753, 1094, 354, 1100.5, 341.5, 1094.5, 1023.28906, 825.5, 755.5, 825, 753, 825.5, 1023.7031, 52, 1024.9063, 52, 55, 825, 354, 831.5, 55, 831.5, 341.5, 1100.5, 55)
@@ -140,24 +137,6 @@ shape = SubResource("WorldBoundaryShape2D_sb48q")
 position = Vector2(0, 1080)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_sb48q")
-
-[node name="P1Area" type="StaticBody2D" parent="."]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="P1Area"]
-position = Vector2(480, 540)
-shape = SubResource("RectangleShape2D_t88pq")
-debug_color = Color(0.6691576, 0.93241715, 0.99999994, 0.41960785)
-
-[node name="P2Area" type="StaticBody2D" parent="."]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="P2Area"]
-position = Vector2(1440, 540)
-shape = SubResource("RectangleShape2D_t88pq")
-debug_color = Color(1, 0.8243778, 0.8235814, 0.41960785)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_r0x5m")

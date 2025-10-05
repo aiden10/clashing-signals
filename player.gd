@@ -10,6 +10,7 @@ var elixir: int = 100
 var can_place: bool = true
 var action_timer: Timer
 var draw_timer: Timer 
+var on_own_side: bool = true
 
 func _ready() -> void:
 	EventBus.elixir_updated.emit()
@@ -35,6 +36,11 @@ func _ready() -> void:
 	draw_timer.timeout.connect(draw_card)
 	draw_timer.one_shot = true
 	add_child(draw_timer)
+	
+	cursor.switched_side.connect(_on_switched_sides)
+
+func _on_switched_sides() -> void:
+	on_own_side = !on_own_side
 
 func _physics_process(delta: float) -> void:
 	var prefix = "p1_" if (player == Constants.PLAYERS.P1) else "p2_"
@@ -75,6 +81,11 @@ func use_selected_card():
 	if not card:
 		EventBus.invalid_action.emit()
 		return
+		
+	if card.type != Constants.CARD_TYPES.SPELL && !on_own_side:
+		EventBus.invalid_action.emit()
+		return
+		
 	if card.cost > self.elixir:
 		EventBus.invalid_action.emit()
 		return
@@ -107,5 +118,3 @@ func use_selected_card():
 	
 	if self.hand.cards.size() < Constants.MAX_HAND_SIZE and draw_timer.is_stopped():
 		draw_timer.start()
-
-		
