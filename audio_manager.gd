@@ -53,20 +53,8 @@ func play_sound(sound_name: String, volume_adjustment: float = 0.0) -> void:
 		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
 		player.play()
 
-#separate function to obtain the player of the current song
-func play_song(sound_name: String, volume_adjustment: float = 0.0) -> void:
-	var player = _get_available_player()
-	if player:
-		player.process_mode = Node.PROCESS_MODE_ALWAYS
-		player.stream = SOUNDS[sound_name]
-		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
-		player.play()
-
 func _get_available_player() -> AudioStreamPlayer:
 	for player in audio_players:
 		if not player.playing:
 			return player
 	return null
-
-func _exit_tree() -> void:
-	play_song("battle_song")
