@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_eyuh6")
 name = "Elderly People"
-cost = 3
+cost = 5
 count = 15
 description = "Large group of weaker people"
 scene = ExtResource("1_dqfp0")

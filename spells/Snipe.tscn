@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca2mfdihjor7q"]
+
+[ext_resource type="Script" uid="uid://ifqlvhcuxcd1" path="res://spells/snipe.gd" id="1_bkwt7"]
+[ext_resource type="Texture2D" uid="uid://iue2ke5j4ah5" path="res://assets/snipe.png" id="2_dce5r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tlyhv"]
+radius = 33.01515
+
+[node name="Snipe" type="Area2D"]
+script = ExtResource("1_bkwt7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tlyhv")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dce5r")

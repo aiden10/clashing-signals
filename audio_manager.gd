@@ -4,12 +4,11 @@ const SOUNDS = {
 	"tower_destroyed": preload("res://assets/sounds/tower_destroyed.wav"),
 	"building_destroyed": preload("res://assets/sounds/building_destroyed.wav"),
 	"unit_killed": preload("res://assets/sounds/unit_killed.wav"),
-	"damage_taken": preload("res://assets/sounds/hit_sound.wav"),
-	"battle_song": preload("res://assets/songs/clashing_signals_battle.wav")
+	"damage_taken": preload("res://assets/sounds/hit_sound.wav")
 }
 
 var audio_players: Array[AudioStreamPlayer] = []
-var curr_song_player: AudioStreamPlayer
+@onready var curr_song_player: AudioStreamPlayer = $SongPlayer
 var sound_level: float = 100.0
 const POOL_SIZE = 16
 
@@ -23,6 +22,10 @@ func _ready() -> void:
 	EventBus.building_destroyed.connect(func(): play_sound("building_destroyed"))
 	EventBus.tower_destroyed.connect(func(): play_sound("tower_destroyed"))
 	#EventBus.damage_taken.connect(func(): play_sound("damage_taken"))
+	EventBus.game_over.connect(func(_player: Constants.PLAYERS): 
+		curr_song_player.stream_paused = true
+		curr_song_player.stop()
+	)
 	
 func set_master_volume() -> void:
 	var normalized_volume = _get_normalized_volume(sound_level)
@@ -54,7 +57,6 @@ func play_sound(sound_name: String, volume_adjustment: float = 0.0) -> void:
 func play_song(sound_name: String, volume_adjustment: float = 0.0) -> void:
 	var player = _get_available_player()
 	if player:
-		curr_song_player = player
 		player.process_mode = Node.PROCESS_MODE_ALWAYS
 		player.stream = SOUNDS[sound_name]
 		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)

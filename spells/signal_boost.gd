@@ -15,7 +15,7 @@ func on_area_entered(area: Area2D) -> void:
 	if parent is Unit:
 		if parent.player == self.player:
 			affected_areas.append(area)
-			Effects.add_image(parent, name, Effects.IMAGES.RING, Color(0.29, 0.949, 0.384, 1.0))
+			Effects.add_image(parent, name, Effects.IMAGES.RING, Color(0.29, 0.949, 0.384, 0.25))
 			parent.signal_buff()
 
 func on_area_exited(area: Area2D) -> void:
