@@ -53,11 +53,11 @@ func _physics_process(delta: float) -> void:
 		direction.x -= 1
 	if Input.is_action_pressed(prefix + "right"):
 		direction.x += 1
-	if Input.is_action_just_pressed(prefix + "select_next"):
+	if Input.is_action_just_released(prefix + "select_next"):
 		hand.next_card()
-	if Input.is_action_just_pressed(prefix + "select_prev"):
+	if Input.is_action_just_released(prefix + "select_prev"):
 		hand.prev_card()
-	if Input.is_action_pressed(prefix + "use") and can_place:
+	if Input.is_action_just_released(prefix + "use") and can_place:
 		use_selected_card()
 		can_place = false
 		action_timer.start()
