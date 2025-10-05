@@ -121,7 +121,7 @@ func become_ready() -> void:
 	$ReadyButton/Label.text = "Ready!"
 
 func become_unready() -> void:
-	$ReadyButton/Label.text = "Not Ready"
+	$ReadyButton/Label.text = "Select to ready up"
 
 func on_ready_pressed():
 	if deck_element.find_available_slot() == -1:
