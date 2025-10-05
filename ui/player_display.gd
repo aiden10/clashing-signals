@@ -1,9 +1,9 @@
 extends Control
 
-@onready var hand: VBoxContainer = $PanelContainer/MarginContainer/Hand
-@onready var elixir_bar: ProgressBar = $PanelContainer/MarginContainer/Hand/ElixirContainer/MarginContainer/VBoxContainer/ElixirBar
-@onready var elixir_label: Label = $PanelContainer/MarginContainer/Hand/ElixirContainer/MarginContainer/VBoxContainer/ElixirLabel
-@onready var draw_bar: ProgressBar = $PanelContainer/MarginContainer/Hand/DrawContainer/MarginContainer/VBoxContainer/DrawBar
+@onready var hand: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/Hand
+@onready var elixir_bar: ProgressBar = $PanelContainer/MarginContainer/VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer/ElixirBar
+@onready var elixir_label: Label = $PanelContainer/MarginContainer/VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer/ElixirLabel
+@onready var draw_bar: ProgressBar = $PanelContainer/MarginContainer/VBoxContainer/DrawContainer/MarginContainer/VBoxContainer/DrawBar
 @export var elixir_container: PanelContainer
 @export var draw_container: PanelContainer
 @export var player: Constants.PLAYERS
