@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://di3mjafcfc5xx"]
+[gd_scene load_steps=7 format=3 uid="uid://di3mjafcfc5xx"]
 
 [ext_resource type="Script" uid="uid://48d6sc5ngckl" path="res://units/Juggernaut.gd" id="1_axg88"]
+[ext_resource type="Texture2D" uid="uid://b3xdg8b8t7ime" path="res://assets/sprites/juggernaut.png" id="2_jjcte"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sgax"]
-radius = 122.0041
+radius = 177.1807
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_axg88"]
-radius = 20.024984
+[sub_resource type="CircleShape2D" id="CircleShape2D_pigfd"]
+radius = 55.145264
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jjcte"]
-radius = 16.124516
+[sub_resource type="CircleShape2D" id="CircleShape2D_wbpqf"]
+radius = 45.17743
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pigfd"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_buhyp"]
+radius = 50.0
 
 [node name="Juggernaut" type="CharacterBody2D"]
 script = ExtResource("1_axg88")
@@ -27,16 +28,16 @@ shape = SubResource("CircleShape2D_4sgax")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_axg88")
+shape = SubResource("CircleShape2D_pigfd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_jjcte")
+shape = SubResource("CircleShape2D_wbpqf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_pigfd")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_jjcte")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_jjcte")
+shape = SubResource("CircleShape2D_buhyp")

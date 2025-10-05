@@ -46,7 +46,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="PlayerDisplay" type="Control" node_paths=PackedStringArray("hand", "elixir_bar", "elixir_label", "draw_bar", "elixir_container", "draw_container")]
+[node name="PlayerDisplay" type="Control" node_paths=PackedStringArray("elixir_container", "draw_container")]
 custom_minimum_size = Vector2(150, 1000)
 layout_mode = 3
 anchors_preset = 0

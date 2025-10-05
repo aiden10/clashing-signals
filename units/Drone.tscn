@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpv6c2d3supu0"]
+[gd_scene load_steps=7 format=3 uid="uid://bpv6c2d3supu0"]
 
 [ext_resource type="Script" path="res://units/drone.gd" id="1_x4nk1"]
+[ext_resource type="Texture2D" uid="uid://ciabpdq8qshf" path="res://assets/sprites/drone.png" id="2_1mf6t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mf6t"]
 radius = 122.0041
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kysdf"]
-radius = 20.024984
+radius = 28.01785
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww3dc"]
+radius = 22.022715
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nrrnw"]
-radius = 16.124516
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ww3dc"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+radius = 25.019993
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_x4nk1")
@@ -30,11 +31,11 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_kysdf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nrrnw")
+shape = SubResource("CircleShape2D_ww3dc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_ww3dc")
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_1mf6t")
 
 [node name="Hitbox" type="Area2D" parent="."]
 

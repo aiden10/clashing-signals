@@ -21,7 +21,7 @@ func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player and not parent.severed and parent != self:
-			Effects.add_image(parent, name, Effects.IMAGES.SIGNAL)
+			Effects.add_image(parent, name, Effects.IMAGES.SIGNAL, Color(1, 1, 1, 0.35))
 			parent.signal_buff()
 
 func on_area_exited(area: Area2D) -> void:

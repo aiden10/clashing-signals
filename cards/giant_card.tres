@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_h4c7m")
-name = "Giant"
+name = "Elephant"
 cost = 5
 description = "A towering brute who crushes defenses. Slow, unstoppable, relentless."
 image = ExtResource("1_pegg2")

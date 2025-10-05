@@ -1,14 +1,14 @@
 
 - Sprites for each unit and towers. These can just be basic shapes
     - ~~Sniper~~
-    - Elephant
-    - Drone
-    - Juggernaut
-    - Jammer
+    - ~~Elephant~~
+    - ~~Drone~~
+    - ~~Juggernaut~~
+    - ~~Jammer~~
 
 - ~~Additive signal buff~~
 - ~~Reduce Tower range~~
-- Descriptions to card display when highlighted
+- ~~Descriptions to card display when highlighted~~
 - ~~Fix tower arrows somehow piercing~~ I had forgotten to update the collision layer of the Dummy DetectionRange 
 - ~~Logo and menu screen~~
 - ~~Make music stop on game over~~
