@@ -184,8 +184,11 @@ func get_nearest_enemy() -> Node2D:
 	
 	for area in $DetectionRange.get_overlapping_areas():
 		var parent = area.get_parent()
-		if parent is Unit:
+		if parent is Unit or parent is Building:
 			if parent.player != self.player:
+				if (parent.is_in_group("backdoors") and parent.player == self.player):
+					if parent.exit:
+						continue
 				var dist_sq = global_position.distance_squared_to(parent.global_position)
 				if dist_sq < min_dist_sq:
 					min_dist_sq = dist_sq
