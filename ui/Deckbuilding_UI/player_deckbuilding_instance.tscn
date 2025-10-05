@@ -73,6 +73,9 @@ columns = 4
 script = ExtResource("2_bdylk")
 empty_name = "MISSING"
 empty_image = ExtResource("3_73lhv")
+empty_cost = null
+player_ID = null
+cards = null
 
 [node name="Card" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
@@ -106,6 +109,7 @@ layout_mode = 2
 clip_contents = false
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+player_ID = null
 
 [node name="ReadyButton" type="Panel" parent="."]
 layout_mode = 0

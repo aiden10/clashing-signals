@@ -4,7 +4,7 @@ class_name CustomizableDeck
 
 @export var empty_name: String
 @export var empty_image: Texture2D
-@export var empty_cost: int
+@export var empty_cost: String
 
 @export var player_ID: Constants.PLAYERS
 

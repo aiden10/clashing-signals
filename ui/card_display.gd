@@ -9,7 +9,7 @@ class_name CardDisplay
 func _ready() -> void:
 	valid_selection()
 
-func setup(card_name: String, image: Texture, cost: int) -> void:
+func setup(card_name: String, image: Texture, cost) -> void:
 	$MarginContainer/VBoxContainer/CardName.text = card_name
 	$MarginContainer/VBoxContainer/Image.texture = image
 	$MarginContainer/VBoxContainer/CenterContainer/ElixirCost.text = str(cost)
