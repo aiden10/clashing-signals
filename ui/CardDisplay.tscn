@@ -44,7 +44,6 @@ texture = ExtResource("3_0chp0")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "-1"
 
 [node name="CardName" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

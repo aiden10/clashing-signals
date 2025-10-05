@@ -115,14 +115,20 @@ func remove_card(index: int):
 	
 	deck[index] = null
 	deck_element.remove_card(index)
+	become_unready()
 
+func become_ready() -> void:
+	$ReadyButton/Label.text = "Ready!"
+
+func become_unready() -> void:
+	$ReadyButton/Label.text = "Not Ready"
 
 func on_ready_pressed():
 	if deck_element.find_available_slot() == -1:
 		if !is_ready:
-			$ReadyButton/Label.text = "Ready!"
+			become_ready()
 		else:
-			$ReadyButton/Label.text = "Not Ready"
+			become_unready()
 		is_ready = !is_ready
 	else:
 		print("please fill in all slots first")

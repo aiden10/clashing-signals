@@ -81,8 +81,6 @@ columns = 4
 script = ExtResource("2_bdylk")
 empty_name = "MISSING"
 empty_image = ExtResource("3_73lhv")
-empty_cost = -1
-card_overview = NodePath("../CardOverview")
 
 [node name="Card" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
@@ -120,7 +118,11 @@ layout_mode = 2
 clip_contents = false
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+<<<<<<< HEAD
+player_ID = null
+=======
 card_overview = NodePath("../HBoxContainer/CardOverview")
+>>>>>>> 5f464c449d72df282ffb2aea43a1be868ff9f410
 
 [node name="ReadyButton" type="Panel" parent="."]
 layout_mode = 0
