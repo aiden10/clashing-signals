@@ -9,6 +9,7 @@ var target_position: Vector2 = Vector2.ZERO
 var pierce_limit: int
 var hit_count: int = 0
 var direction: Vector2 = Vector2.ZERO 
+var max_lifespan: int = 1
 
 var end_pos: Vector2 = Vector2.ZERO
 
@@ -19,7 +20,7 @@ func _ready() -> void:
 	
 	var lifespan_timer: Timer = Timer.new()
 	add_child(lifespan_timer)
-	lifespan_timer.wait_time = 1
+	lifespan_timer.wait_time = max_lifespan
 	lifespan_timer.start()
 	lifespan_timer.timeout.connect(queue_free)
 	

@@ -177,6 +177,7 @@ const BIG_ARROW_PIERCE_LIMIT: int = 5
 const CANNONBALL_SPEED: float = 400
 const CANNONBALL_DAMAGE: float = 5
 const CANNONBALL_PIERCE_LIMIT: int = 3
+const CANNONBALL_LIFESPAN: float = 5
 
 ## CARDS
 const CARD_DISPLAY: PackedScene = preload("res://ui/CardDisplay.tscn")
