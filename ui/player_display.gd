@@ -53,8 +53,6 @@ func update_hand(player_id: Constants.PLAYERS) -> void:
 	var p = GameState.p1 if self.player == Constants.PLAYERS.P1 else GameState.p2
 	if p and p.hand:
 		update_hand_selection(self.player, p.hand.selected_index)
-	hand.move_child(elixir_container, 0)
-	hand.move_child(draw_container, -1)
 	
 func update_hand_selection(player_id: Constants.PLAYERS, index: int) -> void:
 	if player_id != self.player:
