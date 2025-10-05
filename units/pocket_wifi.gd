@@ -17,6 +17,18 @@ func attack() -> void:
 	if is_instance_valid(self.target) and is_target_in_attack_range() and self.target.player != self.player:
 		self.target.take_damage(self.damage)
 
+func signal_buff() -> void:
+	super()
+	if connection_count > 0:
+		Effects.add_image(self, name, Effects.IMAGES.WARNING)
+		disabled = false
+
+func signal_unbuff() -> void:
+	super()
+	if connection_count == 0:
+		Effects.remove_image(self, name)
+		disabled = true
+
 func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:

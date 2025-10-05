@@ -22,6 +22,8 @@ var target_friendly: bool = false
 var nav_agent: NavigationAgent2D
 var friendly_signals: int
 var opposing_signals: int
+var connection_count: int = 0
+var disabled: bool = false
 
 func _ready() -> void:
 	## Current cooldown/damage/speed are set in subclasses, and base is updated here.
@@ -114,6 +116,8 @@ func die() -> void:
 
 func _physics_process(delta: float) -> void:
 	update_line()
+	if disabled:
+		return
 
 	var nearest_enemy = get_nearest_enemy()
 	var nearest_tower = get_nearest_tower()
@@ -258,10 +262,12 @@ func signal_buff() -> void:
 	self.percentage_damage_mod += Constants.SIGNAL_DAMAGE_BUFF
 	self.percentage_speed_mod += Constants.SIGNAL_SPEED_BUFF
 	self.cooldown_mult *= 1 - Constants.SIGNAL_COOLDOWN_BUFF
+	self.connection_count += 1
 	#print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
 
 func signal_unbuff() -> void:
 	self.percentage_damage_mod -= Constants.SIGNAL_DAMAGE_BUFF
 	self.percentage_speed_mod -= Constants.SIGNAL_SPEED_BUFF
 	self.cooldown_mult /= 1 - Constants.SIGNAL_COOLDOWN_BUFF
+	self.connection_count -= 1
 	#print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
