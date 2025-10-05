@@ -4,6 +4,7 @@ class_name Card
 @export var name: String
 @export var cost: int
 @export var count: int = 1
+@export var description: String = "MISSING"
 @export var image: Texture
 @export var type: Constants.CARD_TYPES
 @export var scene: PackedScene

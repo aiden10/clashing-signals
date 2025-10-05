@@ -8,6 +8,7 @@
 script = ExtResource("1_nrgvk")
 name = "Jammer"
 cost = 4
+description = "Jams nearby enemy signals, severing their connection."
 image = ExtResource("1_n2i1l")
 scene = ExtResource("2_hjax7")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

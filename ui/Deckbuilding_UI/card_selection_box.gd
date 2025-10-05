@@ -3,6 +3,7 @@ class_name SelectionBox
 
 var available_cards: Array[Card] # for debugging, add cards here to make them appear in deckbuilding
 @export var player_ID: Constants.PLAYERS
+@export var card_overview: Node
 var displayed_cards: Array[CardDisplay]
 var num_displayed: int
 var selected_index: int = 3
@@ -73,6 +74,10 @@ func update_selection(index: int) -> void:
 			displayed_cards[i].highlight()
 		else:
 			displayed_cards[i].unhighlight()
+	if available_cards.size() - 1 >= index:
+		print(available_cards.size(),index,)
+		if available_cards[index] != null:
+			card_overview.update(available_cards[index])
 
 func focus(index: int = 0) -> void:
 	selected_index = index

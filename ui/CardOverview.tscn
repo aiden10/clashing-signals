@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4lwa8wne8xf6"]
+
+[ext_resource type="StyleBox" uid="uid://wwssobw1iu4n" path="res://ui/Unhighlight.tres" id="1_osgr8"]
+[ext_resource type="Script" uid="uid://t73v5oolb3a0" path="res://ui/card_overview.gd" id="2_eydl6"]
+[ext_resource type="FontFile" uid="uid://dd812osq6pvgl" path="res://assets/CourierPrime-Regular.ttf" id="2_f02up"]
+
+[node name="CardOverview" type="Panel" node_paths=PackedStringArray("title", "description")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1517.0
+offset_bottom = -799.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_osgr8")
+script = ExtResource("2_eydl6")
+title = NodePath("VBoxContainer/ColorRect/Label")
+description = NodePath("Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 398.0
+offset_bottom = 315.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0.22607839, 0.21589854, 0.22607908, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/ColorRect"]
+layout_mode = 0
+offset_right = 399.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.2901961, 0.9490196, 0.38431373, 1)
+theme_override_fonts/font = ExtResource("2_f02up")
+theme_override_font_sizes/font_size = 36
+text = "MISSING"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 58.0
+offset_right = 399.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(0.2901961, 0.9490196, 0.38431373, 1)
+theme_override_fonts/font = ExtResource("2_f02up")
+text = "MISSING"
+autowrap_mode = 3
