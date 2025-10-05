@@ -8,7 +8,7 @@
 script = ExtResource("1_h4c7m")
 name = "Elephant"
 cost = 5
-description = "A towering brute who crushes defenses. Slow, unstoppable, relentless."
+description = "A slow but strong unit"
 image = ExtResource("1_pegg2")
 scene = ExtResource("3_72pqq")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

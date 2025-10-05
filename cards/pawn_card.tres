@@ -8,6 +8,6 @@ script = ExtResource("1_e738g")
 name = "Pawns"
 cost = 4
 count = 3
-description = "Basic, expendable unit. Cheap, quick to deploy, and effective in numbers."
+description = "Cluster of basic expendable units"
 scene = ExtResource("1_7pbfk")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

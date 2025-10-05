@@ -11,9 +11,14 @@ func attack() -> void:
 	if is_instance_valid(self.target) and is_target_in_attack_range() and !self.severed:
 		self.target.take_damage(self.damage)
 
-func severed_changed(severed: bool) -> void:
+func signal_unbuff() -> void:
+	super()
+	if connection_count == 0:
+		Effects.remove_image(self, name)
+		disabled = true
+
+func severed_changed() -> void:
 	if severed:
-		self.speed = 0
-		self.health /= 30
+		disabled = true
 	else:
-		self.speed = Constants.JUGGERNAUT_SPEED
+		disabled = false

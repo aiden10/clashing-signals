@@ -7,6 +7,6 @@
 script = ExtResource("1_gihxn")
 name = "Pocket WiFi"
 cost = 4
-description = "Creates a mobile connection point that grants increased attack and speed."
+description = "A moving signal extender"
 scene = ExtResource("1_7hkcx")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

@@ -8,7 +8,7 @@
 script = ExtResource("2_3g2kf")
 name = "Knight"
 cost = 3
-description = "A sturdy frontline fighter who charges fearlessly into danger. Reliable, durable, and always ready to clash."
+description = "A sturdy frontline fighter"
 image = ExtResource("1_hgn1d")
 scene = ExtResource("2_qc4fs")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

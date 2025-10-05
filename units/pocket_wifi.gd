@@ -29,6 +29,12 @@ func signal_unbuff() -> void:
 		Effects.remove_image(self, name)
 		disabled = true
 
+func severed_changed() -> void:
+	if severed:
+		disabled = true
+	else:
+		disabled = false
+
 func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:

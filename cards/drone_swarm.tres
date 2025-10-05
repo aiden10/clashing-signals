@@ -9,6 +9,7 @@ script = ExtResource("1_1r2ic")
 name = "Drone Swarm"
 cost = 4
 count = 4
+description = "Spawns a cluster of drones"
 image = ExtResource("1_5ey0o")
 scene = ExtResource("2_2n842")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"
