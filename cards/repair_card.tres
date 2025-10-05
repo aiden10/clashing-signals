@@ -7,7 +7,7 @@
 script = ExtResource("1_gwbhe")
 name = "Repair"
 cost = 2
-description = "Restores health of damaged buildings"
+description = "Restores health of damaged buildings. Slightly heals towers"
 type = 1
 scene = ExtResource("1_0os0d")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

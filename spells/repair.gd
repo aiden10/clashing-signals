@@ -11,9 +11,12 @@ func _ready() -> void:
 
 func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent is Building and parent is not Tower:
+	if parent is Building and parent:
 		if parent.player == player:
-			parent.take_decay_damage(parent.initial_hp * Constants.REPAIR_PERCENT)
+			var repair_percent = Constants.REPAIR_PERCENT
+			if parent is Tower:
+				repair_percent /= 2
+			parent.take_decay_damage(parent.initial_hp * repair_percent)
 			Effects.add_image(parent, name, Effects.IMAGES.WRENCH)
 			repaired.append(parent)
 
