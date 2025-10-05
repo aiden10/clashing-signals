@@ -13,7 +13,7 @@ func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Building and parent is not Tower:
 		if parent.player == player:
-			parent.health = parent.initial_hp
+			parent.take_decay_damage(parent.initial_hp * Constants.REPAIR_PERCENT)
 			Effects.add_image(parent, name, Effects.IMAGES.WRENCH)
 			repaired.append(parent)
 

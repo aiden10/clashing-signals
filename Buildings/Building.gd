@@ -124,18 +124,24 @@ func shoot() -> void:
 
 func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
+	if health > initial_hp:
+		health = initial_hp
+	
 	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(global_position)
 
 	if health > 0:
-		self.modulate.a = max(float(self.health) / float(initial_hp), 0.25)
+		self.modulate.a = 0.25 + 0.75 * float(self.health) / float(initial_hp)
 	else:
 		die()
 
 func take_decay_damage(damage_taken: float) -> void:
 	health -= damage_taken
+	if health > initial_hp:
+		health = initial_hp
+	
 	if health > 0:
-		modulate.a = float(health) / float(initial_hp)
+		self.modulate.a = 0.25 + 0.75 * float(self.health) / float(initial_hp)
 	else:
 		die()
 

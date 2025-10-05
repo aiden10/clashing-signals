@@ -66,13 +66,13 @@ autostart = true
 position = Vector2(720, 540)
 
 [node name="Tower1" type="Marker2D" parent="P1"]
-position = Vector2(475, 200)
+position = Vector2(520, 230)
 
 [node name="Tower2" type="Marker2D" parent="P1"]
 position = Vector2(300, 540)
 
 [node name="Tower3" type="Marker2D" parent="P1"]
-position = Vector2(475, 820)
+position = Vector2(520, 860)
 
 [node name="P2" type="Node" parent="."]
 
@@ -81,13 +81,13 @@ position = Vector2(1200, 540)
 player = 1
 
 [node name="Tower1" type="Marker2D" parent="P2"]
-position = Vector2(1445, 200)
+position = Vector2(1400, 230)
 
 [node name="Tower2" type="Marker2D" parent="P2"]
 position = Vector2(1620, 540)
 
 [node name="Tower3" type="Marker2D" parent="P2"]
-position = Vector2(1445, 820)
+position = Vector2(1400, 860)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -151.0
