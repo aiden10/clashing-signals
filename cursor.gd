@@ -13,7 +13,8 @@ func _init() -> void:
 func _ready() -> void:
 	prev_side = get_side();
 	set_valid_crosshair()
-	EventBus.selection_updated.connect(_on_hand_update)
+	EventBus.selection_updated.connect(_on_selection_updated)
+	EventBus.hand_updated.connect(_on_hand_update)
 
 func _process(_delta: float) -> void:
 	if player == get_side() || holding_spell:
@@ -58,7 +59,10 @@ func get_default_color() -> Color:
 	else:
 		return Constants.COLOR_P2
 
-func _on_hand_update(received_player: Constants.PLAYERS, _selected_index) -> void:
+func _on_hand_update(received_player: Constants.PLAYERS) -> void:
+	_on_selection_updated(received_player, 0)
+
+func _on_selection_updated(received_player: Constants.PLAYERS, _selected_index) -> void:
 	if received_player != player:
 		return
 
@@ -67,6 +71,7 @@ func _on_hand_update(received_player: Constants.PLAYERS, _selected_index) -> voi
 		selected_card = GameState.p1.hand.get_selected()
 	else:
 		selected_card = GameState.p2.hand.get_selected()
+	print("hand update, ", received_player, " is now holding ", selected_card.name)
 	
 	if selected_card:
 		holding_spell = (selected_card.type == Constants.CARD_TYPES.SPELL)

@@ -61,7 +61,7 @@ const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.0
 
 const PAWN_HEALTH: float = 7.5
-const PAWN_DAMAGE: float = 1.5
+const PAWN_DAMAGE: float = 1
 const PAWN_SPEED: float = 50
 const PAWN_MELEE: bool = true
 const PAWN_COOLDOWN: float = 1.0
@@ -78,11 +78,11 @@ const PERSON_SPEED: float = 50
 const PERSON_MELEE: bool = true
 const PERSON_COOLDOWN: float = 1.0
 
-const GIANT_HEALTH: float = 50
+const GIANT_HEALTH: float = 40
 const GIANT_DAMAGE: float = 5
-const GIANT_SPEED: float = 35
+const GIANT_SPEED: float = 30
 const GIANT_MELEE: bool = true
-const GIANT_COOLDOWN: float = 2.0
+const GIANT_COOLDOWN: float = 4.0
 
 const ARCHER_HEALTH: float = 5
 const ARCHER_DAMAGE: float = 1.5
