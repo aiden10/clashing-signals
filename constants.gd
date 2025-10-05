@@ -15,6 +15,7 @@ const INVALID_DARKENING = 0.50
 const CURSOR_SPEED: float = 300
 
 ## MISCELLANEOUS
+const STARTING_ELIXIR: float = 4.0
 const ELIXIR_COOLDOWN: float = 2.8
 const STAGE1_DURATION: float = 120
 const ELIXIR_COOLDOWN2: float = 1.4
