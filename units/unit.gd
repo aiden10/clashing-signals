@@ -37,10 +37,10 @@ func _ready() -> void:
 		signal_line.default_color = Color8(0, 0, 512)
 	
 	## Prevents collision between friendly units but keeps collision with enemies
-	#var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
-	#var col_layer = 4 if self.player == Constants.PLAYERS.P1 else 3
-	#self.collision_layer = col_layer
-	#self.collision_mask = mask
+	var mask = 3 if self.player == Constants.PLAYERS.P1 else 4
+	var col_layer = 4 if self.player == Constants.PLAYERS.P1 else 3
+	self.collision_layer = col_layer
+	self.collision_mask = mask
 	
 	## Putting this hardcoded node name in here reduces redundancy in child unit classes, but means that 
 	## the detection Area2D must be named "DetectionRange"
@@ -102,7 +102,7 @@ func die() -> void:
 	attack_timer.stop()
 	queue_free()
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	update_line()
 
 	var nearest_enemy = get_nearest_enemy()
@@ -139,13 +139,31 @@ func _physics_process(_delta: float) -> void:
 			var next_path_pos = nav_agent.get_next_path_position()
 			var direction = (next_path_pos - global_position).normalized()
 			self.velocity = direction * speed
+			apply_separation_force(delta)
 			move_and_slide()
 	
 	if target.global_position.x > global_position.x:
 		$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.flip_h = false
-	
+
+func apply_separation_force(delta: float) -> void:
+	for area in $DetectionRange.get_overlapping_areas():
+		var other = area.get_parent()
+		if other == self:
+			continue
+		if not (other is Unit):
+			continue
+		if other.player != player:
+			continue
+
+		var diff = global_position - other.global_position
+		var dist = diff.length()
+		if dist > 0 and dist < Constants.MIN_DISTANCE:
+			var push_dir = diff.normalized()
+			var strength = (Constants.MIN_DISTANCE - dist) / Constants.MIN_DISTANCE
+			velocity += push_dir * Constants.PUSH_STRENGTH * strength * delta
+
 func update_line() -> void:
 	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
 	self.signal_line.clear_points()

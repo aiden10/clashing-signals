@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dapfbmxyjm806"]
+[gd_scene load_steps=13 format=3 uid="uid://dapfbmxyjm806"]
 
 [ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://n6jmxacj44r4" path="res://Cursor.tscn" id="3_u44n3"]
@@ -100,7 +100,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="PlayerDisplay1" parent="CanvasLayer" instance=ExtResource("4_sb48q")]
 anchors_preset = -1
+anchor_left = 0.01
 anchor_top = 0.01
+anchor_right = 0.01
 anchor_bottom = 0.01
 offset_right = 0.0
 

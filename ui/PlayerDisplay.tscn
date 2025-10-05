@@ -46,13 +46,18 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="PlayerDisplay" type="Control" node_paths=PackedStringArray("elixir_container", "draw_container")]
+[node name="PlayerDisplay" type="Control" node_paths=PackedStringArray("hand", "elixir_bar", "elixir_label", "draw_bar", "elixir_container", "draw_container")]
+custom_minimum_size = Vector2(150, 1000)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
 script = ExtResource("1_nwvgy")
-elixir_container = NodePath("PanelContainer/MarginContainer/Hand/ElixirContainer")
-draw_container = NodePath("PanelContainer/MarginContainer/Hand/DrawContainer")
+hand = NodePath("PanelContainer/MarginContainer/Hand")
+elixir_bar = NodePath("VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer/ElixirBar")
+elixir_label = NodePath("VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer/ElixirLabel")
+draw_bar = NodePath("VBoxContainer/DrawContainer/MarginContainer/VBoxContainer/DrawBar")
+elixir_container = NodePath("VBoxContainer/ElixirContainer")
+draw_container = NodePath("VBoxContainer/DrawContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -66,30 +71,36 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
 [node name="Hand" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(150, 1000)
+custom_minimum_size = Vector2(150, 850)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Control" type="VBoxContainer" parent="PanelContainer/MarginContainer/Hand"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 150.0
+grow_vertical = 0
 
-[node name="ElixirContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/Hand"]
+[node name="ElixirContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_nwvgy")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/Hand/ElixirContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ElixirContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Hand/ElixirContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ElixirContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ElixirBar" type="ProgressBar" parent="PanelContainer/MarginContainer/Hand/ElixirContainer/MarginContainer/VBoxContainer"]
+[node name="ElixirBar" type="ProgressBar" parent="VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_70w2u")
@@ -98,7 +109,7 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="ElixirLabel" type="Label" parent="PanelContainer/MarginContainer/Hand/ElixirContainer/MarginContainer/VBoxContainer"]
+[node name="ElixirLabel" type="Label" parent="VBoxContainer/ElixirContainer/MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2901961, 0.9490196, 0.38431373, 1)
@@ -110,22 +121,22 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_njvc7")
 text = "0"
 horizontal_alignment = 1
 
-[node name="DrawContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/Hand"]
+[node name="DrawContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_nwvgy")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/Hand/DrawContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/DrawContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Hand/DrawContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DrawContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="DrawBar" type="ProgressBar" parent="PanelContainer/MarginContainer/Hand/DrawContainer/MarginContainer/VBoxContainer"]
+[node name="DrawBar" type="ProgressBar" parent="VBoxContainer/DrawContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_qprck")

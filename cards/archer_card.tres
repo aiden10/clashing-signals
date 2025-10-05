@@ -8,6 +8,7 @@
 script = ExtResource("1_u6on0")
 name = "Archer"
 cost = 3
+count = 2
 image = ExtResource("1_fj6jr")
 scene = ExtResource("3_psn8p")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"
