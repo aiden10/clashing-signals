@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxgorpq8g7ey7"]
+[gd_scene load_steps=10 format=3 uid="uid://bxgorpq8g7ey7"]
 
 [ext_resource type="Texture2D" uid="uid://dlx7u7ffja0ue" path="res://assets/logo-transparent.png" id="1_blw3s"]
 [ext_resource type="Script" uid="uid://b3byn3r34fphe" path="res://ui/main_menu/main_menu.gd" id="1_u1tth"]
 [ext_resource type="FontFile" uid="uid://dj146400yoh5w" path="res://assets/Prisma.ttf" id="2_x85v6"]
 [ext_resource type="Shader" uid="uid://winj22x5v8kf" path="res://effects/crt.gdshader" id="3_x85v6"]
+[ext_resource type="AudioStream" uid="uid://dxkddsd8tjdn0" path="res://assets/sounds/clashing_signals_intro.wav" id="5_2ijps"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1tth"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -107,3 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2ijps")
+autoplay = true

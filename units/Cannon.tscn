@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bl0myx0i820kv"]
 
 [ext_resource type="Script" uid="uid://dhwun1oo6odxk" path="res://units/cannon.gd" id="1_44oxr"]
+[ext_resource type="Texture2D" uid="uid://chm72end0i1xt" path="res://assets/sprites/sniper.png" id="2_mbt3k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xlafr"]
 radius = 657.00684
@@ -8,14 +9,13 @@ radius = 657.00684
 [sub_resource type="CircleShape2D" id="CircleShape2D_otxrb"]
 radius = 494.17102
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vvdbk"]
-radius = 16.124516
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oxfat"]
+radius = 22.0
+height = 120.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_apdr0"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qd24j"]
-radius = 20.024984
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8q4as"]
+radius = 35.0
+height = 150.0
 
 [node name="Cannon" type="CharacterBody2D"]
 script = ExtResource("1_44oxr")
@@ -33,13 +33,16 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_otxrb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vvdbk")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_oxfat")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_apdr0")
+rotation = 3.1415927
+texture = ExtResource("2_mbt3k")
+flip_v = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_qd24j")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8q4as")

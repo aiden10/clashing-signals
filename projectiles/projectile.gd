@@ -47,7 +47,7 @@ func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Building or parent is Unit:
 		if parent.player != self.player:
-			if hit_count > pierce_limit:
+			if hit_count >= pierce_limit:
 				queue_free()
 				return
 			parent.take_damage(self.damage)

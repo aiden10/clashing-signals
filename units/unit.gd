@@ -66,6 +66,7 @@ func attack() -> void:
 func shoot() -> void:
 	if not is_instance_valid(self.target) or not is_target_in_attack_range():
 		return
+
 	var projectile: Projectile = self.projectile_scene.instantiate()
 	projectile.player = self.player
 	projectile.target_position = self.target.global_position
