@@ -7,6 +7,7 @@
 script = ExtResource("1_80gwl")
 name = "Snipe"
 cost = 4
+description = "Deal high damage in a small area"
 type = 1
 scene = ExtResource("1_xpbjs")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

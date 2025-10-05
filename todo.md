@@ -17,6 +17,9 @@
     - ~~Basllista~~
 - ~~Snipe spell (small AOE high damage)~~
 - new juggernaut sprite
+- ~~shrink ring sprite~~
+- prevent ballistae from shooting over "water"
+- ~~set menu to main scene~~
 
 # Builds
 ## Rush

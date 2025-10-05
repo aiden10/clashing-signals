@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://di3mjafcfc5xx"]
 
 [ext_resource type="Script" uid="uid://48d6sc5ngckl" path="res://units/Juggernaut.gd" id="1_axg88"]
-[ext_resource type="Texture2D" uid="uid://b3xdg8b8t7ime" path="res://assets/sprites/juggernaut.png" id="2_jjcte"]
+[ext_resource type="Texture2D" uid="uid://bomg2k67kh2pd" path="res://assets/sprites/juggernaut.png" id="2_jjcte"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sgax"]
 radius = 177.1807

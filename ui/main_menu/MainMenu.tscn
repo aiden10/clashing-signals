@@ -43,8 +43,8 @@ shader_parameter/grain_strength = 0.25
 shader_parameter/tint_strength = 0.0
 shader_parameter/scanline_density = 240.0
 shader_parameter/scanline_strength = 0.15
-shader_parameter/glitch_strength = 0.050000002375
-shader_parameter/glitch_speed = 1.0000000475
+shader_parameter/glitch_strength = 0.030000001425
+shader_parameter/glitch_speed = 5.0000002375
 shader_parameter/viewport_size_override = Vector2(0, 0)
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("logo", "start_button")]
