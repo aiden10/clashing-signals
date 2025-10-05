@@ -21,6 +21,9 @@ const STAGE1_DURATION: float = 120
 const ELIXIR_COOLDOWN2: float = 1.4
 const STAGE2_DURATION: float = 120
 const ELIXIR_COOLDOWN3: float = 0.9
+const STAGE2_COLOR = Color("ffff31ff")
+const STAGE3_COLOR = Color("ff7100ff")
+
 const MIN_DISTANCE: float = 50.0  
 const PUSH_STRENGTH: float = 500.0
 
