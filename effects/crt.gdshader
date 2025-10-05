@@ -69,8 +69,6 @@ void fragment(){
     float slice = floor(uv.y * scanline_density);
     float slice_noise = noise(vec2(slice * 0.1, floor(t * glitch_speed)));
     float h_off = (slice_noise - 0.5) * glitch_strength * 0.06;
-    float burst = step(0.95, fract(noise(vec2(t * 0.3, 9.13))));
-    h_off += (rand(vec2(t, slice))*2.0 - 1.0) * glitch_strength * 0.2 * burst;
 
     vec2 center = vec2(0.5);
     vec2 dir = uv - center;

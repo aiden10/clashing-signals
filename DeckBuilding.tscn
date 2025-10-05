@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpve6g3m6qfts"]
+[gd_scene load_steps=4 format=3 uid="uid://bpve6g3m6qfts"]
 
 [ext_resource type="Script" uid="uid://b5ra6a5vucjxi" path="res://deck_building.gd" id="1_qn21b"]
 [ext_resource type="PackedScene" uid="uid://bj22r5ylkt64i" path="res://ui/Deckbuilding_UI/player_deckbuilding_instance.tscn" id="2_qn21b"]
+[ext_resource type="FontFile" uid="uid://dd812osq6pvgl" path="res://assets/CourierPrime-Regular.ttf" id="3_fvec8"]
 
 [node name="DeckbuildingScene" type="Node"]
 script = ExtResource("1_qn21b")
@@ -23,5 +24,6 @@ anchor_right = 0.1
 offset_right = 8.0
 offset_bottom = 8.0
 mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_fvec8")
 theme_override_font_sizes/font_size = 32
 text = "FULLSCREEN"

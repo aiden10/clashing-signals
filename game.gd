@@ -32,7 +32,7 @@ func _init() -> void:
 	p2.deck = p2_deck
 
 func _ready() -> void:
-	fullscreen_button.pressed.connect(func(): GameStateManager.goto_scene(Constants.GAME_SCENES.DECK))
+	fullscreen_button.pressed.connect(func(): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN))
 	EventBus.game_started.emit()
 	EventBus.tower_destroyed.connect(check_game_over)
 	elixir_timer.wait_time = Constants.ELIXIR_COOLDOWN
