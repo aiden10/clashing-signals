@@ -29,8 +29,11 @@ const MAX_HAND_SIZE: int = 5
 const DRAW_COOLDOWN: float = 2.0
 const ACTION_COOLDOWN: float = 0.5
 
-## Each signal range boosts stats by this percent
-const SIGNAL_BUFF: float = 1.15
+## Each signal in range boosts stats by this percent.
+const SIGNAL_DAMAGE_BUFF: float = 0.50 ## (additive)
+const SIGNAL_SPEED_BUFF: float = 0.50 ## (additive) 
+const SIGNAL_COOLDOWN_BUFF: float = 0.15 ## (multiplicative)
+
 const SEVER_DEBUFF: float = 2.0
 
 ## SPELLS

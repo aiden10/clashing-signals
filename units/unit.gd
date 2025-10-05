@@ -1,12 +1,18 @@
 extends CharacterBody2D
 class_name Unit
 var player: Constants.PLAYERS
-var damage: float
 var health: int
+
+var base_cooldown: float
+var base_damage: float
+var base_speed: float
+
+var cooldown: float
+var damage: float
 var speed: float
+
 var target: Node2D
 var is_melee: bool
-var cooldown: float
 var attack_timer: Timer
 var projectile_scene: PackedScene
 var signal_line: Line2D
@@ -16,6 +22,11 @@ var severed: bool = false
 var nav_agent: NavigationAgent2D
 
 func _ready() -> void:
+	## Current cooldown/damage/speed are set in subclasses, and base is updated here.
+	self.base_cooldown = cooldown
+	self.base_damage = damage
+	self.base_speed = speed
+	
 	attack_timer = Timer.new()
 	attack_timer.wait_time = cooldown
 	attack_timer.autostart = true
@@ -226,3 +237,18 @@ func is_target_in_attack_range() -> bool:
 
 func severed_changed(severed) -> void:
 	pass
+	
+func signal_buff() -> void:
+	self.damage += self.base_damage * Constants.SIGNAL_DAMAGE_BUFF
+	self.speed += self.base_speed * Constants.SIGNAL_SPEED_BUFF
+	self.cooldown *= 1 - Constants.SIGNAL_COOLDOWN_BUFF
+	self.attack_timer.wait_time = self.cooldown
+	print(self, "'s new stats: ", damage, ", ", speed, ", ", cooldown)
+
+func signal_unbuff() -> void:
+	self.damage -= self.base_damage * Constants.SIGNAL_DAMAGE_BUFF
+	self.speed -= self.base_speed * Constants.SIGNAL_SPEED_BUFF
+	self.cooldown /= 1 - Constants.SIGNAL_COOLDOWN_BUFF
+	self.attack_timer.wait_time = self.cooldown
+	print(self, "'s new stats: ", damage, ", ", speed, ", ", cooldown)
+	

@@ -14,20 +14,14 @@ func on_area_entered(area: Area2D) -> void:
 	if parent is Unit:
 		if parent.player == self.player:
 			Effects.add_ring(parent, name, Color(0.29, 0.949, 0.384, 1.0))
-			parent.damage *= Constants.SIGNAL_BUFF
-			parent.speed *= Constants.SIGNAL_BUFF
-			parent.cooldown /= Constants.SIGNAL_BUFF
-			parent.attack_timer.wait_time = parent.cooldown
+			parent.signal_buff()
 
 func on_area_exited(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player:
 			Effects.remove_ring(parent, name)
-			parent.damage /= Constants.SIGNAL_BUFF
-			parent.speed /= Constants.SIGNAL_BUFF
-			parent.cooldown *= Constants.SIGNAL_BUFF
-			parent.attack_timer.wait_time = parent.cooldown
+			parent.signal_unbuff()
 
 func cleanup() -> void:
 	var tween = create_tween()

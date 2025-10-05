@@ -102,10 +102,7 @@ func signal_buff(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player and not parent.severed:
-			parent.damage *= Constants.SIGNAL_BUFF
-			parent.speed *= Constants.SIGNAL_BUFF
-			parent.cooldown /= Constants.SIGNAL_BUFF
-			parent.attack_timer.wait_time = parent.cooldown
+			parent.signal_buff()
 
 func signal_debuff(area: Area2D) -> void:
 	if not extends_signal:
@@ -114,10 +111,7 @@ func signal_debuff(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player and not parent.severed:
-			parent.damage /= Constants.SIGNAL_BUFF
-			parent.speed /= Constants.SIGNAL_BUFF
-			parent.cooldown *= Constants.SIGNAL_BUFF
-			parent.attack_timer.wait_time = parent.cooldown
+			parent.signal_unbuff()
 			
 func shoot() -> void:
 	if not is_instance_valid(target) or not is_target_in_attack_range(target):
