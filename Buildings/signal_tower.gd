@@ -10,7 +10,7 @@ func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player:
-			Effects.add_image(parent, name, Effects.IMAGES.RING)
+			Effects.add_image(parent, name, Effects.IMAGES.RING, Color(1.0,1.0,1.0,0.25))
 			parent.signal_buff()
 			
 			take_decay_damage(0.5) 

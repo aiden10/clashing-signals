@@ -15,7 +15,8 @@
 - ~~has_signal property in units~~
 - AOE stuff (piercing projectile)
     - ~~Basllista~~
-- Snipe spell (small AOE high damage)
+- ~~Snipe spell (small AOE high damage)~~
+- new juggernaut sprite
 
 # Builds
 ## Rush

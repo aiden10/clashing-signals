@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dcnsf52i4fgap"]
+
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_80gwl"]
+[ext_resource type="PackedScene" uid="uid://ca2mfdihjor7q" path="res://spells/Snipe.tscn" id="1_xpbjs"]
+
+[resource]
+script = ExtResource("1_80gwl")
+name = "Snipe"
+cost = 4
+type = 1
+scene = ExtResource("1_xpbjs")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

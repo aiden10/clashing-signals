@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cdjcwrd1l0xgg"]
+
+[ext_resource type="PackedScene" uid="uid://bc37d7xyqtj1d" path="res://Buildings/Hospital.tscn" id="1_gd7pa"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_uw7k4"]
+
+[resource]
+script = ExtResource("1_uw7k4")
+name = "Hospital"
+cost = 3
+description = "Spawns elderly people"
+type = 2
+scene = ExtResource("1_gd7pa")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

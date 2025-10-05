@@ -50,6 +50,9 @@ const HP_EQUALIZER_DURATION: float = 0.5
 const REPAIR_PERCENT: float = 0.50
 const REPAIR_DURATION: float = 0.5
 
+const SNIPE_DURATION: float = 0.5
+const SNIPE_DAMAGE: float = 20
+
 const CLONE_DEBUFF: float = 3
 const CLONE_DURATION: float = 0.25
 
@@ -118,7 +121,7 @@ const JUGGERNAUT_COOLDOWN: float = 1.5
 
 const TOWER_COOLDOWN: float = 1
 const TOWER_DAMAGE: float = 1.5
-const TOWER_HEALTH: int = 50
+const TOWER_HEALTH: int = 1
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
 
@@ -129,7 +132,14 @@ const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
 const FACTORY_SPAWN_COUNT: int = 4
 const FACTORY_DECAY_DAMAGE: float = 3
 
+const HOSPITAL_HEALTH: float = 15
+const HOSPITAL_COOLDOWN: float = 1.0
+const HOSPITAL_SPAWN_SCENE: PackedScene = preload("res://units/Dummy.tscn")
+const HOSPITAL_SPAWN_COUNT: int = 1
+const HOSPITAL_DECAY_DAMAGE: float = 1
+
 const BALLISTA_HEALTH: float = 20
+const BALLISTA_DAMAGE: float = 3
 const BALLISTA_COOLDOWN: float = 2.5
 const BALLISTA_PROJECTILE_SCENE: PackedScene = preload("res://projectiles/BigArrow.tscn")
 const BALLISTA_DECAY_DAMAGE: float = BALLISTA_HEALTH/8
@@ -191,10 +201,13 @@ const WALL_CARD: Card = preload("res://cards/wall_card.tres")
 const POCKET_WIFI_CARD: Card = preload("res://cards/pocket_wifi_card.tres")
 const REPAIR_CARD: Card = preload("res://cards/repair_card.tres")
 const BALLISTA_CARD: Card = preload("res://cards/ballista_card.tres")
+const SNIPE_CARD: Card = preload("res://cards/snipe_card.tres")
+const HOSPITAL_CARD: Card = preload("res://cards/hospital_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
 							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD,
 							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD, PEOPLE_CARD,
 							HP_EQUALIZER_CARD, CLONE_CARD, PAWN_CARD, WALL_CARD,
-							POCKET_WIFI_CARD, REPAIR_CARD, BALLISTA_CARD]
+							POCKET_WIFI_CARD, REPAIR_CARD, BALLISTA_CARD, SNIPE_CARD,
+							HOSPITAL_CARD]

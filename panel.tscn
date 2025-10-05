@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://df2hicn7snhlj"]
+[gd_scene load_steps=0 format=3 uid="uid://df2hicn7snhlj"]
 
 [node name="Panel" type="Panel"]
 layout_mode = 0
