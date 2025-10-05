@@ -14,10 +14,9 @@ var card_displays: Array = []
 func _ready() -> void:
 	draw_bar.max_value = Constants.DRAW_COOLDOWN
 	EventBus.hand_updated.connect(update_hand)
+	
 	EventBus.elixir_updated.connect(update_elixir)
 	EventBus.selection_updated.connect(update_hand_selection)
-	
-	#GameState.stage1_timer
 
 func _process(_delta: float) -> void:
 	update_draw_progress()
@@ -71,3 +70,9 @@ func update_elixir() -> void:
 	if p:
 		elixir_label.text = str(p.elixir)
 		elixir_bar.value = p.elixir
+
+func _on_stage1_timer() -> void:
+	elixir_bar.get("theme_override_styles/fill").bg_color = Constants.STAGE2_COLOR
+
+func _on_stage2_timer() -> void:
+	elixir_bar.get("theme_override_styles/fill").bg_color = Constants.STAGE3_COLOR

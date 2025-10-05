@@ -51,6 +51,9 @@ func _ready() -> void:
 	)
 	stage1_timer.start()
 	
+	stage1_timer.timeout.connect($CanvasLayer/PlayerDisplay1._on_stage1_timer)
+	stage2_timer.timeout.connect($CanvasLayer/PlayerDisplay1._on_stage2_timer)
+	
 	p1.cursor = $P1/Cursor
 	p2.cursor = $P2/Cursor
 	add_child(p1)
