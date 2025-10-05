@@ -112,14 +112,18 @@ func signal_debuff(area: Area2D) -> void:
 		if parent.player == self.player and not parent.severed:
 			parent.signal_unbuff()
 			
-func shoot() -> void:
-	if not is_instance_valid(target) or not is_target_in_attack_range(target):
+func shoot(target_pos: Vector2=Vector2.ZERO) -> void:
+	if (not is_instance_valid(target) or not is_target_in_attack_range(target)) and target_pos == Vector2.ZERO:
+		print("returning early")
 		return
 	var projectile: Projectile = projectile_scene.instantiate()
 	projectile.player = player
 	projectile.damage = damage
 	projectile.global_position = global_position
-	projectile.target_position = target.global_position
+	if target_pos == Vector2.ZERO:
+		projectile.target_position = target.global_position
+	else:
+		projectile.target_position = target_pos
 	get_tree().current_scene.add_child(projectile)
 
 func take_damage(damage_taken: float) -> void:

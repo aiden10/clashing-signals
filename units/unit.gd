@@ -24,6 +24,7 @@ var friendly_signals: int
 var opposing_signals: int
 var connection_count: int = 0
 var disabled: bool = false
+var is_clone: bool = false
 
 func _ready() -> void:
 	## Current cooldown/damage/speed are set in subclasses, and base is updated here.

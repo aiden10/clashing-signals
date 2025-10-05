@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://crghglcbbsgcq"]
+
+[ext_resource type="Script" uid="uid://pa6n6yjyuh8e" path="res://projectiles/big_arrow.gd" id="1_g48ds"]
+[ext_resource type="Texture2D" uid="uid://7b7nmdy1gycn" path="res://assets/sprites/arrow.png" id="1_jaum2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g48ds"]
+radius = 20.0
+height = 50.0
+
+[node name="BigArrow" type="Node2D"]
+script = ExtResource("1_g48ds")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_jaum2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = -1.579523
+shape = SubResource("CapsuleShape2D_g48ds")

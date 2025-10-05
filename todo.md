@@ -12,9 +12,9 @@
 - ~~Fix tower arrows somehow piercing~~ I had forgotten to update the collision layer of the Dummy DetectionRange 
 - ~~Logo and menu screen~~
 - ~~Make music stop on game over~~
-- has_signal property in units
+- ~~has_signal property in units~~
 - AOE stuff (piercing projectile)
-    - Basllista
+    - ~~Basllista~~
 - Snipe spell (small AOE high damage)
 
 # Builds
