@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bj22r5ylkt64i"]
+[gd_scene load_steps=12 format=3 uid="uid://bj22r5ylkt64i"]
 
 [ext_resource type="PackedScene" uid="uid://bdujerdcb4ln7" path="res://ui/card_selection_box.tscn" id="1_ajsa8"]
 [ext_resource type="Script" uid="uid://d3hg0t3bxwqrx" path="res://ui/Deckbuilding_UI/player_deckbuilding_instance.gd" id="1_tjuto"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5fujy4x4m2qk" path="res://ui/CardDisplay.tscn" id="3_bdylk"]
 [ext_resource type="StyleBox" uid="uid://wwssobw1iu4n" path="res://ui/Unhighlight.tres" id="5_7crjo"]
 [ext_resource type="Script" uid="uid://dnvmhdfmdhjig" path="res://ui/Deckbuilding_UI/ready_button.gd" id="6_yb3gy"]
+[ext_resource type="PackedScene" uid="uid://b4lwa8wne8xf6" path="res://ui/CardOverview.tscn" id="6_yxdj2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73lhv"]
 bg_color = Color(0, 0, 0, 1)
@@ -29,7 +30,7 @@ offset_bottom = 1075.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_73lhv")
 script = ExtResource("1_tjuto")
 card_selection_element = NodePath("VBoxContainer/CardSelectionBox")
-deck_element = NodePath("VBoxContainer/Deck")
+deck_element = NodePath("VBoxContainer/HBoxContainer/Deck")
 ready_element = NodePath("ReadyButton")
 
 [node name="Panel" type="Panel" parent="."]
@@ -58,14 +59,21 @@ anchor_left = 0.5
 anchor_top = 0.075
 anchor_right = 0.5
 anchor_bottom = 0.15
-offset_left = -430.0
-offset_top = -109.95001
-offset_right = 274.0
-offset_bottom = 856.05
+offset_left = -442.0
+offset_top = 0.5249939
+offset_right = 434.0
+offset_bottom = 966.52496
 grow_horizontal = 2
 theme_override_constants/separation = 15
 
-[node name="Deck" type="GridContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CardOverview" parent="VBoxContainer/HBoxContainer" instance=ExtResource("6_yxdj2")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Deck" type="GridContainer" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("card_overview")]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -73,43 +81,48 @@ columns = 4
 script = ExtResource("2_bdylk")
 empty_name = "MISSING"
 empty_image = ExtResource("3_73lhv")
-empty_cost = null
-player_ID = null
-cards = null
 
-[node name="Card" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card2" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card2" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card3" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card3" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card4" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card4" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card5" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card5" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card6" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card6" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card7" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card7" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
 
-[node name="Card8" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+[node name="Card8" parent="VBoxContainer/HBoxContainer/Deck" instance=ExtResource("3_bdylk")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 
-[node name="CardSelectionBox" parent="VBoxContainer" instance=ExtResource("1_ajsa8")]
+[node name="CardSelectionBox" parent="VBoxContainer" node_paths=PackedStringArray("card_overview") instance=ExtResource("1_ajsa8")]
 clip_contents = false
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+<<<<<<< HEAD
 player_ID = null
+=======
+card_overview = NodePath("../HBoxContainer/CardOverview")
+>>>>>>> 5f464c449d72df282ffb2aea43a1be868ff9f410
 
 [node name="ReadyButton" type="Panel" parent="."]
 layout_mode = 0

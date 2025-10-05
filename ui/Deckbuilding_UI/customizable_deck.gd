@@ -8,6 +8,8 @@ class_name CustomizableDeck
 
 @export var player_ID: Constants.PLAYERS
 
+@export var card_overview: Node
+
 
 var max_size: int
 var player: Constants.PLAYERS
@@ -38,6 +40,10 @@ func handle_input(input: Dictionary) -> void:
 		if selected_index - self.columns >= 0: 
 			selected_index -= self.columns 
 			update_selection(selected_index)
+		else:
+			displayed_cards[selected_index].unhighlight()
+			var pos = displayed_cards[selected_index].get_global_position() + displayed_cards[selected_index].size / 2
+			switched_element.emit(Vector2.RIGHT, pos)
 	if input["down"]:
 		if selected_index + self.columns < num_displayed:
 			selected_index += self.columns 
@@ -80,6 +86,8 @@ func update_selection(index: int) -> void:
 			displayed_cards[i].highlight()
 		else:
 			displayed_cards[i].unhighlight()
+	if cards[index] != null:
+		card_overview.update(cards[index])
 
 func find_available_slot() -> int:
 	for i in range(displayed_cards.size()):

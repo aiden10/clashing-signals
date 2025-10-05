@@ -7,6 +7,7 @@
 script = ExtResource("1_v7a61")
 name = "Clone"
 cost = 2
+description = "Copies your nearby units, creating duplicates to overwhelm the enemy."
 type = 1
 scene = ExtResource("1_q2dy8")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

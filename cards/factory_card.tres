@@ -8,6 +8,7 @@
 script = ExtResource("3_ghbxe")
 name = "Factory"
 cost = 6
+description = "Continuously constructs small units. The longer it stands, the greater your army grows."
 image = ExtResource("1_tnwru")
 type = 2
 scene = ExtResource("2_xckfr")

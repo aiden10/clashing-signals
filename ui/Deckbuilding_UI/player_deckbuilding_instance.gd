@@ -52,16 +52,27 @@ func _process(delta: float) -> void:
 func switch_element(direction: Vector2, from_pos: Vector2) -> void:
 	match direction:
 		Vector2.UP:
-			current_area = Constants.SelectionArea.DECK
-			var index = find_nearest(deck_element.displayed_cards, from_pos)
-			deck_element.focus(index)
+			if current_area == Constants.SelectionArea.SELECTION:
+				current_area = Constants.SelectionArea.DECK
+				var index = find_nearest(deck_element.displayed_cards, from_pos)
+				deck_element.focus(index)
+			elif current_area == Constants.SelectionArea.DECK:
+				current_area = Constants.SelectionArea.READY
+				$ReadyButton.highlight()
 
 		Vector2.DOWN:
-			current_area = Constants.SelectionArea.SELECTION
-			var index = find_nearest(card_selection_element.displayed_cards, from_pos)
-			card_selection_element.focus(index)
+			if current_area == Constants.SelectionArea.READY:
+				current_area = Constants.SelectionArea.DECK
+				var index = find_nearest(deck_element.displayed_cards, from_pos)
+				deck_element.focus(index)
+				
+			elif current_area == Constants.SelectionArea.DECK:
+				current_area = Constants.SelectionArea.SELECTION
+				var index = find_nearest(card_selection_element.displayed_cards, from_pos)
+				card_selection_element.focus(index)
 
 		Vector2.RIGHT:
+			pass
 			current_area = Constants.SelectionArea.READY
 			$ReadyButton.highlight()
 		
