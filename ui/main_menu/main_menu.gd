@@ -4,7 +4,10 @@ extends Control
 @export var start_button: Button
 
 func _ready() -> void:
-	start_button.pressed.connect(func(): GameStateManager.goto_scene(Constants.GAME_SCENES.DECK))
+	start_button.pressed.connect(func(): 
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		GameStateManager.goto_scene(Constants.GAME_SCENES.DECK)
+	)
 	var tween = create_tween()
 	tween.set_loops()
 	tween.set_trans(Tween.TRANS_SINE)

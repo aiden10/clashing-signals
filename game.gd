@@ -3,6 +3,7 @@ extends Node
 @onready var elixir_timer: Timer = $ElixirTimer
 @onready var stage1_timer: Timer = $Stage1Timer
 @onready var stage2_timer: Timer = $Stage2Timer
+@onready var fullscreen_button: Button = $CanvasLayer/FullscreenButton
 
 var p1: Player
 var p2: Player
@@ -31,6 +32,7 @@ func _init() -> void:
 	p2.deck = p2_deck
 
 func _ready() -> void:
+	fullscreen_button.pressed.connect(func(): GameStateManager.goto_scene(Constants.GAME_SCENES.DECK))
 	EventBus.game_started.emit()
 	EventBus.tower_destroyed.connect(check_game_over)
 	elixir_timer.wait_time = Constants.ELIXIR_COOLDOWN
