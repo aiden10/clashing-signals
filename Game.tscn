@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://s7jtb02p6dox" path="res://ui/PlayerDisplay.tscn" id="4_sb48q"]
 [ext_resource type="PackedScene" uid="uid://bf63fkilkgciu" path="res://ui/game_over/GameOver.tscn" id="5_3mrqo"]
 [ext_resource type="Shader" uid="uid://winj22x5v8kf" path="res://effects/crt.gdshader" id="5_t88pq"]
-[ext_resource type="Script" uid="uid://b3prtgpwt015t" path="res://audio_manager.gd" id="6_3mrqo"]
+[ext_resource type="Script" path="res://audio_manager.gd" id="6_3mrqo"]
 [ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="6_r0x5m"]
 
 [sub_resource type="Environment" id="Environment_sb48q"]
