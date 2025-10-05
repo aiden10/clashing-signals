@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cy33r0vmwymyd"]
+
+[ext_resource type="PackedScene" uid="uid://2gimo3ufwagl" path="res://units/Pawn.tscn" id="1_7pbfk"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_e738g"]
+
+[resource]
+script = ExtResource("1_e738g")
+name = "Pawns"
+cost = 4
+count = 3
+scene = ExtResource("1_7pbfk")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

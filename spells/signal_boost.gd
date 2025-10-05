@@ -13,17 +13,22 @@ func on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player:
-			Effects.add_ring(parent, name, Color(0.29, 0.949, 0.384, 1.0))
+			Effects.add_image(parent, name, Effects.IMAGES.RING, Color(0.29, 0.949, 0.384, 1.0))
 			parent.signal_buff()
 
 func on_area_exited(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Unit:
 		if parent.player == self.player:
-			Effects.remove_ring(parent, name)
+			Effects.remove_image(parent, name)
 			parent.signal_unbuff()
 
 func cleanup() -> void:
+	for area in get_overlapping_areas():
+		var parent = area.get_parent()
+		if parent is Unit:
+			Effects.remove_image(parent, name)
+
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 0.5)
 	tween.finished.connect(queue_free)

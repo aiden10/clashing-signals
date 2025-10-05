@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://r6iue3pl2jc8"]
+
+[ext_resource type="PackedScene" uid="uid://cw2x8tavyxav3" path="res://spells/Clone.tscn" id="1_q2dy8"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_v7a61"]
+
+[resource]
+script = ExtResource("1_v7a61")
+name = "Clone"
+cost = 2
+type = 1
+scene = ExtResource("1_q2dy8")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

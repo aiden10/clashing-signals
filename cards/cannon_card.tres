@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_osohy")
-name = "Cannon"
+name = "Sniper"
 cost = 8
 image = ExtResource("1_ebsiy")
 scene = ExtResource("2_v8k16")

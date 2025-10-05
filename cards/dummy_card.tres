@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cwlhyjuou8xxy"]
 
-[ext_resource type="PackedScene" uid="uid://i1lnsbfqml00" path="res://units/Dummy.tscn" id="1_nrkee"]
+[ext_resource type="PackedScene" uid="uid://duejk65i6kswn" path="res://units/Person.tscn" id="1_nrkee"]
 [ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="2_d7uwj"]
 
 [resource]

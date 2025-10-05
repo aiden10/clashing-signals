@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://duejk65i6kswn"]
+
+[ext_resource type="Texture2D" uid="uid://b1iil17pcdwyv" path="res://assets/sprites/dummy.png" id="1_e1y8c"]
+[ext_resource type="Script" uid="uid://ciweqewwcq1hq" path="res://units/person.gd" id="1_xyygh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyygh"]
+radius = 25.019993
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8kp5"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1551q"]
+radius = 32.01562
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8uxib"]
+radius = 42.047592
+
+[node name="Person" type="CharacterBody2D"]
+script = ExtResource("1_xyygh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xyygh")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_v8kp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_e1y8c")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_1551q")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_8uxib")

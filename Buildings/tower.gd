@@ -1,6 +1,8 @@
 
 extends Building
 
+class_name Tower
+
 func _ready() -> void:
 	super()
 	if player == Constants.PLAYERS.P1:

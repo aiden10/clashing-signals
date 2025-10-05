@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://bojehi3kqdnfn" path="res://Buildings/backdoor.gd" id="1_3ykkx"]
 [ext_resource type="Texture2D" uid="uid://y8t17857t3up" path="res://assets/sprites/backdoor.png" id="2_f85gf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f85gf"]
-radius = 39.012817
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f85gf"]
+size = Vector2(42, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0x0m"]
 size = Vector2(37, 57)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yjvon"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txr2n"]
+size = Vector2(42, 60)
 
 [node name="BackDoor" type="CharacterBody2D" groups=["backdoors"]]
 script = ExtResource("1_3ykkx")
@@ -19,8 +19,8 @@ script = ExtResource("1_3ykkx")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-position = Vector2(-1, 1)
-shape = SubResource("CircleShape2D_f85gf")
+position = Vector2(-2, 0.5)
+shape = SubResource("RectangleShape2D_f85gf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 1.5)
@@ -32,4 +32,5 @@ texture = ExtResource("2_f85gf")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_yjvon")
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_txr2n")

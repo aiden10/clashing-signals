@@ -8,7 +8,7 @@ func _init() -> void:
 	self.cooldown = Constants.BACKDOOR_COOLDOWN
 	self.decay = Constants.BACKDOOR_DECAY_DAMAGE
 	self.target_enemy = Constants.BACKDOOR_TARGET_ENEMY
-	self.action = ACTIONS.EFFECT_PERMANENT
+	self.action = ACTIONS.EFFECT
 
 func _ready() -> void:
 	super()

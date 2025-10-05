@@ -3,7 +3,7 @@ extends Building
 
 func _init() -> void:
 	self.health = Constants.EXTRACTOR_HEALTH
-	self.action = ACTIONS.EFFECT_AREA
+	self.action = ACTIONS.EFFECT
 	self.decay = Constants.EXTRACTOR_DECAY_DAMAGE
 	self.cooldown = Constants.EXTRACTOR_COOLDOWN
 

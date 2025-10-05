@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://ddbrduaxd2yyw"]
+
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_itwiw"]
+[ext_resource type="PackedScene" uid="uid://b60i8xrtkk3bg" path="res://Buildings/Wall.tscn" id="1_u7iuy"]
+
+[resource]
+script = ExtResource("1_itwiw")
+name = "Wall"
+cost = 1
+type = 2
+scene = ExtResource("1_u7iuy")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

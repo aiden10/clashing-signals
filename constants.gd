@@ -40,22 +40,42 @@ const SEVER_DEBUFF: float = 2.0
 const SIGNAL_BOOST_DURATION: float = 5
 const EMP_DURATION: float = 5
 
-const FIREBALL_DAMAGE = 10
-const FIREBALL_DURATION = 1
-const FIREBALL_SPEED = 800
+const FIREBALL_DAMAGE: float = 10
+const FIREBALL_DURATION: float = 1
+const FIREBALL_SPEED: float = 800
+
+const HP_EQUALIZER_HEALTH: float = 5.0
+const HP_EQUALIZER_DURATION: float = 0.5
+
+const REPAIR_DURATION: float = 0.5
+
+const CLONE_DEBUFF: float = 3
+const CLONE_DURATION: float = 0.25
 
 ## UNITS
-const KNIGHT_HEALTH: float = 10
-const KNIGHT_DAMAGE: float = 2
+const KNIGHT_HEALTH: float = 15
+const KNIGHT_DAMAGE: float = 3
 const KNIGHT_SPEED: float = 25
 const KNIGHT_MELEE: bool = true
-const KNIGHT_COOLDOWN: float = 1.5
+const KNIGHT_COOLDOWN: float = 1.0
+
+const PAWN_HEALTH: float = 7.5
+const PAWN_DAMAGE: float = 1.5
+const PAWN_SPEED: float = 30
+const PAWN_MELEE: bool = true
+const PAWN_COOLDOWN: float = 1.0
 
 const DUMMY_HEALTH: float = 0.1
 const DUMMY_DAMAGE: float = 0.5
 const DUMMY_SPEED: float = 30
 const DUMMY_MELEE: bool = true
 const DUMMY_COOLDOWN: float = 1.0
+
+const PERSON_HEALTH: float = 5.0
+const PERSON_DAMAGE: float = 1.0
+const PERSON_SPEED: float = 30
+const PERSON_MELEE: bool = true
+const PERSON_COOLDOWN: float = 1.0
 
 const GIANT_HEALTH: float = 35
 const GIANT_DAMAGE: float = 5
@@ -69,6 +89,12 @@ const ARCHER_SPEED: float = 35
 const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
+
+const POCKET_WIFI_HEALTH: float = 20
+const POCKET_WIFI_DAMAGE: float = 2.0
+const POCKET_WIFI_SPEED: float = 40
+const POCKET_WIFI_MELEE: bool = true
+const POCKET_WIFI_COOLDOWN: float = 2.0
 
 const DRONE_HEALTH: float = 1
 const DRONE_DAMAGE: float = 1
@@ -112,6 +138,10 @@ const EXTRACTOR_HEALTH: float = 20
 const EXTRACTOR_DECAY_DAMAGE: float = EXTRACTOR_HEALTH/12
 const EXTRACTOR_COOLDOWN: float = 3
 
+const WALL_HEALTH: float = 35
+const WALL_DECAY_DAMAGE: float = WALL_HEALTH/15
+const WALL_COOLDOWN: float = 1.0
+
 const BACKDOOR_HEALTH: float = 20
 const BACKDOOR_DECAY_DAMAGE: float = BACKDOOR_HEALTH/200
 const BACKDOOR_COOLDOWN: float = 0.1
@@ -144,8 +174,16 @@ const BACKDOOR_CARD: Card = preload("res://cards/backdoor_card.tres")
 const FIREBALL_CARD: Card = preload("res://cards/fireball_card.tres")
 const DUMMY_CARD: Card = preload("res://cards/dummy_card.tres")
 const PEOPLE_CARD: Card = preload("res://cards/people_card.tres")
+const HP_EQUALIZER_CARD: Card = preload("res://cards/hp_equalizer_card.tres")
+const CLONE_CARD: Card = preload("res://cards/clone_card.tres")
+const PAWN_CARD: Card = preload("res://cards/pawn_card.tres")
+const WALL_CARD: Card = preload("res://cards/wall_card.tres")
+const POCKET_WIFI_CARD: Card = preload("res://cards/pocket_wifi_card.tres")
+const REPAIR_CARD: Card = preload("res://cards/repair_card.tres")
 
 const CARDS: Array[Card] = [KNIGHT_CARD, ARCHER_CARD, GIANT_CARD, 
 							SIGNAL_BOOST_CARD, FACTORY_CARD, EMP_CARD, BACKDOOR_CARD,
 							SIGNAL_TOWER_CARD, CANNON_CARD, JUGGERNAUT_CARD, JAMMER_CARD,
-							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD, PEOPLE_CARD]
+							EXTRACTOR_CARD, FIREBALL_CARD, DUMMY_CARD, PEOPLE_CARD,
+							HP_EQUALIZER_CARD, CLONE_CARD, PAWN_CARD, WALL_CARD,
+							POCKET_WIFI_CARD, REPAIR_CARD]

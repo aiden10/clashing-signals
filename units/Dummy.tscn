@@ -22,6 +22,7 @@ script = ExtResource("1_ruhym")
 shape = SubResource("CircleShape2D_bpjg0")
 
 [node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_y7b66")

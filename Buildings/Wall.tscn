@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b60i8xrtkk3bg"]
+
+[ext_resource type="Texture2D" uid="uid://5xpreat8q1fb" path="res://assets/sprites/wall.png" id="1_aopp0"]
+[ext_resource type="Script" uid="uid://wd0pjgbvdpm5" path="res://Buildings/wall.gd" id="1_mpnpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpnpe"]
+size = Vector2(28, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k88e6"]
+size = Vector2(28, 112)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ox0av"]
+radius = 250.008
+
+[node name="Wall" type="CharacterBody2D"]
+script = ExtResource("1_mpnpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mpnpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_aopp0")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_k88e6")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_ox0av")

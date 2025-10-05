@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://3c5e8xj6c8im"]
+
+[ext_resource type="Script" uid="uid://02gpa2nbapxh" path="res://spells/hp_equalizer.gd" id="1_w7dvf"]
+[ext_resource type="Texture2D" uid="uid://bsq6s1rga0gmv" path="res://assets/heart.png" id="2_s2o8v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2o8v"]
+radius = 100.0
+height = 285.0
+
+[node name="HpEqualizer" type="Area2D"]
+script = ExtResource("1_w7dvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 0)
+rotation = 0.7853982
+shape = SubResource("CapsuleShape2D_s2o8v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-35, 0)
+rotation = -0.7853982
+shape = SubResource("CapsuleShape2D_s2o8v")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.8247963, 1.8247963, 0, 0.19607843)
+texture_filter = 1
+scale = Vector2(7, 7)
+texture = ExtResource("2_s2o8v")

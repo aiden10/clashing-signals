@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://nmr01fk1rtey"]
+
+[ext_resource type="Script" uid="uid://cqrr8ku51jm4u" path="res://units/pocket_wifi.gd" id="1_1ufsg"]
+[ext_resource type="Texture2D" uid="uid://11v78iwjoc0p" path="res://assets/sprites/pocket-wifi.png" id="2_1ufsg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vyaip"]
+radius = 122.0041
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_64r5f"]
+radius = 35.128338
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ufsg"]
+radius = 31.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyaip"]
+size = Vector2(26, 52)
+
+[node name="PocketWifi" type="CharacterBody2D"]
+script = ExtResource("1_1ufsg")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_vyaip")
+
+[node name="AttackRange" type="Area2D" parent="."]
+position = Vector2(0, 4)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_64r5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_1ufsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_1ufsg")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_vyaip")

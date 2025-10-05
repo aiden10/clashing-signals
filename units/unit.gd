@@ -18,7 +18,7 @@ var projectile_scene: PackedScene
 var signal_line: Line2D
 var initial_hp: float
 var severed: bool = false
-
+var target_friendly: bool = false
 var nav_agent: NavigationAgent2D
 
 func _ready() -> void:
@@ -53,20 +53,9 @@ func _ready() -> void:
 	self.collision_layer = col_layer
 	self.collision_mask = mask
 	
-	## Putting this hardcoded node name in here reduces redundancy in child unit classes, but means that 
-	## the detection Area2D must be named "DetectionRange"
-	$DetectionRange.area_entered.connect(self.detection_range_entered)
-	
 	nav_agent = NavigationAgent2D.new()
 	nav_agent.radius = $CollisionShape2D.shape.radius * 2
 	add_child(nav_agent)
-
-func detection_range_entered(area: Area2D) -> void:
-	var parent = area.get_parent()
-	if is_melee and parent is Unit:
-		if parent.player != self.player:
-			target = parent
-			nav_agent.target_position = target.position
 
 ## Basically just an abstract function
 func attack() -> void:
@@ -111,6 +100,11 @@ func take_damage(damage_taken: float) -> void:
 		die()
 
 func die() -> void:
+	for area in $DetectionRange.get_overlapping_areas():
+		var parent = area.get_parent()
+		if parent is Unit:
+			Effects.remove_image(parent, name)
+
 	EventBus.unit_died.emit()
 	attack_timer.stop()
 	queue_free()
@@ -194,22 +188,34 @@ func update_line() -> void:
 		self.signal_line.add_point(self.global_position)
 
 func get_nearest_enemy() -> Node2D:
-	var nearest_enemy = null
-	var min_dist_sq = INF
-	
+	var nearest: Node2D = null
+	var min_dist_sq := INF
+
 	for area in $DetectionRange.get_overlapping_areas():
 		var parent = area.get_parent()
-		if parent is Unit or parent is Building:
-			if parent.player != self.player:
-				if (parent.is_in_group("backdoors") and parent.player == self.player):
-					if parent.exit:
-						continue
-				var dist_sq = global_position.distance_squared_to(parent.global_position)
-				if dist_sq < min_dist_sq:
-					min_dist_sq = dist_sq
-					nearest_enemy = parent
-					
-	return nearest_enemy
+		if not (parent is Unit or parent is Building):
+			continue
+		
+		if parent == self:
+			continue
+		
+		if target_friendly:
+			if not (parent is Unit and parent.player == self.player):
+				continue
+		else:
+			if parent.player == self.player and not parent.is_in_group("backdoors"):
+				continue
+
+		if parent.is_in_group("backdoors"):
+			if parent.exit or not parent.backdoor_exit:
+				continue
+
+		var dist_sq = global_position.distance_squared_to(parent.global_position)
+		if dist_sq < min_dist_sq:
+			min_dist_sq = dist_sq
+			nearest = parent
+
+	return nearest
 
 func get_nearest_tower(get_friendly: bool = false) -> Node2D:
 	var min_dist_sq: float = INF
@@ -249,11 +255,11 @@ func signal_buff() -> void:
 	self.percentage_damage_mod += Constants.SIGNAL_DAMAGE_BUFF
 	self.percentage_speed_mod += Constants.SIGNAL_SPEED_BUFF
 	self.cooldown_mult *= 1 - Constants.SIGNAL_COOLDOWN_BUFF
-	print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
+	#print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
 
 func signal_unbuff() -> void:
 	self.percentage_damage_mod -= Constants.SIGNAL_DAMAGE_BUFF
 	self.percentage_speed_mod -= Constants.SIGNAL_SPEED_BUFF
 	self.cooldown_mult /= 1 - Constants.SIGNAL_COOLDOWN_BUFF
-	print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
+	#print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
 	

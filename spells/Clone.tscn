@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw2x8tavyxav3"]
+
+[ext_resource type="Script" uid="uid://d1thf0g4353cj" path="res://spells/clone.gd" id="1_y30sa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb23s"]
+radius = 155.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y30sa"]
+load_path = "res://.godot/imported/circle.png-6efbe600b7e2418cd5091089237d13c1.ctex"
+
+[node name="Clone" type="Area2D"]
+script = ExtResource("1_y30sa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_yb23s")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.29411766)
+texture = SubResource("CompressedTexture2D_y30sa")

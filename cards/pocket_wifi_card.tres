@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://b8epquau8vtm1"]
+
+[ext_resource type="PackedScene" uid="uid://nmr01fk1rtey" path="res://units/PocketWifi.tscn" id="1_7hkcx"]
+[ext_resource type="Script" uid="uid://pqj0ruwuram3" path="res://cards/card.gd" id="1_gihxn"]
+
+[resource]
+script = ExtResource("1_gihxn")
+name = "Pocket WiFi"
+cost = 4
+scene = ExtResource("1_7hkcx")
+metadata/_custom_type_script = "uid://pqj0ruwuram3"

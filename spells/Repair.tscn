@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpsfn36s7bkej"]
+
+[ext_resource type="Script" uid="uid://d0oba8mnv0nod" path="res://spells/repair.gd" id="1_cn662"]
+[ext_resource type="Texture2D" uid="uid://de7cidaisy81d" path="res://assets/circle.png" id="1_hf6e1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn662"]
+radius = 115.0
+
+[node name="Repair" type="Area2D"]
+script = ExtResource("1_cn662")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_cn662")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1.8247963, 0, 0.19607843)
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_hf6e1")

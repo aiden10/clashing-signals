@@ -18,12 +18,12 @@ func _ready() -> void:
 
 func display(winner: Constants.PLAYERS):
 	if winner == Constants.PLAYERS.P1:
-		win_label.text = "P1 has won the game".to_upper()
-		lose_label.text = "and P2 has lost the game".to_upper()
+		win_label.text = "P1 won the game".to_upper()
+		lose_label.text = "P2 lost the game".to_upper()
 		
 	if winner == Constants.PLAYERS.P2:
-		win_label.text = "P2 has won the game".to_upper()
-		lose_label.text = "and P1 has lost the game".to_upper()
+		win_label.text = "P2 won the game".to_upper()
+		lose_label.text = "P1 lost the game".to_upper()
 	
 	var win_tween = create_tween()
 	win_tween.tween_property(win_label, "visible_ratio", 1.0, 1.0)

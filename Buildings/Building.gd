@@ -1,8 +1,7 @@
 extends CharacterBody2D
 class_name Building
 
-# effect_permanent uses a cooldown while effect_area is constant until unit leaves radius
-enum ACTIONS { ATTACK, SPAWN, EFFECT_PERMANENT, EFFECT_AREA }
+enum ACTIONS { ATTACK, SPAWN, EFFECT }
 
 var player: Constants.PLAYERS
 var health: float
@@ -42,7 +41,7 @@ func _ready() -> void:
 	elif spawn_scene != null:
 		action = ACTIONS.SPAWN
 	elif effect != "":
-		action = ACTIONS.EFFECT_PERMANENT
+		action = ACTIONS.EFFECT
 
 	if player == Constants.PLAYERS.P1:
 		modulate = Color8(255, 0, 0)
@@ -64,7 +63,7 @@ func perform_action():
 			attack()
 		ACTIONS.SPAWN:
 			spawn_unit()
-		ACTIONS.EFFECT_PERMANENT:
+		ACTIONS.EFFECT:
 			give_effect()
 	take_decay_damage(decay)
 
@@ -82,7 +81,6 @@ func spawn_unit():
 		unit.player = player
 		unit.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-20, 20))
 		get_tree().current_scene.add_child(unit)
-	update_line()
 
 func give_effect():
 	for area in $DetectionRange.get_overlapping_areas():
@@ -90,7 +88,6 @@ func give_effect():
 		if parent is Unit:
 			if (target_enemy and parent.player != player) or (not target_enemy and parent.player == player):
 				apply_effect(parent)
-	update_line()
 
 func apply_effect(effect_target: Unit):
 	pass
@@ -127,7 +124,7 @@ func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(global_position)
-	if damage_taken > 0: print("damage taken: ", damage_taken, self)
+
 	if health > 0:
 		self.modulate.a = max(float(self.health) / float(initial_hp), 0.25)
 	else:
@@ -141,6 +138,8 @@ func take_decay_damage(damage_taken: float) -> void:
 		die()
 
 func die() -> void:
+	for t in get_targets_in_range():
+		Effects.remove_image(t, name)
 	EventBus.building_destroyed.emit()
 	queue_free()
 
