@@ -11,6 +11,7 @@ enum GAME_SCENES {TITLE, DECK, GAME}
 ## Cursors
 const COLOR_P1 = Color("ff4000ff")
 const COLOR_P2 = Color("DEEP_SKY_BLUE")
+const INVALID_DARKENING = 0.50
 const CURSOR_SPEED: float = 500
 
 ## MISCELLANEOUS
