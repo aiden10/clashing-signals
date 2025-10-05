@@ -3,22 +3,12 @@
 	- the cursor should be greyed out they cannot play the unit
 	- spells can be played anywhere
 
-- Game over screen
-	- I'm already checking for game overs in game.gd
-
-- Update deckbuilding screen visuals
-
 - More cards
     - Elixir farming buildings
 
 - Sounds/Music
 
 - Sprites for each unit and towers. These can just be basic shapes
-
-- 	Signal servering effect. When a signal is severed, that unit loses half of its stats (damage, speed, cooldown)
-	- Add "severed" property to unit class. If severed is true, then don't draw line to nearest friendly tower
-	- Maybe also add a visual to show when a unit's signal is severed, particle effect or maybe just stick a sprite on them (like a warning png)
-    - Any unit or spell that severs signals needs to rebuff the affected units when it goes away, and set severed back to false
 
 - Figure out a way to better incorporate the theme
 	Units have a line drawn from them to their target, and a line drawn to their nearest friendly tower

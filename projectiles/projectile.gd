@@ -29,6 +29,11 @@ func _ready() -> void:
 	else:
 		push_error("no target position set")
 	
+	if player == Constants.PLAYERS.P1:
+		modulate = Color(1, 0, 0)
+	else:
+		modulate = Color(0, 0, 1)
+	
 func _physics_process(delta: float) -> void:
 	var velocity = direction * speed
 	position += velocity * delta

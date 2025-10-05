@@ -1,6 +1,5 @@
 extends Building
 
-
 func _init() -> void:
 	self.health = Constants.JAMMER_TOWER_HEALTH
 	self.action = ACTIONS.EFFECT_AREA

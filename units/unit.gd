@@ -140,8 +140,11 @@ func _physics_process(_delta: float) -> void:
 			self.velocity = direction * speed
 			move_and_slide()
 	
-	look_at(target.global_position)
-
+	if target.global_position.x > global_position.x:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+	
 func update_line() -> void:
 	self.signal_line.modulate.a = float(self.health) / float(initial_hp)
 	self.signal_line.clear_points()

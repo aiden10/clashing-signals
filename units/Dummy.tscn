@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://i1lnsbfqml00"]
+
+[ext_resource type="Script" uid="uid://co3806rqxgeaj" path="res://units/dummy.gd" id="1_ruhym"]
+[ext_resource type="Texture2D" uid="uid://b1iil17pcdwyv" path="res://assets/sprites/dummy.png" id="1_y7b66"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpjg0"]
+radius = 25.019993
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7b66"]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ub4hp"]
+radius = 32.01562
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ruhym"]
+radius = 42.047592
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_ruhym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bpjg0")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_y7b66")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_y7b66")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ub4hp")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_ruhym")
