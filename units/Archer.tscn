@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvku3cy31qigl"]
 
 [ext_resource type="Script" uid="uid://cw822yirn0xq0" path="res://units/archer.gd" id="1_2p7d8"]
+[ext_resource type="Texture2D" uid="uid://y2cw7qv80lk6" path="res://assets/sprites/Archer.png" id="2_ou0y5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icn0d"]
 radius = 122.0041
@@ -10,9 +11,6 @@ radius = 121.037186
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytcvi"]
 radius = 16.124516
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ytcvi"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2p7d8"]
 radius = 20.024984
@@ -36,8 +34,9 @@ shape = SubResource("CircleShape2D_ou0y5")
 shape = SubResource("CircleShape2D_ytcvi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = SubResource("CompressedTexture2D_ytcvi")
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ou0y5")
 
 [node name="Hitbox" type="Area2D" parent="."]
 

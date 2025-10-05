@@ -4,10 +4,12 @@ const SOUNDS = {
 	"tower_destroyed": preload("res://assets/sounds/tower_destroyed.wav"),
 	"building_destroyed": preload("res://assets/sounds/building_destroyed.wav"),
 	"unit_killed": preload("res://assets/sounds/unit_killed.wav"),
-	"damage_taken": preload("res://assets/sounds/hit_sound.wav")
+	"damage_taken": preload("res://assets/sounds/hit_sound.wav"),
+	"battle_song": preload("res://assets/songs/clashing_signals_battle.wav")
 }
 
 var audio_players: Array[AudioStreamPlayer] = []
+var curr_song_player: AudioStreamPlayer
 var sound_level: float = 100.0
 const POOL_SIZE = 16
 
@@ -21,6 +23,8 @@ func _ready() -> void:
 	EventBus.building_destroyed.connect(func(): play_sound("building_destroyed"))
 	EventBus.tower_destroyed.connect(func(): play_sound("tower_destroyed"))
 	#EventBus.damage_taken.connect(func(): play_sound("damage_taken"))
+	EventBus.game_started.connect(func(): play_sound("battle_song"))
+	EventBus.game_over.connect(func(): curr_song_player.stop())
 	
 func set_master_volume() -> void:
 	var normalized_volume = _get_normalized_volume(sound_level)
@@ -48,9 +52,18 @@ func play_sound(sound_name: String, volume_adjustment: float = 0.0) -> void:
 		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
 		player.play()
 
+#separate function to obtain the player of the current song
+func play_song(sound_name: String, volume_adjustment: float = 0.0) -> void:
+	var player = _get_available_player()
+	if player:
+		curr_song_player = player
+		player.process_mode = Node.PROCESS_MODE_ALWAYS
+		player.stream = SOUNDS[sound_name]
+		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
+		player.play()
+
 func _get_available_player() -> AudioStreamPlayer:
 	for player in audio_players:
 		if not player.playing:
 			return player
 	return null
-	

@@ -54,6 +54,6 @@
 ## idk
 
 ### Spells
-    - Nuke: Instantly win the game, but costs a lot of elixir
+	- Nuke: Instantly win the game, but costs a lot of elixir
 ### Buildings
-    - Zip Bomb: Building with a ton of hp, but when broken releases a ton of units
+	- Zip Bomb: Building with a ton of hp, but when broken releases a ton of units

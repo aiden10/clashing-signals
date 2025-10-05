@@ -12,10 +12,10 @@ func _init() -> void:
 
 func _ready() -> void:
 	if player == Constants.PLAYERS.P1:
-		if GameState.p1_towers.size() != 0:
+		if GameState.p1_towers.size() != 0 and is_instance_valid(GameState.p1_towers[0]):
 			own_tower_pos = GameState.p1_towers[0].position
 	if player == Constants.PLAYERS.P2:
-		if GameState.p2_towers.size() != 0:
+		if GameState.p2_towers.size() != 0 and is_instance_valid(GameState.p2_towers[0]):
 			own_tower_pos = GameState.p2_towers[0].position
 	self.monitoring = false
 

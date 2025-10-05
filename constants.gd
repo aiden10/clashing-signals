@@ -113,7 +113,7 @@ const JUGGERNAUT_HEALTH: float = 60
 const JUGGERNAUT_DAMAGE: float = 8
 const JUGGERNAUT_SPEED: float = 20
 const JUGGERNAUT_MELEE: bool = true
-const JUGGERNAUT_COOLDOWN: float = 2.0
+const JUGGERNAUT_COOLDOWN: float = 1.5
 
 const TOWER_COOLDOWN: float = 3.5
 const TOWER_DAMAGE: float = 0.5

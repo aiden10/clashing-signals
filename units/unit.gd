@@ -20,6 +20,8 @@ var initial_hp: float
 var severed: bool = false
 var target_friendly: bool = false
 var nav_agent: NavigationAgent2D
+var friendly_signals: int
+var opposing_signals: int
 
 func _ready() -> void:
 	## Current cooldown/damage/speed are set in subclasses, and base is updated here.
@@ -181,7 +183,7 @@ func update_line() -> void:
 		return
 
 	self.signal_line.clear_points()
-	self.signal_line.add_point(self.global_position)
+	#self.signal_line.add_point(self.global_position)
 	
 	if is_instance_valid(self.target):
 		self.signal_line.add_point(self.target.global_position)

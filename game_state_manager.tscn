@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://y5w8ngevoght"]
 
 [ext_resource type="Script" uid="uid://b8oavfg7wvgyu" path="res://game_state_manager.gd" id="1_n35x8"]
-[ext_resource type="PackedScene" uid="uid://qllb0e2uofq8" path="res://DeckBuilding.tscn" id="2_f7tth"]
+[ext_resource type="PackedScene" uid="uid://bpve6g3m6qfts" path="res://DeckBuilding.tscn" id="2_f7tth"]
 [ext_resource type="PackedScene" uid="uid://dapfbmxyjm806" path="res://Game.tscn" id="3_bx1e6"]
 
 [node name="GameStateManager" type="Node"]
