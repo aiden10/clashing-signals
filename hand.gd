@@ -13,6 +13,8 @@ func add_card(card: Card) -> void:
 	if self.cards.size() < max_size:
 		self.cards.append(card)
 		EventBus.hand_updated.emit(self.player)
+		EventBus.selection_updated.emit(self.player, self.selected_index)
+		
 
 func next_card() -> void:
 	if self.cards.size() == 0:

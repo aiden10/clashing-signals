@@ -43,10 +43,14 @@ func _physics_process(delta: float) -> void:
 	prev_side = get_side()
 
 func get_side() -> Constants.PLAYERS:
-	if position.x < 960:
+	if position.x <= 860:
 		return Constants.PLAYERS.P1
-	else:
+	elif position.x >= 1060:
 		return Constants.PLAYERS.P2
+	elif player == Constants.PLAYERS.P1:
+		return Constants.PLAYERS.P2
+	else: # player == Constants.PLAYERS.P2
+		return Constants.PLAYERS.P1
 	
 func get_default_color() -> Color:
 	if player == Constants.PLAYERS.P1:
