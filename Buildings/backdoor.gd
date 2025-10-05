@@ -13,14 +13,12 @@ func _init() -> void:
 func _ready() -> void:
 	super()
 	if not exit:
-		var enemy_tower_list = GameState.p1_towers if player == Constants.PLAYERS.P2 else GameState.p2_towers
 		var mirror_x = get_viewport_rect().size.x / 2
 		var exit_pos: Vector2 = Vector2(2 * mirror_x - global_position.x, global_position.y)
 		backdoor_exit = Constants.BACKDOOR_SPAWN_SCENE.instantiate()
 		backdoor_exit.exit = true
 		backdoor_exit.top_level = true
 		backdoor_exit.global_position = exit_pos
-		enemy_tower_list.append(self)
 		add_child(backdoor_exit)
 		print("made backdoor at: ", exit_pos)
 

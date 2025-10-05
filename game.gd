@@ -80,8 +80,8 @@ func add_elixir_specific(player: Constants.PLAYERS) -> void:
 	EventBus.elixir_updated.emit()
 
 func check_game_over() -> void:
-	print("P1 towers: ", GameState.p1_towers.size())
-	print("P2 towers: ", GameState.p2_towers.size())
+	print(GameState.p1_towers)
+	print(GameState.p2_towers)
 	if GameState.p1_towers.size() == 0:
 		EventBus.game_over.emit(Constants.PLAYERS.P2)
 		print("p2 wins")
