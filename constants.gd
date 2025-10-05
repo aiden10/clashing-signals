@@ -44,50 +44,50 @@ const FIREBALL_SPEED = 800
 ## UNITS
 const KNIGHT_HEALTH: float = 10
 const KNIGHT_DAMAGE: float = 2
-const KNIGHT_SPEED: float = 20
+const KNIGHT_SPEED: float = 25
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.5
 
 const DUMMY_HEALTH: float = 0.1
 const DUMMY_DAMAGE: float = 0.5
-const DUMMY_SPEED: float = 25
+const DUMMY_SPEED: float = 30
 const DUMMY_MELEE: bool = true
 const DUMMY_COOLDOWN: float = 1.0
 
 const GIANT_HEALTH: float = 35
 const GIANT_DAMAGE: float = 5
-const GIANT_SPEED: float = 15
+const GIANT_SPEED: float = 20
 const GIANT_MELEE: bool = true
 const GIANT_COOLDOWN: float = 2.0
 
 const ARCHER_HEALTH: float = 10
 const ARCHER_DAMAGE: float = 1.5
-const ARCHER_SPEED: float = 30
+const ARCHER_SPEED: float = 35
 const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
 const DRONE_HEALTH: float = 1
 const DRONE_DAMAGE: float = 1
-const DRONE_SPEED: float = 75
+const DRONE_SPEED: float = 65
 const DRONE_MELEE: bool = true
 const DRONE_COOLDOWN: float = 1.3
 
 const CANNON_HEALTH: float = 10
 const CANNON_DAMAGE: float = 5
-const CANNON_SPEED: float = 10
+const CANNON_SPEED: float = 15
 const CANNON_MELEE: bool = false
 const CANNON_COOLDOWN: float = 10
 const CANNON_PROJECTILE: PackedScene = preload("res://projectiles/Boulder.tscn")
 
 const JUGGERNAUT_HEALTH: float = 60
 const JUGGERNAUT_DAMAGE: float = 8
-const JUGGERNAUT_SPEED: float = 15
+const JUGGERNAUT_SPEED: float = 20
 const JUGGERNAUT_MELEE: bool = true
 const JUGGERNAUT_COOLDOWN: float = 2.0
 
-const TOWER_COOLDOWN: float = 2.0
-const TOWER_DAMAGE: float = 2.5
+const TOWER_COOLDOWN: float = 3.5
+const TOWER_DAMAGE: float = 0.5
 const TOWER_HEALTH: int = 50
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
@@ -116,7 +116,7 @@ const BACKDOOR_SPAWN_SCENE: PackedScene = preload("res://Buildings/BackDoor.tscn
 const BACKDOOR_TARGET_ENEMY: bool = false
 
 ## PROJECTILES
-const ARROW_SPEED: float = 500
+const ARROW_SPEED: float = 1000
 const ARROW_DAMAGE: float = 3
 const ARROW_PIERCE_LIMIT: int = 1
 

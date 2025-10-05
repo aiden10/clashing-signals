@@ -1,8 +1,4 @@
 
-- Prevent cursors from going off screen and from placing units on enemy side
-	- the cursor should be greyed out they cannot play the unit
-	- spells can be played anywhere
-
 - Sprites for each unit and towers. These can just be basic shapes
 
 Spells:

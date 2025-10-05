@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_g6fwe")
 name = "Backdoor"
-cost = 8
+cost = 5
 type = 2
 scene = ExtResource("1_ctoij")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"
