@@ -73,7 +73,6 @@ columns = 4
 script = ExtResource("2_bdylk")
 empty_name = "MISSING"
 empty_image = ExtResource("3_73lhv")
-empty_cost = -1
 
 [node name="Card" parent="VBoxContainer/Deck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
