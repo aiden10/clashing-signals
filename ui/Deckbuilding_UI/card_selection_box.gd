@@ -62,8 +62,8 @@ func handle_input(input: Dictionary) -> void:
 			switched_element.emit(Vector2.RIGHT, pos)
 	elif input["use"]:
 		print("adding card", selected_index)
-		
-		card_add_attempt.emit(available_cards[selected_index % available_cards.size()])
+		if selected_index < available_cards.size():
+			card_add_attempt.emit(available_cards[selected_index % available_cards.size()])
 		
 		
 func update_selection(index: int) -> void:
