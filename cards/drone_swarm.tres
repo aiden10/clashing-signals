@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_1r2ic")
 name = "Drone Swarm"
-cost = 4
+cost = 3
 count = 4
 description = "Spawns a cluster of drones"
 image = ExtResource("1_5ey0o")

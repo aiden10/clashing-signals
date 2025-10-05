@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_bl415")
 name = "HP Equalizer"
-cost = 3
+cost = 5
 description = "Sets health of ALL units in spell range to 5"
 type = 1
 scene = ExtResource("1_66gwr")

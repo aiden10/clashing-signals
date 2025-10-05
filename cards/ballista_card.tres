@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_oorno")
 name = "Ballista"
-cost = 4
-description = "Fires piercing projectiles in a straight line"
+cost = 6
+description = "Fires piercing projectiles in a single direction"
 type = 2
 scene = ExtResource("1_b87n0")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

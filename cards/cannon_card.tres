@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_osohy")
 name = "Sniper"
-cost = 8
+cost = 6
 description = "Fires at enemies from afar. Slow attack speed, high damage"
 image = ExtResource("1_ebsiy")
 scene = ExtResource("2_v8k16")
