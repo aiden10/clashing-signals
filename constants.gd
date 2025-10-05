@@ -29,8 +29,11 @@ const MAX_HAND_SIZE: int = 5
 const DRAW_COOLDOWN: float = 2.0
 const ACTION_COOLDOWN: float = 0.5
 
-## Each signal range boosts stats by this percent
-const SIGNAL_BUFF: float = 1.15
+## Each signal in range boosts stats by this percent.
+const SIGNAL_DAMAGE_BUFF: float = 0.50 ## (additive)
+const SIGNAL_SPEED_BUFF: float = 0.50 ## (additive) 
+const SIGNAL_COOLDOWN_BUFF: float = 0.15 ## (multiplicative)
+
 const SEVER_DEBUFF: float = 2.0
 
 ## SPELLS
@@ -96,7 +99,7 @@ const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
 const FACTORY_HEALTH: float = 20
 const FACTORY_COOLDOWN: float = 10
 const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
-const FACTORY_SPAWN_COUNT: float = 3
+const FACTORY_SPAWN_COUNT: int = 3
 const FACTORY_DECAY_DAMAGE: float = 4
 
 const SIGNAL_TOWER_HEALTH: float = 20
@@ -122,7 +125,7 @@ const ARROW_PIERCE_LIMIT: int = 1
 
 const CANNONBALL_SPEED: float = 400
 const CANNONBALL_DAMAGE: float = 5
-const CANNONBALL_PIERCE_LIMIT: float = 3
+const CANNONBALL_PIERCE_LIMIT: int = 3
 
 ## CARDS
 const CARD_DISPLAY: PackedScene = preload("res://ui/CardDisplay.tscn")

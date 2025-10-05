@@ -1,21 +1,32 @@
 extends CharacterBody2D
 class_name Unit
 var player: Constants.PLAYERS
+var health: float
+
+var percentage_damage_mod: float
+var percentage_speed_mod: float
+var cooldown_mult: float
+
+var cooldown: float
 var damage: float
-var health: int
 var speed: float
+
 var target: Node2D
 var is_melee: bool
-var cooldown: float
 var attack_timer: Timer
 var projectile_scene: PackedScene
 var signal_line: Line2D
-var initial_hp: int 
+var initial_hp: float
 var severed: bool = false
 
 var nav_agent: NavigationAgent2D
 
 func _ready() -> void:
+	## Current cooldown/damage/speed are set in subclasses, and base is updated here.
+	self.percentage_damage_mod = 0
+	self.percentage_speed_mod = 0
+	self.cooldown_mult = 1
+	
 	attack_timer = Timer.new()
 	attack_timer.wait_time = cooldown
 	attack_timer.autostart = true
@@ -69,26 +80,28 @@ func shoot() -> void:
 	projectile.target_position = self.target.global_position
 	projectile.global_position = self.global_position
 	 ## I'm not sure if projectiles should keep their own damage, or get it from the shooter
-	projectile.damage = self.damage
+	projectile.damage = calc_damage()
 	get_tree().current_scene.add_child(projectile)
 
 func sever() -> void:
 	self.damage /= Constants.SEVER_DEBUFF
 	self.speed /= Constants.SEVER_DEBUFF
-	self.cooldown *= Constants.SEVER_DEBUFF
-	attack_timer.wait_time = self.cooldown
+	self.cooldown_mult *= Constants.SEVER_DEBUFF
 	self.severed = true
 	severed_changed(true)
 
 func unsever() -> void:
 	self.damage *= Constants.SEVER_DEBUFF
 	self.speed *= Constants.SEVER_DEBUFF
-	self.cooldown /= Constants.SEVER_DEBUFF
+	self.cooldown_mult /= Constants.SEVER_DEBUFF
 	attack_timer.wait_time = self.cooldown
 	self.severed = false
 	severed_changed(false)
 
-func take_damage(damage_taken: int) -> void:
+func calc_damage() -> float:
+	return max(0, damage * (1 + percentage_damage_mod));
+
+func take_damage(damage_taken: float) -> void:
 	self.health -= damage_taken
 	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(self.global_position)
@@ -109,6 +122,8 @@ func _physics_process(delta: float) -> void:
 	var nearest_tower = get_nearest_tower()
 	var enemy_dist = INF
 	var tower_dist = INF
+	
+	self.attack_timer.wait_time = self.cooldown * self.cooldown_mult
 	
 	if nearest_enemy and is_instance_valid(nearest_enemy):
 		enemy_dist = global_position.distance_squared_to(nearest_enemy.global_position)
@@ -138,7 +153,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			var next_path_pos = nav_agent.get_next_path_position()
 			var direction = (next_path_pos - global_position).normalized()
-			self.velocity = direction * speed
+			self.velocity = direction * speed * (1 + percentage_speed_mod)  
 			apply_separation_force(delta)
 			move_and_slide()
 	
@@ -229,3 +244,16 @@ func is_target_in_attack_range() -> bool:
 
 func severed_changed(severed) -> void:
 	pass
+	
+func signal_buff() -> void:
+	self.percentage_damage_mod += Constants.SIGNAL_DAMAGE_BUFF
+	self.percentage_speed_mod += Constants.SIGNAL_SPEED_BUFF
+	self.cooldown_mult *= 1 - Constants.SIGNAL_COOLDOWN_BUFF
+	print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
+
+func signal_unbuff() -> void:
+	self.percentage_damage_mod -= Constants.SIGNAL_DAMAGE_BUFF
+	self.percentage_speed_mod -= Constants.SIGNAL_SPEED_BUFF
+	self.cooldown_mult /= 1 - Constants.SIGNAL_COOLDOWN_BUFF
+	print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
+	
