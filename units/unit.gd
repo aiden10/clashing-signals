@@ -264,4 +264,3 @@ func signal_unbuff() -> void:
 	self.percentage_speed_mod -= Constants.SIGNAL_SPEED_BUFF
 	self.cooldown_mult /= 1 - Constants.SIGNAL_COOLDOWN_BUFF
 	#print(self, "'s new mods: ", percentage_damage_mod, ", ", percentage_speed_mod, ", ", cooldown_mult)
-	

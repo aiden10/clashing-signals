@@ -15,7 +15,7 @@ var is_ready:bool = false
 func _ready() -> void:
 	deck.resize(Constants.MAX_DECK_SIZE)
 
-	card_selection_element.card_add_attempt.connect(add_card)
+	card_selection_element.card_toggle.connect(toggle_card)
 	card_selection_element.switched_element.connect(switch_element)
 	card_selection_element.player_ID = player_ID
 	
@@ -81,6 +81,12 @@ func find_nearest(elements: Array, from_pos: Vector2) -> int:
 			closest_dist = dist
 			closest = i
 	return closest
+
+func toggle_card(card: Card):
+	if card in deck_element.cards:
+		remove_card(deck_element.cards.find(card))
+	else:
+		add_card(card)
 
 func add_card(card: Card):
 	var slot = deck_element.find_available_slot()

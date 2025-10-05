@@ -8,9 +8,9 @@ var num_displayed: int
 var selected_index: int = 3
 
 signal switched_element
-signal card_add_attempt
 signal card_add_success(card: Card)
 signal card_remove_success(card: Card)
+signal card_toggle(card: Card)
 
 func _ready() -> void:
 	available_cards = Constants.CARDS
@@ -60,10 +60,11 @@ func handle_input(input: Dictionary) -> void:
 			displayed_cards[selected_index].unhighlight()
 			var pos = displayed_cards[selected_index].get_global_position() + displayed_cards[selected_index].size / 2
 			switched_element.emit(Vector2.RIGHT, pos)
+
 	elif input["use"]:
 		print("adding card", selected_index)
 		if selected_index < available_cards.size():
-			card_add_attempt.emit(available_cards[selected_index % available_cards.size()])
+			card_toggle.emit(available_cards[selected_index % available_cards.size()])
 		
 		
 func update_selection(index: int) -> void:
