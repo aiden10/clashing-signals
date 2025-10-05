@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_gwbhe")
 name = "Repair"
-cost = 2
+cost = 4
 description = "Restores health of damaged buildings"
 type = 1
 scene = ExtResource("1_0os0d")

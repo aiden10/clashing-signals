@@ -65,6 +65,7 @@ func handle_input(input: Dictionary) -> void:
 			var pos = displayed_cards[selected_index].get_global_position() + displayed_cards[selected_index].size / 2
 			switched_element.emit(Vector2.RIGHT, pos)
 	if input["use"]:
+		print("removing card", selected_index, cards[selected_index])
 		card_removed.emit(selected_index)
 
 func remove_card(index: int):
@@ -93,6 +94,7 @@ func find_available_slot() -> int:
 	for i in range(displayed_cards.size()):
 		print(i, displayed_cards[i].is_empty())
 		if displayed_cards[i].is_empty():
+			print("found ", i)
 			return i
 		
 	return -1

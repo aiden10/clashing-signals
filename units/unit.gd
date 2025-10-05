@@ -98,10 +98,14 @@ func calc_damage() -> float:
 
 func take_damage(damage_taken: float) -> void:
 	self.health -= damage_taken
+	if health > initial_hp:
+		print("unit ", self, " got overhealthed to ", health, "/", initial_hp)
+		health = initial_hp
+	
 	EventBus.damage_taken.emit()
 	Effects.spawn_hit_particle(self.global_position)
 	if self.health > 0:
-		self.modulate.a = max(float(self.health) / float(initial_hp), 0.25)
+		self.modulate.a = 0.25 + 0.75 * float(self.health) / float(initial_hp)
 	else:
 		die()
 

@@ -12,7 +12,7 @@ enum GAME_SCENES {TITLE, DECK, GAME}
 const COLOR_P1 = Color("ff4000ff")
 const COLOR_P2 = Color("DEEP_SKY_BLUE")
 const INVALID_DARKENING = 0.50
-const CURSOR_SPEED: float = 500
+const CURSOR_SPEED: float = 300
 
 ## MISCELLANEOUS
 const ELIXIR_COOLDOWN: float = 2.8
@@ -47,6 +47,7 @@ const FIREBALL_SPEED: float = 800
 const HP_EQUALIZER_HEALTH: float = 5.0
 const HP_EQUALIZER_DURATION: float = 0.5
 
+const REPAIR_PERCENT: float = 0.50
 const REPAIR_DURATION: float = 0.5
 
 const CLONE_DEBUFF: float = 3
@@ -55,68 +56,68 @@ const CLONE_DURATION: float = 0.25
 ## UNITS
 const KNIGHT_HEALTH: float = 15
 const KNIGHT_DAMAGE: float = 3
-const KNIGHT_SPEED: float = 25
+const KNIGHT_SPEED: float = 40
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.0
 
 const PAWN_HEALTH: float = 7.5
 const PAWN_DAMAGE: float = 1.5
-const PAWN_SPEED: float = 30
+const PAWN_SPEED: float = 50
 const PAWN_MELEE: bool = true
 const PAWN_COOLDOWN: float = 1.0
 
 const DUMMY_HEALTH: float = 0.1
 const DUMMY_DAMAGE: float = 0.5
-const DUMMY_SPEED: float = 30
+const DUMMY_SPEED: float = 50
 const DUMMY_MELEE: bool = true
 const DUMMY_COOLDOWN: float = 1.0
 
 const PERSON_HEALTH: float = 5.0
 const PERSON_DAMAGE: float = 1.0
-const PERSON_SPEED: float = 30
+const PERSON_SPEED: float = 50
 const PERSON_MELEE: bool = true
 const PERSON_COOLDOWN: float = 1.0
 
-const GIANT_HEALTH: float = 35
+const GIANT_HEALTH: float = 50
 const GIANT_DAMAGE: float = 5
-const GIANT_SPEED: float = 20
+const GIANT_SPEED: float = 35
 const GIANT_MELEE: bool = true
 const GIANT_COOLDOWN: float = 2.0
 
-const ARCHER_HEALTH: float = 10
+const ARCHER_HEALTH: float = 5
 const ARCHER_DAMAGE: float = 1.5
-const ARCHER_SPEED: float = 35
+const ARCHER_SPEED: float = 50
 const ARCHER_MELEE: bool = false
 const ARCHER_COOLDOWN: float = 1.5
 const ARCHER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 
-const POCKET_WIFI_HEALTH: float = 20
+const POCKET_WIFI_HEALTH: float = 5
 const POCKET_WIFI_DAMAGE: float = 2.0
-const POCKET_WIFI_SPEED: float = 40
+const POCKET_WIFI_SPEED: float = 70
 const POCKET_WIFI_MELEE: bool = true
 const POCKET_WIFI_COOLDOWN: float = 2.0
 
-const DRONE_HEALTH: float = 1
+const DRONE_HEALTH: float = 3
 const DRONE_DAMAGE: float = 1
-const DRONE_SPEED: float = 65
+const DRONE_SPEED: float = 60
 const DRONE_MELEE: bool = true
 const DRONE_COOLDOWN: float = 1.3
 
 const CANNON_HEALTH: float = 10
 const CANNON_DAMAGE: float = 5
-const CANNON_SPEED: float = 15
+const CANNON_SPEED: float = 25
 const CANNON_MELEE: bool = false
 const CANNON_COOLDOWN: float = 10
 const CANNON_PROJECTILE: PackedScene = preload("res://projectiles/Boulder.tscn")
 
 const JUGGERNAUT_HEALTH: float = 60
 const JUGGERNAUT_DAMAGE: float = 8
-const JUGGERNAUT_SPEED: float = 20
+const JUGGERNAUT_SPEED: float = 35
 const JUGGERNAUT_MELEE: bool = true
 const JUGGERNAUT_COOLDOWN: float = 1.5
 
-const TOWER_COOLDOWN: float = 3.5
-const TOWER_DAMAGE: float = 0.5
+const TOWER_COOLDOWN: float = 1
+const TOWER_DAMAGE: float = 1.5
 const TOWER_HEALTH: int = 50
 var TOWER_PROJECTILE: PackedScene = preload("res://projectiles/Arrow.tscn")
 const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
@@ -125,8 +126,8 @@ const TOWER_SCENE: PackedScene = preload("res://Buildings/Tower.tscn")
 const FACTORY_HEALTH: float = 20
 const FACTORY_COOLDOWN: float = 10
 const FACTORY_SPAWN_SCENE: PackedScene = preload("res://units/Drone.tscn")
-const FACTORY_SPAWN_COUNT: int = 3
-const FACTORY_DECAY_DAMAGE: float = 4
+const FACTORY_SPAWN_COUNT: int = 4
+const FACTORY_DECAY_DAMAGE: float = 3
 
 const BALLISTA_HEALTH: float = 20
 const BALLISTA_COOLDOWN: float = 2.5
@@ -143,8 +144,8 @@ const EXTRACTOR_HEALTH: float = 20
 const EXTRACTOR_DECAY_DAMAGE: float = EXTRACTOR_HEALTH/12
 const EXTRACTOR_COOLDOWN: float = 3
 
-const WALL_HEALTH: float = 35
-const WALL_DECAY_DAMAGE: float = WALL_HEALTH/15
+const WALL_HEALTH: float = 10
+const WALL_DECAY_DAMAGE: float = WALL_HEALTH/30
 const WALL_COOLDOWN: float = 1.0
 
 const BACKDOOR_HEALTH: float = 20

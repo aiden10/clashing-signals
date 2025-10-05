@@ -26,7 +26,7 @@ func _ready() -> void:
 	$ReadyButton.ready_pressed.connect(on_ready_pressed)
 
 	
-	$"Panel/Label".text = str(Constants.PLAYERS.keys()[player_ID])
+	$"ColorRect/Label".text = str(Constants.PLAYERS.keys()[player_ID])
 
 func _process(delta: float) -> void:
 	var prefix = "p1_" if player_ID == Constants.PLAYERS.P1 else "p2_"

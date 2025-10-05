@@ -63,7 +63,7 @@ func handle_input(input: Dictionary) -> void:
 			switched_element.emit(Vector2.RIGHT, pos)
 
 	elif input["use"]:
-		print("adding card", selected_index)
+		print("adding card", selected_index, available_cards[selected_index])
 		if selected_index < available_cards.size():
 			card_toggle.emit(available_cards[selected_index % available_cards.size()])
 		

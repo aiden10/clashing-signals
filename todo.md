@@ -1,10 +1,10 @@
 
 - Sprites for each unit and towers. These can just be basic shapes
-    - ~~Sniper~~
-    - ~~Elephant~~
-    - ~~Drone~~
-    - ~~Juggernaut~~
-    - ~~Jammer~~
+	- ~~Sniper~~
+	- ~~Elephant~~
+	- ~~Drone~~
+	- ~~Juggernaut~~
+	- ~~Jammer~~
 
 - ~~Additive signal buff~~
 - ~~Reduce Tower range~~
