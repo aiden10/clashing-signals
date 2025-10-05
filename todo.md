@@ -1,10 +1,10 @@
 
 - Sprites for each unit and towers. These can just be basic shapes
-    - ~~Sniper~~
-    - ~~Elephant~~
-    - ~~Drone~~
-    - ~~Juggernaut~~
-    - ~~Jammer~~
+	- ~~Sniper~~
+	- ~~Elephant~~
+	- ~~Drone~~
+	- ~~Juggernaut~~
+	- ~~Jammer~~
 
 - ~~Additive signal buff~~
 - ~~Reduce Tower range~~
@@ -14,7 +14,7 @@
 - ~~Make music stop on game over~~
 - has_signal property in units
 - AOE stuff (piercing projectile)
-    - Basllista
+	- Basllista
 - Snipe spell (small AOE high damage)
 
 # Builds

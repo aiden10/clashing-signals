@@ -16,7 +16,7 @@ func setup(card_name: String, image: Texture, cost) -> void:
 	valid_selection()
 
 func is_empty() -> bool:
-	return $MarginContainer/VBoxContainer/CardName.text == "MISSING"
+	return $MarginContainer/VBoxContainer/CardName.text == "MISSING" or $MarginContainer/VBoxContainer/CardName.text == ""
 
 func highlight() -> void:
 	self.add_theme_stylebox_override("panel", highlighted_panel)
