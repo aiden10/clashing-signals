@@ -19,3 +19,9 @@ func highlight() -> void:
 
 func unhighlight() -> void:
 	self.add_theme_stylebox_override("panel", unhighlighted_panel)
+
+func valid_selection() -> void:
+	self.modulate = Color(1, 1, 1, 1)
+
+func invalid_selection() -> void:
+	self.modulate = Color(18.892, 0.0, 0.0)

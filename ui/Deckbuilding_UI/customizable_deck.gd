@@ -1,5 +1,6 @@
 extends GridContainer
 # reuses hand functionality but adds card removal and different max size
+class_name CustomizableDeck
 
 @export var empty_name: String
 @export var empty_image: Texture2D

@@ -3,8 +3,8 @@ extends Panel
 var deck: Array[Card]
 @export var player_ID: Constants.PLAYERS
 
-@export var card_selection_element: Node
-@export var deck_element: Node
+@export var card_selection_element: SelectionBox
+@export var deck_element: CustomizableDeck
 @export var ready_element: Node
 
 
@@ -15,7 +15,7 @@ var is_ready:bool = false
 func _ready() -> void:
 	deck.resize(Constants.MAX_DECK_SIZE)
 
-	card_selection_element.card_added.connect(add_card)
+	card_selection_element.card_add_attempt.connect(add_card)
 	card_selection_element.switched_element.connect(switch_element)
 	card_selection_element.player_ID = player_ID
 	
@@ -84,12 +84,18 @@ func find_nearest(elements: Array, from_pos: Vector2) -> int:
 
 func add_card(card: Card):
 	var slot = deck_element.find_available_slot()
-	if slot != -1:
+	if card not in deck_element.cards && slot != -1:
 		deck[slot] = card
 		deck_element.add_card(card, slot)
+		card_selection_element.card_add_success.emit(card)
 	return
 
 func remove_card(index: int):
+	if deck[index] == null:
+		return
+	
+	card_selection_element.card_remove_success.emit(deck[index])
+	
 	deck[index] = null
 	deck_element.remove_card(index)
 

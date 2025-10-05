@@ -1,4 +1,5 @@
 extends GridContainer
+class_name SelectionBox
 
 var available_cards: Array[Card] # for debugging, add cards here to make them appear in deckbuilding
 @export var player_ID: Constants.PLAYERS
@@ -7,8 +8,9 @@ var num_displayed: int
 var selected_index: int = 3
 
 signal switched_element
-signal card_added
-
+signal card_add_attempt
+signal card_add_success(card: Card)
+signal card_remove_success(card: Card)
 
 func _ready() -> void:
 	available_cards = Constants.CARDS
@@ -23,7 +25,15 @@ func _ready() -> void:
 		displayed_cards[i].name_label.add_theme_font_size_override("font_size", 22)
 	num_displayed = displayed_cards.size()
 	
+	card_add_success.connect(_on_card_add_success)
+	card_remove_success.connect(_on_card_remove_success)
 	update_selection(selected_index)
+
+func _on_card_add_success(card: Card) -> void:
+	displayed_cards[available_cards.find(card)].invalid_selection()
+
+func _on_card_remove_success(card: Card) -> void:
+	displayed_cards[available_cards.find(card)].valid_selection()
 
 func handle_input(input: Dictionary) -> void:
 	if input["up"]:
@@ -52,7 +62,8 @@ func handle_input(input: Dictionary) -> void:
 			switched_element.emit(Vector2.RIGHT, pos)
 	elif input["use"]:
 		print("adding card", selected_index)
-		card_added.emit(available_cards[selected_index % available_cards.size()])
+		
+		card_add_attempt.emit(available_cards[selected_index % available_cards.size()])
 		
 		
 func update_selection(index: int) -> void:
