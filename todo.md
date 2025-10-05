@@ -1,9 +1,10 @@
 
 - Sprites for each unit and towers. These can just be basic shapes
-- Additive signal buff
+- ~~Additive signal buff~~
 - ~~Reduce Tower range~~
 - Descriptions to card display when highlighted
 - ~~Fix tower arrows somehow piercing~~ I had forgotten to update the collision layer of the Dummy DetectionRange 
+- ~~Logo and menu screen~~
 
 # Builds
 ## Rush
@@ -37,7 +38,7 @@
 ### Spells
 - ~~Repair: Restore HP of friendly buildings in AOE~~ 
 
-## Self-Harm
+## Sacrifical
 
 ### Units
 - Boomer: Explodes upon death, dealing damage to ALL units in AOE
