@@ -3,6 +3,7 @@ extends Node
 @export var player1: PanelContainer
 @export var player2: PanelContainer
 @export var exit_button: Button
+@export var fullscreen_button: Button
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -12,7 +13,8 @@ func _ready() -> void:
 	exit_button.pressed.connect(func():
 		GameStateManager.goto_scene(Constants.GAME_SCENES.TITLE)
 	)
-	
+	fullscreen_button.pressed.connect(func(): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN))
+
 func ready_pressed():
 	EventBus.ready_pressed.emit()
 	if player1.is_ready and player2.is_ready:

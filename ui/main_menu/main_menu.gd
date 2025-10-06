@@ -2,11 +2,13 @@ extends Control
 
 @export var logo: TextureRect
 @export var start_button: Button
+@export var fullscreen_button: TextureButton
 
 func _ready() -> void:
 	start_button.pressed.connect(func(): 
 		GameStateManager.goto_scene(Constants.GAME_SCENES.DECK)
 	)
+	fullscreen_button.pressed.connect(func(): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN))
 	var tween = create_tween()
 	tween.set_loops()
 	tween.set_trans(Tween.TRANS_SINE)

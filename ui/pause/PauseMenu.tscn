@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bejd1jo1sb0l"]
+[gd_scene load_steps=9 format=3 uid="uid://bejd1jo1sb0l"]
 
 [ext_resource type="Script" uid="uid://43toxnr1h2yu" path="res://ui/pause/pause_menu.gd" id="1_bbqve"]
 [ext_resource type="FontFile" uid="uid://dd812osq6pvgl" path="res://assets/CourierPrime-Regular.ttf" id="1_k7guc"]
+[ext_resource type="Texture2D" uid="uid://b8ffuornyekew" path="res://assets/fullscreen.png" id="3_0nwwt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7guc"]
 bg_color = Color(0, 0, 0, 1)
@@ -33,7 +34,7 @@ border_width_bottom = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7guc"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("exit_button", "music_slider", "sound_slider")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("exit_button", "music_slider", "sound_slider", "fullscreen_button")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -45,6 +46,7 @@ script = ExtResource("1_bbqve")
 exit_button = NodePath("VBoxContainer/ExitButton")
 music_slider = NodePath("VBoxContainer/VBoxContainer2/MusicSlider")
 sound_slider = NodePath("VBoxContainer/VBoxContainer/SoundsSlider")
+fullscreen_button = NodePath("FullscreenButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -135,3 +137,21 @@ horizontal_alignment = 1
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 value = 100.0
+
+[node name="FullscreenButton" type="TextureButton" parent="."]
+modulate = Color(18.892157, 18.892157, 18.892157, 0.29411766)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.975
+anchor_right = 0.975
+anchor_bottom = 0.975
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_0nwwt")
+ignore_texture_size = true
+stretch_mode = 4

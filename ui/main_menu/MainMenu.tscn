@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxgorpq8g7ey7"]
+[gd_scene load_steps=11 format=3 uid="uid://bxgorpq8g7ey7"]
 
 [ext_resource type="Texture2D" uid="uid://dlx7u7ffja0ue" path="res://assets/logo-transparent.png" id="1_blw3s"]
 [ext_resource type="Script" uid="uid://b3byn3r34fphe" path="res://ui/main_menu/main_menu.gd" id="1_u1tth"]
 [ext_resource type="FontFile" uid="uid://dj146400yoh5w" path="res://assets/Prisma.ttf" id="2_x85v6"]
 [ext_resource type="Shader" uid="uid://winj22x5v8kf" path="res://effects/crt.gdshader" id="3_x85v6"]
 [ext_resource type="AudioStream" uid="uid://dxkddsd8tjdn0" path="res://assets/sounds/clashing_signals_intro.wav" id="5_2ijps"]
+[ext_resource type="Texture2D" uid="uid://b8ffuornyekew" path="res://assets/fullscreen.png" id="6_vmw4a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1tth"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -47,7 +48,7 @@ shader_parameter/glitch_strength = 0.030000001425
 shader_parameter/glitch_speed = 5.0000002375
 shader_parameter/viewport_size_override = Vector2(0, 0)
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("logo", "start_button")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("logo", "start_button", "fullscreen_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,6 +58,7 @@ grow_vertical = 2
 script = ExtResource("1_u1tth")
 logo = NodePath("VBoxContainer/TextureRect")
 start_button = NodePath("VBoxContainer/Button")
+fullscreen_button = NodePath("FullscreenButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -110,6 +112,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="FullscreenButton" type="TextureButton" parent="."]
+modulate = Color(18.892157, 18.892157, 18.892157, 0.29411766)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.975
+anchor_right = 0.975
+anchor_bottom = 0.975
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_vmw4a")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_2ijps")

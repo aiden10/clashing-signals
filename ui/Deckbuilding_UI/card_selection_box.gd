@@ -19,11 +19,11 @@ func _ready() -> void:
 	for node in get_children():
 		if node is CardDisplay:
 			displayed_cards.append(node)
-			node.name_label.add_theme_font_size_override("font_size", 22)
+			node.name_label.add_theme_font_size_override("font_size", 24)
 
 	for i in range(available_cards.size()):
 		displayed_cards[i].setup(available_cards[i].name,available_cards[i].image, available_cards[i].cost)
-		displayed_cards[i].name_label.add_theme_font_size_override("font_size", 22)
+		displayed_cards[i].name_label.add_theme_font_size_override("font_size", 24)
 	num_displayed = displayed_cards.size()
 	
 	card_add_success.connect(_on_card_add_success)

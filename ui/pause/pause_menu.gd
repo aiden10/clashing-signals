@@ -3,6 +3,7 @@ extends Control
 @export var exit_button: Button
 @export var music_slider: HSlider
 @export var sound_slider: HSlider
+@export var fullscreen_button: TextureButton
 
 func _ready() -> void:
 	EventBus.pause_pressed.connect(func():
@@ -23,6 +24,8 @@ func _ready() -> void:
 		EventBus.card_selected.emit()
 	)
 	
+	fullscreen_button.pressed.connect(func(): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN))
+
 	music_slider.value = AudioManager.music_level
 	sound_slider.value = AudioManager.sound_level
 

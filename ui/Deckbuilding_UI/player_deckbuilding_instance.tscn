@@ -38,7 +38,7 @@ offset_top = 5.0
 offset_right = 881.0
 offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("8_j81g1")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 28
 text = "P"
 
 [node name="ReadyButton" type="PanelContainer" parent="VBoxContainer"]
@@ -50,6 +50,7 @@ script = ExtResource("6_yb3gy")
 [node name="Label" type="Label" parent="VBoxContainer/ReadyButton"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_j81g1")
+theme_override_font_sizes/font_size = 26
 text = "Select to ready up"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -90,6 +91,23 @@ layout_mode = 2
 
 [node name="Card8" parent="VBoxContainer/HBoxContainer/CustomizableDeck" instance=ExtResource("3_bdylk")]
 layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("8_j81g1")
+theme_override_font_sizes/normal_font_size = 28
+text = "Y
+O
+U
+R
+
+D
+E
+C
+K"
+horizontal_alignment = 1
 
 [node name="CardSelectionBox" parent="VBoxContainer" node_paths=PackedStringArray("card_overview") instance=ExtResource("1_ajsa8")]
 layout_mode = 2

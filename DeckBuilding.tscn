@@ -7,11 +7,12 @@
 bg_color = Color(0, 0, 0, 1)
 border_width_top = 3
 
-[node name="DeckbuildingScene" type="Node" node_paths=PackedStringArray("player1", "player2", "exit_button")]
+[node name="DeckbuildingScene" type="Node" node_paths=PackedStringArray("player1", "player2", "exit_button", "fullscreen_button")]
 script = ExtResource("1_qn21b")
 player1 = NodePath("HBoxContainer/Player1Instance")
 player2 = NodePath("HBoxContainer/Player2Instance")
-exit_button = NodePath("ExitButton")
+exit_button = NodePath("HBoxContainer2/ExitButton")
+fullscreen_button = NodePath("HBoxContainer2/FullscreenButton")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 15
@@ -31,7 +32,7 @@ layout_mode = 2
 layout_mode = 2
 player_ID = 1
 
-[node name="ExitButton" type="Button" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -39,6 +40,10 @@ anchor_bottom = 1.0
 offset_top = -42.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="ExitButton" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.39215687)
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0.5882353)
@@ -49,3 +54,17 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qn21b")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qn21b")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qn21b")
 text = "BACK TO TITLE"
+
+[node name="FullscreenButton" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.39215687)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0.5882353)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.39215687)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_qn21b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qn21b")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qn21b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn21b")
+text = "ENTER FULLSCREEN"

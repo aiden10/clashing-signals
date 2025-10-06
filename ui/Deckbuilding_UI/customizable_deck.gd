@@ -27,13 +27,13 @@ func _ready() -> void:
 	cards.resize(max_size)
 	for node in get_children():
 		if node is CardDisplay:
-			node.name_label.add_theme_font_size_override("font_size", 22)
+			node.name_label.add_theme_font_size_override("font_size", 24)
 			displayed_cards.append(node)
 
 func add_card(card: Card, index: int) -> void:
 	cards[index] = card
 	displayed_cards[index].setup(card.name, card.image, card.cost)
-	displayed_cards[index].name_label.add_theme_font_size_override("font_size", 22)
+	displayed_cards[index].name_label.add_theme_font_size_override("font_size", 24)
 	
 func handle_input(input: Dictionary) -> void:
 	if input["up"]:
