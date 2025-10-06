@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 
 # contains highlight and unhighlight to keep consistent with other ui elements
 @onready var highlighted_panel: StyleBoxFlat = preload("res://ui/Highlight.tres")
@@ -15,7 +15,6 @@ func handle_input(input: Dictionary) -> void:
 		unhighlight()
 		switched_element.emit(Vector2.LEFT, get_global_position())
 	elif input["use"]:
-		print("[ready] ready pressed")
 		ready_pressed.emit()
 
 func highlight() -> void:

@@ -5,7 +5,6 @@ extends Control
 
 func _ready() -> void:
 	start_button.pressed.connect(func(): 
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		GameStateManager.goto_scene(Constants.GAME_SCENES.DECK)
 	)
 	var tween = create_tween()

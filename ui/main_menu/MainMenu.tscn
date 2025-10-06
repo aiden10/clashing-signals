@@ -88,8 +88,10 @@ texture = ExtResource("1_blw3s")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0.2901961, 0.9490196, 0.38431373, 1)
-theme_override_colors/font_hover_color = Color(0.2901961, 0.9490196, 0.38431373, 1)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.39215687)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.5882353)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.39215687)
 theme_override_fonts/font = ExtResource("2_x85v6")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_u1tth")

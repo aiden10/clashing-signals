@@ -30,7 +30,7 @@ func add_image(target: Node, source: String, image: IMAGES, color: Color=Color(1
 	sprite.texture = image_map[image]
 	sprite.name = source
 	sprite.modulate = color
-	target.add_child(sprite)
+	target.add_child.call_deferred(sprite)
 
 func remove_image(target: Node, source: String) -> void:
 	var sprite = target.find_child(source, false, false)

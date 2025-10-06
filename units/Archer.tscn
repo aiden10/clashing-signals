@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvku3cy31qigl"]
 
 [ext_resource type="Script" uid="uid://cw822yirn0xq0" path="res://units/archer.gd" id="1_2p7d8"]
-[ext_resource type="Texture2D" uid="uid://y2cw7qv80lk6" path="res://assets/sprites/Archer.png" id="2_ou0y5"]
+[ext_resource type="Texture2D" uid="uid://bw6xvth8bjjuy" path="res://assets/sprites/Archer.png" id="2_ou0y5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icn0d"]
 radius = 122.0041
@@ -35,7 +35,7 @@ position = Vector2(6, 0)
 shape = SubResource("CircleShape2D_mid32")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.5707964
+position = Vector2(4, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ou0y5")
 

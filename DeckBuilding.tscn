@@ -2,28 +2,50 @@
 
 [ext_resource type="Script" uid="uid://b5ra6a5vucjxi" path="res://deck_building.gd" id="1_qn21b"]
 [ext_resource type="PackedScene" uid="uid://bj22r5ylkt64i" path="res://ui/Deckbuilding_UI/player_deckbuilding_instance.tscn" id="2_qn21b"]
-[ext_resource type="FontFile" uid="uid://dd812osq6pvgl" path="res://assets/CourierPrime-Regular.ttf" id="3_fvec8"]
 
-[node name="DeckbuildingScene" type="Node"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn21b"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 3
+
+[node name="DeckbuildingScene" type="Node" node_paths=PackedStringArray("player1", "player2", "exit_button")]
 script = ExtResource("1_qn21b")
+player1 = NodePath("HBoxContainer/Player1Instance")
+player2 = NodePath("HBoxContainer/Player2Instance")
+exit_button = NodePath("ExitButton")
 
-[node name="Player1Instance" parent="." instance=ExtResource("2_qn21b")]
-offset_right = 996.0
-offset_bottom = 1079.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Player1Instance2" parent="." instance=ExtResource("2_qn21b")]
-offset_left = 994.0
-offset_right = 1924.0
-offset_bottom = 1079.0
+[node name="Player1Instance" parent="HBoxContainer" instance=ExtResource("2_qn21b")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="Player2Instance" parent="HBoxContainer" instance=ExtResource("2_qn21b")]
+layout_mode = 2
 player_ID = 1
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.1
-anchor_right = 0.1
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="ExitButton" type="Button" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("3_fvec8")
-theme_override_font_sizes/font_size = 32
-text = "FULLSCREEN"
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.39215687)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0.5882353)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.39215687)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_qn21b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qn21b")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qn21b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn21b")
+text = "BACK TO TITLE"

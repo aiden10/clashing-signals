@@ -63,19 +63,18 @@ func handle_input(input: Dictionary) -> void:
 			switched_element.emit(Vector2.RIGHT, pos)
 
 	elif input["use"]:
-		print("adding card", selected_index, available_cards[selected_index])
 		if selected_index < available_cards.size():
 			card_toggle.emit(available_cards[selected_index % available_cards.size()])
 		
 		
 func update_selection(index: int) -> void:
+	EventBus.card_selected.emit()
 	for i in range(displayed_cards.size()):
 		if i == index:
 			displayed_cards[i].highlight()
 		else:
 			displayed_cards[i].unhighlight()
 	if available_cards.size() - 1 >= index:
-		print(available_cards.size(),index,)
 		if available_cards[index] != null:
 			card_overview.update(available_cards[index])
 

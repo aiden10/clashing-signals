@@ -27,6 +27,7 @@ func _ready() -> void:
 	
 	action_timer = Timer.new()
 	action_timer.wait_time = Constants.ACTION_COOLDOWN
+	action_timer.autostart = true
 	action_timer.timeout.connect(func(): can_place = true)
 	action_timer.one_shot = true
 	add_child(action_timer)
@@ -53,14 +54,17 @@ func _physics_process(delta: float) -> void:
 		direction.x -= 1
 	if Input.is_action_pressed(prefix + "right"):
 		direction.x += 1
-	if Input.is_action_just_released(prefix + "select_next"):
+	if Input.is_action_just_pressed(prefix + "select_next"):
 		hand.next_card()
-	if Input.is_action_just_released(prefix + "select_prev"):
+	if Input.is_action_just_pressed(prefix + "select_prev"):
 		hand.prev_card()
-	if Input.is_action_just_released(prefix + "use") and can_place:
+	if Input.is_action_just_pressed(prefix + "use") and can_place:
 		use_selected_card()
 		can_place = false
 		action_timer.start()
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
+		EventBus.pause_pressed.emit()
 
 	if direction != Vector2.ZERO:
 		self.cursor.move_and_collide(direction.normalized() * self.cursor.speed * delta)
@@ -93,6 +97,7 @@ func use_selected_card():
 	EventBus.elixir_updated.emit()
 	
 	if card.type == Constants.CARD_TYPES.UNIT:
+		EventBus.unit_placed.emit()
 		for i in range(card.count):
 			var unit = card.scene.instantiate()
 			unit.global_position = cursor.global_position + Vector2(randi_range(-25, 25), randi_range(-25, 25))
@@ -100,12 +105,14 @@ func use_selected_card():
 			get_tree().current_scene.add_child(unit)
 
 	elif card.type == Constants.CARD_TYPES.SPELL:
+		EventBus.spell_cast.emit()
 		var spell = card.scene.instantiate()
 		spell.global_position = cursor.global_position
 		spell.player = self.player
 		get_tree().current_scene.add_child(spell)
 	
 	if card.type == Constants.CARD_TYPES.BUILDING:
+		EventBus.building_placed.emit()
 		var building = card.scene.instantiate()
 		building.global_position = cursor.global_position
 		building.player = self.player

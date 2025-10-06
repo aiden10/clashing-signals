@@ -1,5 +1,8 @@
 
-- Sprites for each unit and towers. These can just be basic shapes
+- Pausing
+- Sound effects
+
+- ~~Sprites for each unit and towers. These can just be basic shapes~~
 	- ~~Sniper~~
 	- ~~Elephant~~
 	- ~~Drone~~
@@ -13,12 +16,11 @@
 - ~~Logo and menu screen~~
 - ~~Make music stop on game over~~
 - ~~has_signal property in units~~
-- AOE stuff (piercing projectile)
+- ~~AOE stuff (piercing projectile)~~
     - ~~Basllista~~
 - ~~Snipe spell (small AOE high damage)~~
-- new juggernaut sprite
+- ~~new juggernaut sprite~~
 - ~~shrink ring sprite~~
-- prevent ballistae from shooting over "water"
 - ~~set menu to main scene~~
 
 # Builds

@@ -1,12 +1,11 @@
-extends Panel
+extends PanelContainer
 
 var deck: Array[Card]
 @export var player_ID: Constants.PLAYERS
-
 @export var card_selection_element: SelectionBox
 @export var deck_element: CustomizableDeck
-@export var ready_element: Node
-
+@export var ready_element: PanelContainer
+@export var ready_label: Label
 
 var current_area: Constants.SelectionArea = Constants.SelectionArea.SELECTION
 var is_ready:bool = false
@@ -22,11 +21,10 @@ func _ready() -> void:
 	deck_element.switched_element.connect(switch_element)
 	deck_element.card_removed.connect(remove_card)
 	
-	$ReadyButton.switched_element.connect(switch_element)
-	$ReadyButton.ready_pressed.connect(on_ready_pressed)
-
+	ready_element.switched_element.connect(switch_element)
+	ready_element.ready_pressed.connect(on_ready_pressed)
 	
-	$"ColorRect/Label".text = str(Constants.PLAYERS.keys()[player_ID])
+	$VBoxContainer/ColorRect/Label.text = str(Constants.PLAYERS.keys()[player_ID])
 
 func _process(delta: float) -> void:
 	var prefix = "p1_" if player_ID == Constants.PLAYERS.P1 else "p2_"
@@ -47,9 +45,10 @@ func _process(delta: float) -> void:
 			deck_element.handle_input(input)
 		Constants.SelectionArea.READY:
 			pass
-			$ReadyButton.handle_input(input)
+			ready_element.handle_input(input)
 
 func switch_element(direction: Vector2, from_pos: Vector2) -> void:
+	EventBus.card_selected.emit()
 	match direction:
 		Vector2.UP:
 			if current_area == Constants.SelectionArea.SELECTION:
@@ -58,7 +57,7 @@ func switch_element(direction: Vector2, from_pos: Vector2) -> void:
 				deck_element.focus(index)
 			elif current_area == Constants.SelectionArea.DECK:
 				current_area = Constants.SelectionArea.READY
-				$ReadyButton.highlight()
+				ready_element.highlight()
 
 		Vector2.DOWN:
 			if current_area == Constants.SelectionArea.READY:
@@ -74,14 +73,13 @@ func switch_element(direction: Vector2, from_pos: Vector2) -> void:
 		Vector2.RIGHT:
 			pass
 			current_area = Constants.SelectionArea.READY
-			$ReadyButton.highlight()
+			ready_element.highlight()
 		
 		Vector2.LEFT:
 			current_area = Constants.SelectionArea.DECK
 			var index = find_nearest(deck_element.displayed_cards, from_pos)
 			deck_element.focus(index)
 			
-
 func find_nearest(elements: Array, from_pos: Vector2) -> int:
 	var closest = 0
 	var closest_dist = INF
@@ -94,6 +92,7 @@ func find_nearest(elements: Array, from_pos: Vector2) -> int:
 	return closest
 
 func toggle_card(card: Card):
+	EventBus.card_selected.emit()
 	if card in deck_element.cards:
 		remove_card(deck_element.cards.find(card))
 	else:
@@ -118,10 +117,10 @@ func remove_card(index: int):
 	become_unready()
 
 func become_ready() -> void:
-	$ReadyButton/Label.text = "Ready!"
+	ready_label.text = "Ready!"
 
 func become_unready() -> void:
-	$ReadyButton/Label.text = "Select to ready up"
+	ready_label.text = "Select this to ready up"
 
 func on_ready_pressed():
 	if deck_element.find_available_slot() == -1:

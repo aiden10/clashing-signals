@@ -69,6 +69,7 @@ func handle_input(input: Dictionary) -> void:
 		card_removed.emit(selected_index)
 
 func remove_card(index: int):
+	EventBus.card_selected.emit()
 	cards[index] = null
 	displayed_cards[index].setup(empty_name, empty_image, empty_cost)
 
@@ -82,6 +83,7 @@ func get_selected() -> Card:
 	return self.cards[self.selected_index]
 
 func update_selection(index: int) -> void:
+	EventBus.card_selected.emit()
 	for i in range(displayed_cards.size()):
 		if i == index:
 			displayed_cards[i].highlight()
@@ -92,7 +94,6 @@ func update_selection(index: int) -> void:
 
 func find_available_slot() -> int:
 	for i in range(displayed_cards.size()):
-		print(i, displayed_cards[i].is_empty())
 		if displayed_cards[i].is_empty():
 			print("found ", i)
 			return i

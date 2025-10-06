@@ -1,0 +1,137 @@
+[gd_scene load_steps=8 format=3 uid="uid://bejd1jo1sb0l"]
+
+[ext_resource type="Script" uid="uid://43toxnr1h2yu" path="res://ui/pause/pause_menu.gd" id="1_bbqve"]
+[ext_resource type="FontFile" uid="uid://dd812osq6pvgl" path="res://assets/CourierPrime-Regular.ttf" id="1_k7guc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7guc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nwwt"]
+bg_color = Color(0, 0, 0, 0.39215687)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbqve"]
+bg_color = Color(0, 0, 0, 0.5882353)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn84i"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7guc"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("exit_button", "music_slider", "sound_slider")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bbqve")
+exit_button = NodePath("VBoxContainer/ExitButton")
+music_slider = NodePath("VBoxContainer/VBoxContainer2/MusicSlider")
+sound_slider = NodePath("VBoxContainer/VBoxContainer/SoundsSlider")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5882353)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_k7guc")
+theme_override_font_sizes/font_size = 24
+text = "press any key to resume"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_k7guc")
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_k7guc")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_k7guc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0nwwt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bbqve")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_sn84i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k7guc")
+text = "EXIT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k7guc")
+theme_override_font_sizes/font_size = 22
+text = "SOUND EFFECT VOLUME"
+horizontal_alignment = 1
+
+[node name="SoundsSlider" type="HSlider" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k7guc")
+theme_override_font_sizes/font_size = 22
+text = "MUSIC VOLUME"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+value = 100.0
