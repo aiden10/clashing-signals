@@ -81,7 +81,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_k7guc")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "press any key to resume"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -91,7 +91,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_k7guc")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 82
 text = "PAUSED"
 horizontal_alignment = 1
 
@@ -115,7 +115,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k7guc")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 28
 text = "SOUND EFFECT VOLUME"
 horizontal_alignment = 1
 
@@ -130,7 +130,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_k7guc")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 28
 text = "MUSIC VOLUME"
 horizontal_alignment = 1
 
