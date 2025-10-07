@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_gihxn")
 name = "Pocket WiFi"
-cost = 4
+cost = 3
 description = "A moving signal extender"
 scene = ExtResource("1_7hkcx")
 metadata/_custom_type_script = "uid://pqj0ruwuram3"

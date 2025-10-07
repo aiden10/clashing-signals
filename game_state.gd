@@ -1,6 +1,7 @@
 extends Node
 
 var game_instance: Node
+var game_over: bool = false
 
 var p1: Player
 var p2: Player

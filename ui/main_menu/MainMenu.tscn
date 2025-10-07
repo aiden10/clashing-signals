@@ -114,6 +114,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
 [node name="FullscreenButton" type="TextureButton" parent="."]
+visible = false
 modulate = Color(18.892157, 18.892157, 18.892157, 0.29411766)
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 1

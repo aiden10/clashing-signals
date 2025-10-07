@@ -45,6 +45,9 @@ func _ready() -> void:
 		curr_song_player.stop()
 	)
 
+func stop_song():
+	curr_song_player.stop()
+
 func set_master_volume() -> void:
 	var sfx_volume = _get_normalized_volume(sound_level)
 	for player in audio_players:

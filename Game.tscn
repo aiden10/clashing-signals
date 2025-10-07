@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dapfbmxyjm806"]
+[gd_scene load_steps=12 format=3 uid="uid://dapfbmxyjm806"]
 
 [ext_resource type="Script" uid="uid://rkboberdy6dh" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://n6jmxacj44r4" path="res://Cursor.tscn" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://s7jtb02p6dox" path="res://ui/PlayerDisplay.tscn" id="4_sb48q"]
-[ext_resource type="PackedScene" uid="uid://bf63fkilkgciu" path="res://ui/game_over/GameOver.tscn" id="5_3mrqo"]
 [ext_resource type="PackedScene" uid="uid://bejd1jo1sb0l" path="res://ui/pause/PauseMenu.tscn" id="5_joorw"]
 [ext_resource type="Shader" uid="uid://winj22x5v8kf" path="res://effects/crt.gdshader" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://crwr185l6pu16" path="res://icon.svg" id="6_r0x5m"]
@@ -106,6 +105,7 @@ anchor_top = 0.01
 anchor_right = 0.01
 anchor_bottom = 0.01
 offset_right = 0.0
+mouse_filter = 2
 
 [node name="PlayerDisplay2" parent="CanvasLayer" instance=ExtResource("4_sb48q")]
 anchors_preset = -1
@@ -114,6 +114,7 @@ anchor_top = 0.01
 anchor_right = 1.0
 anchor_bottom = 0.01
 grow_horizontal = 0
+mouse_filter = 2
 player = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -128,11 +129,6 @@ color = Color(1, 1, 1, 0)
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_joorw")]
 visible = false
-
-[node name="GameOver" parent="CanvasLayer" instance=ExtResource("5_3mrqo")]
-process_mode = 2
-visible = false
-modulate = Color(1, 1, 1, 0)
 
 [node name="ArenaBorder" type="StaticBody2D" parent="."]
 collision_layer = 255

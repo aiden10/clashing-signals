@@ -1,6 +1,6 @@
 
-- Pausing
-- Sound effects
+- ~~Pausing~~
+- ~~Sound effects~~
 
 - ~~Sprites for each unit and towers. These can just be basic shapes~~
 	- ~~Sniper~~

@@ -24,6 +24,8 @@ const ELIXIR_COOLDOWN3: float = 0.9
 const STAGE2_COLOR = Color("ffff31ff")
 const STAGE3_COLOR = Color("ff7100ff")
 
+const GAME_OVER_SCENE: PackedScene = preload("res://ui/game_over/GameOver.tscn")
+
 const MIN_DISTANCE: float = 50.0  
 const PUSH_STRENGTH: float = 500.0
 
@@ -61,9 +63,9 @@ const CLONE_DEBUFF: float = 3
 const CLONE_DURATION: float = 0.25
 
 ## UNITS
-const KNIGHT_HEALTH: float = 25
+const KNIGHT_HEALTH: float = 35
 const KNIGHT_DAMAGE: float = 5
-const KNIGHT_SPEED: float = 40
+const KNIGHT_SPEED: float = 45
 const KNIGHT_MELEE: bool = true
 const KNIGHT_COOLDOWN: float = 1.0
 
@@ -155,8 +157,8 @@ const JAMMER_TOWER_HEALTH: float = 20
 const JAMMER_TOWER_DECAY_DAMAGE: float = 0.5
 
 const EXTRACTOR_HEALTH: float = 20
-const EXTRACTOR_DECAY_DAMAGE: float = EXTRACTOR_HEALTH/80
-const EXTRACTOR_COOLDOWN: float = 4
+const EXTRACTOR_DECAY_DAMAGE: float = EXTRACTOR_HEALTH/30
+const EXTRACTOR_COOLDOWN: float = 3
 
 const WALL_HEALTH: float = 15
 const WALL_DECAY_DAMAGE: float = WALL_HEALTH/40

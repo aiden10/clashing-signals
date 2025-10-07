@@ -34,7 +34,7 @@ border_width_bottom = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7guc"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("exit_button", "music_slider", "sound_slider", "fullscreen_button")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("exit_button", "resume_button", "music_slider", "sound_slider", "fullscreen_button")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -44,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bbqve")
 exit_button = NodePath("VBoxContainer/ExitButton")
+resume_button = NodePath("VBoxContainer/ResumeButton")
 music_slider = NodePath("VBoxContainer/VBoxContainer2/MusicSlider")
 sound_slider = NodePath("VBoxContainer/VBoxContainer/SoundsSlider")
 fullscreen_button = NodePath("FullscreenButton")
@@ -73,17 +74,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.5882353)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_fonts/font = ExtResource("1_k7guc")
-theme_override_font_sizes/font_size = 32
-text = "press any key to resume"
-
 [node name="Label" type="Label" parent="VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
@@ -94,6 +84,19 @@ theme_override_fonts/font = ExtResource("1_k7guc")
 theme_override_font_sizes/font_size = 82
 text = "PAUSED"
 horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_k7guc")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_k7guc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0nwwt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bbqve")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_sn84i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k7guc")
+text = "RESUME"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 process_mode = 2

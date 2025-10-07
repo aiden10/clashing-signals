@@ -1,6 +1,7 @@
 extends Control
 
 @export var exit_button: Button
+@export var resume_button: Button
 @export var music_slider: HSlider
 @export var sound_slider: HSlider
 @export var fullscreen_button: TextureButton
@@ -11,6 +12,7 @@ func _ready() -> void:
 	)
 	exit_button.pressed.connect(func(): 
 		get_tree().paused = false
+		AudioManager.stop_song()
 		GameStateManager.goto_scene(Constants.GAME_SCENES.DECK)
 	)
 	music_slider.drag_ended.connect(func(_changed: bool): 
@@ -23,15 +25,18 @@ func _ready() -> void:
 		AudioManager.set_master_volume()
 		EventBus.card_selected.emit()
 	)
-	
+	resume_button.pressed.connect(func():
+		self.hide()
+		EventBus.unpaused.emit()
+		get_tree().paused = false
+	)
 	fullscreen_button.pressed.connect(func(): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN))
 
 	music_slider.value = AudioManager.music_level
 	sound_slider.value = AudioManager.sound_level
 
-func _input(event):
-	if event is InputEventKey and not Input.is_action_pressed("pause"):
-		if event.pressed:
-			self.hide()
-			EventBus.unpaused.emit()
-			get_tree().paused = false
+func _input(_event):
+	if Input.is_action_just_pressed("pause") and not GameState.game_over:
+		self.hide()
+		EventBus.unpaused.emit()
+		get_tree().paused = false

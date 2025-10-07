@@ -7,6 +7,7 @@ extends Node
 
 func _ready() -> void:
 	get_tree().paused = false
+	GameState.game_over = false
 	player1.ready_element.ready_pressed.connect(ready_pressed)
 	player2.ready_element.ready_pressed.connect(ready_pressed)
 	

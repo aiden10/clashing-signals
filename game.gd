@@ -84,11 +84,13 @@ func add_elixir_specific(player: Constants.PLAYERS) -> void:
 	EventBus.elixir_updated.emit()
 
 func check_game_over() -> void:
-	print(GameState.p1_towers)
-	print(GameState.p2_towers)
+	var game_over_screen = Constants.GAME_OVER_SCENE.instantiate()
+	$CanvasLayer.add_child(game_over_screen)
 	if GameState.p1_towers.size() == 0:
 		EventBus.game_over.emit(Constants.PLAYERS.P2)
+		game_over_screen.display(Constants.PLAYERS.P2)
 		print("p2 wins")
 	if GameState.p2_towers.size() == 0:
 		EventBus.game_over.emit(Constants.PLAYERS.P1)
+		game_over_screen.display(Constants.PLAYERS.P1)
 		print("p1 wins")

@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("3_n2131")
-name = "Juggernaut"
-cost = 7
+name = "Sentinel"
+cost = 6
 description = "Strong unit which requires a constant signal connection"
 image = ExtResource("1_a65ih")
 scene = ExtResource("2_ru857")
